@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\TournamentController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -233,4 +234,18 @@ Route::group(['middleware' => ['auth', 'status']], function () {
         '/settings/favicon',
         [SettingsController::class, 'favicon']
     )->name('settings.favicon')->middleware('permissions:settings.general');
+
+    /**
+     *  tournament - manage tournament ---> TODO restrict to non owner
+     */
+    Route::get(
+        '/manage',
+        [TournamentController::class, 'manage']
+    )->name('tournament.manage');
+
+    // TODO get by tournament id
+    Route::get(
+        '/tournament',
+        [TournamentController::class, 'index']
+    )->name('tournament');
 });

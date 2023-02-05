@@ -26,9 +26,9 @@
                         {{ trans('app.activity') }}
                     </a>
 
-                    <a class="nav-link" href="{{ route('activity') }}">
+                    <a class="nav-link" href="{{ route('tournament.manage') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-trophy"></i></div>
-                        {{ trans('app.tourney.manage') }}
+                        {{ trans('app.tourneys') }}
                     </a>
 
                     {{-- Tournament --}}
@@ -36,25 +36,24 @@
 
                     {{-- TODO FOREACH HERE --}}
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                        data-bs-target="#collapseRole" aria-expanded="false" aria-controls="collapseRole">
+                        data-bs-target="#collapseTourney" aria-expanded="false" aria-controls="collapseTourney">
                         <div class="sb-nav-link-icon"><i class="fas fa-trophy"></i></div>
                         {{ 'TOURNAMENT 1' }}
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
 
-                    <div class="collapse" id="collapseRole" aria-labelledby="headingOne"
+                    <div class="collapse" id="collapseTourney" aria-labelledby="headingOne"
                         data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="">{{ 'Settings' }}</a>
-                            <a class="nav-link" href="">{{ 'Team' }}</a>
-                            <a class="nav-link" href="">{{ 'Events' }}</a>
-                            <a class="nav-link" href="">{{ 'Schedule' }}</a>
-                            <a class="nav-link" href="">{{ 'Result' }}</a>
-                            <a class="nav-link" href="">{{ 'Program Book' }}</a>
+                            <a class="nav-link" href="{{ route('tournament') }}">{{ trans('app.tourney.info') }}</a>
+                            <a class="nav-link" href="">{{ trans('app.tourney.team') }}</a>
+                            <a class="nav-link" href="">{{ trans('app.tourney.events') }}</a>
+                            <a class="nav-link" href="">{{ trans('app.tourney.schedule') }}</a>
+                            <a class="nav-link" href="">{{ trans('app.tourney.result') }}</a>
+                            <a class="nav-link" href="">{{ trans('app.tourney.program') }}</a>
                         </nav>
                     </div>
                     {{-- TODO FOREACH TILL HERE --}}
-
 
                     {{-- Administrations --}}
                     @if (has_permission('users.manage') ||

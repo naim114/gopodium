@@ -58,9 +58,15 @@ return [
 
     // manage tournament
     'tourneys' => 'Tournaments',
+    'tourney.manage' => 'Manage Tournaments',
+
     'tourney' => 'Tournament',
-    'tourney.manage' => 'Manage Tournament',
-    'tourney.add' => 'Add Tournament',
+    'tourney.info' => 'Information',
+    'tourney.team' => 'Manage Team',
+    'tourney.events' => 'Manage Events',
+    'tourney.schedule' => 'Schedule',
+    'tourney.result' => 'Result',
+    'tourney.program' => 'Program Book',
 
     'users' => 'Users',
     'users.activity' => 'User Activity',
