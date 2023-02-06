@@ -1,5 +1,5 @@
 <div class="col">
-    <label for="organizer">Payment Record</label>
+    <p>Payment Record</p>
     <table id="permissionsTable" class="table table-striped table-hover table-responsive">
         <thead class="thead-dark">
             <tr>

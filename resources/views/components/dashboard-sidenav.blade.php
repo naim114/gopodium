@@ -46,11 +46,15 @@
                         data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link" href="{{ route('tournament') }}">{{ trans('app.tourney.info') }}</a>
-                            <a class="nav-link" href="">{{ trans('app.tourney.team') }}</a>
-                            <a class="nav-link" href="">{{ trans('app.tourney.events') }}</a>
-                            <a class="nav-link" href="">{{ trans('app.tourney.schedule') }}</a>
-                            <a class="nav-link" href="">{{ trans('app.tourney.result') }}</a>
-                            <a class="nav-link" href="">{{ trans('app.tourney.program') }}</a>
+                            <a class="nav-link"
+                                href="{{ route('tournament.team') }}">{{ trans('app.tourney.team') }}</a>
+                            <a class="nav-link"
+                                href="{{ route('tournament.event') }}">{{ trans('app.tourney.events') }}</a>
+                            <a class="nav-link"
+                                href="{{ route('tournament') }}">{{ trans('app.tourney.schedule') }}</a>
+                            <a class="nav-link" href="{{ route('tournament') }}">{{ trans('app.tourney.result') }}</a>
+                            <a class="nav-link"
+                                href="{{ route('tournament') }}">{{ trans('app.tourney.program') }}</a>
                         </nav>
                     </div>
                     {{-- TODO FOREACH TILL HERE --}}

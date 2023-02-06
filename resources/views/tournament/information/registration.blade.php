@@ -4,11 +4,11 @@
         <input type="text" name="name" value="" class="form-control" readonly>
     </div>
     <div class="form-group mb-3">
-        <label for="vode">Start Date</label>
+        <label for="code">Start Date</label>
         <input type="date" name="start_at" value="" class="form-control" placeholder="Enter Start Date">
     </div>
     <div class="form-group mb-3">
-        <label for="vode">End Date</label>
+        <label for="code">End Date</label>
         <input type="date" value="" class="form-control" placeholder="End Date" readonly>
     </div>
 </div>

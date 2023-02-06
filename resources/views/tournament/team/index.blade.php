@@ -1,27 +1,12 @@
 @extends('layouts.dashboard-master')
 
-@section('page-title', trans('app.tourney.manage'))
-
-@section('custom-head')
-    <style>
-        .hide {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            border: 0;
-        }
-    </style>
-@stop
+@section('page-title', trans('app.tourney.team'))
 
 @section('user-name', Auth::user()->username)
 
 @section('breadcrumb')
-    <a href="{{ route('tournament.manage') }}">{{ trans('app.tourney') }}</a> /
-    <a>{{ trans('app.tourney.manage') }}</a>
+    <a href="{{ route('tournament') }}">TOURNEY CODE HERE</a> /
+    <a>{{ trans('app.tourney.team') }}</a>
 @stop
 
 @section('content')
@@ -32,19 +17,16 @@
             </div>
         @endisset
         <button class="btn btn-primary mb-2 addButton">
-            + Request Add Tournament
+            + Add Team
         </button>
         <table id="permissionsTable" class="table table-striped table-hover table-responsive">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
+                    <th scope="col">Logo</th>
                     <th scope="col">Name</th>
-                    {{-- <th scope="col">User</th>   --}}{{-- only for user that have permision to manage all tournament  --}}
-                    <th scope="col">Code</th>
-                    <th scope="col">Registered at</th>
-                    <th scope="col">Start Date</th>
-                    <th scope="col">Expiration Date</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Created at</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -53,26 +35,38 @@
                 <tr>
                     {{-- <th scope="row">{{ $count++ }}</th> --}}
                     <th scope="row">1</th>
+                    <td><img height="35px" src="{{ asset('assets/img/default-team.png') }}" /></td>
                     <td>TOURNAMENT 1</td>
-                    {{-- <td>Username</td>  --}}{{-- only for user that have permision to manage all tournament  --}}
                     <td>MMSM2020</td>
-                    <td>1/2/2023 10.34 a.m</td>
-                    <td>2/2/2023 12.00 p.m</td>
                     <td>5/2/2023 12.00 p.m</td>
-                    <td>Ongoing</td>
                     <td>
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false"><i class="fas fa-ellipsis-h fa-fw"></i></a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li>
-                                <a href="{{ route('tournament') }}" class="dropdown-item">
-                                    Manage
+                                <a href="{{ route('tournament.team.manage') }}" class="dropdown-item">
+                                    Manage Team
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('tournament.team.athlete') }}" class="dropdown-item">
+                                    Athletes
                                 </a>
                             </li>
                             <li>
                                 <a href="" class="dropdown-item">
-                                    Hide from sidebar
+                                    Event List
                                 </a>
+                            </li>
+                            <li>
+                                <a href="" class="dropdown-item">
+                                    Results
+                                </a>
+                            </li>
+                            <li>
+                                <button class="dropdown-item text-danger deleteButton">
+                                    Delete
+                                </button>
                             </li>
                         </ul>
                     </td>
@@ -83,7 +77,10 @@
     </div>
 
     {{-- Add Modal --}}
-    @include('tournament.manage.add')
+    @include('tournament.team.partial.add')
+
+    {{-- Delete Modal --}}
+    @include('tournament.team.partial.delete')
 @stop
 
 @section('scripts')
@@ -100,6 +97,15 @@
 
         $(".closeAddModal").click(function() {
             $('#addModal').modal('hide');
+        });
+
+        // delete modal
+        $(".deleteButton").click(function() {
+            $('#deleteModal').modal('show');
+        });
+
+        $(".closeDeleteModal").click(function() {
+            $('#deleteModal').modal('hide');
         });
     </script>
 @stop

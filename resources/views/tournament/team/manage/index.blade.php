@@ -1,6 +1,6 @@
 @extends('layouts.dashboard-master')
 
-@section('page-title', trans('app.tourney.info'))
+@section('page-title', 'TEAM NAME HERE')
 
 @section('custom-head')
     <style>
@@ -21,7 +21,8 @@
 
 @section('breadcrumb')
     <a href="{{ route('tournament') }}">TOURNEY CODE HERE</a> /
-    <a>{{ trans('app.tourney.info') }}</a>
+    <a href="{{ route('tournament.team.manage') }}">TEAM NAME HERE</a> /
+    <a>{{ trans('app.tourney.team.manage') }}</a>
 @stop
 
 @section('content')
@@ -43,51 +44,47 @@
             <div class="col-md-8 col-sm-6 pt-2 pb-2">
                 <div class="card mb-3">
                     <div class="card-header">
-                        <h5>Tournament Details</h5>
+                        <h5>Team details</h5>
                     </div>
                     <div class="card-body">
-                        @include('tournament.information.details')
+                        @include('tournament.team.manage.details')
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="card mb-3">
-                <div class="card-header">
-                    <h5>Registration Details</h5>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        @include('tournament.information.registration')
-                        <hr>
-                        @include('tournament.information.payment')
-                    </div>
-                </div>
+                <a class="mb-2 btn btn-secondary w-100" href="{{ route('tournament.team.athlete') }}">
+                    Manage Athlete
+                </a>
+                <a class="mb-2 btn btn-secondary w-100" href="">
+                    View Event List
+                </a>
+                <a class="mb-2 btn btn-secondary w-100" href="">
+                    View Results
+                </a>
+                <button class="mb-2 btn btn-danger w-100 text-bold deleteButton">
+                    Delete Team
+                </button>
             </div>
         </div>
     </div>
 
-    {{-- Add Modal --}}
-    @include('tournament.information.payment_add')
+    {{-- Delete Modal --}}
+    @include('tournament.team.manage.delete')
 @stop
 
 
 @section('scripts')
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
     <script>
         $(document).ready(function() {
-            $('.table').DataTable();
             $('#fileInput').val(null);
         });
 
-        // add modal
-        $(".addButton").click(function() {
-            $('#addModal').modal('show');
+        // delete modal
+        $(".deleteButton").click(function() {
+            $('#deleteModal').modal('show');
         });
 
-        $(".closeAddModal").click(function() {
-            $('#addModal').modal('hide');
+        $(".closeDeleteModal").click(function() {
+            $('#deleteModal').modal('hide');
         });
 
         // front-end for logo button

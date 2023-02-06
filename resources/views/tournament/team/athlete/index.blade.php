@@ -1,6 +1,6 @@
 @extends('layouts.dashboard-master')
 
-@section('page-title', trans('app.tourney.manage'))
+@section('page-title', trans('app.tourney.team.athlete'))
 
 @section('custom-head')
     <style>
@@ -20,8 +20,9 @@
 @section('user-name', Auth::user()->username)
 
 @section('breadcrumb')
-    <a href="{{ route('tournament.manage') }}">{{ trans('app.tourney') }}</a> /
-    <a>{{ trans('app.tourney.manage') }}</a>
+    <a href="{{ route('tournament') }}">TOURNEY CODE HERE</a> /
+    <a href="{{ route('tournament.team.manage') }}">TEAM NAME HERE</a> /
+    <a>{{ trans('app.tourney.team.manage') }}</a>
 @stop
 
 @section('content')
@@ -32,19 +33,13 @@
             </div>
         @endisset
         <button class="btn btn-primary mb-2 addButton">
-            + Request Add Tournament
+            + Add Athlete
         </button>
         <table id="permissionsTable" class="table table-striped table-hover table-responsive">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
-                    {{-- <th scope="col">User</th>   --}}{{-- only for user that have permision to manage all tournament  --}}
-                    <th scope="col">Code</th>
-                    <th scope="col">Registered at</th>
-                    <th scope="col">Start Date</th>
-                    <th scope="col">Expiration Date</th>
-                    <th scope="col">Status</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -53,26 +48,30 @@
                 <tr>
                     {{-- <th scope="row">{{ $count++ }}</th> --}}
                     <th scope="row">1</th>
-                    <td>TOURNAMENT 1</td>
-                    {{-- <td>Username</td>  --}}{{-- only for user that have permision to manage all tournament  --}}
-                    <td>MMSM2020</td>
-                    <td>1/2/2023 10.34 a.m</td>
-                    <td>2/2/2023 12.00 p.m</td>
-                    <td>5/2/2023 12.00 p.m</td>
-                    <td>Ongoing</td>
+                    <td>ATHLETE NAME</td>
                     <td>
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false"><i class="fas fa-ellipsis-h fa-fw"></i></a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li>
-                                <a href="{{ route('tournament') }}" class="dropdown-item">
-                                    Manage
+                                <a href="" class="dropdown-item">
+                                    Event List
                                 </a>
                             </li>
                             <li>
                                 <a href="" class="dropdown-item">
-                                    Hide from sidebar
+                                    Results
                                 </a>
+                            </li>
+                            <li>
+                                <button class="dropdown-item editButton">
+                                    Edit
+                                </button>
+                            </li>
+                            <li>
+                                <button class="dropdown-item text-danger deleteButton">
+                                    Delete
+                                </button>
                             </li>
                         </ul>
                     </td>
@@ -83,7 +82,13 @@
     </div>
 
     {{-- Add Modal --}}
-    @include('tournament.manage.add')
+    @include('tournament.team.athlete.add')
+
+    {{-- Edit Modal --}}
+    @include('tournament.team.athlete.edit')
+
+    {{-- Delete Modal --}}
+    @include('tournament.team.athlete.delete')
 @stop
 
 @section('scripts')
@@ -100,6 +105,24 @@
 
         $(".closeAddModal").click(function() {
             $('#addModal').modal('hide');
+        });
+
+        // edit modal
+        $(".editButton").click(function() {
+            $('#editModal').modal('show');
+        });
+
+        $(".closeEditModal").click(function() {
+            $('#editModal').modal('hide');
+        });
+
+        // delete modal
+        $(".deleteButton").click(function() {
+            $('#deleteModal').modal('show');
+        });
+
+        $(".closeDeleteModal").click(function() {
+            $('#deleteModal').modal('hide');
         });
     </script>
 @stop

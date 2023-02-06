@@ -62,8 +62,13 @@ return [
 
     'tourney' => 'Tournament',
     'tourney.info' => 'Information',
-    'tourney.team' => 'Manage Team',
-    'tourney.events' => 'Manage Events',
+
+    'tourney.team' => 'Team',
+    'tourney.team.manage' => 'Manage Team',
+    'tourney.team.athlete' => 'Athletes',
+
+
+    'tourney.events' => 'Events',
     'tourney.schedule' => 'Schedule',
     'tourney.result' => 'Result',
     'tourney.program' => 'Program Book',

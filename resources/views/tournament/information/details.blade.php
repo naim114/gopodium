@@ -6,7 +6,7 @@
                 required>
         </div>
         <div class="form-group mb-3">
-            <label for="vode">Tournament Code</label>
+            <label for="code">Tournament Code</label>
             <input type="text" name="code" value="" class="form-control" placeholder="Enter Tournament Code"
                 required>
         </div>
