@@ -4,6 +4,7 @@ use App\Models\Permission;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
 
 // if (!function_exists('user_email')) {
 //     function user_email()
@@ -43,6 +44,13 @@ if (!function_exists('get_user_detail')) {
             ->first();
 
         echo $user->$detail;
+    }
+}
+
+if (!function_exists('is_current_route_name')) {
+    function is_current_route_name($route_name)
+    {
+        return Route::currentRouteName() == $route_name ? true : false;
     }
 }
 

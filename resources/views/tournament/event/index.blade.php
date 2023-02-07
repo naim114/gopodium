@@ -19,57 +19,35 @@
         <button class="btn btn-primary mb-2 addButton">
             + Add Events
         </button>
-        Upcoming
-        Ongoing
-        Finished
-        <table id="permissionsTable" class="table table-striped table-hover table-responsive">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Code</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Round</th>
-                    <th scope="col">Type</th>
-                    <th scope="col">Date & Time</th>
-                    <th scope="col">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{-- TODO foreach here --}}
-                <tr>
-                    {{-- <th scope="row">{{ $count++ }}</th> --}}
-                    <th scope="row">1</th>
-                    <td>EVENT NAME</td>
-                    <td>EVE001</td>
-                    <td>L</td>
-                    <td>Final</td>
-                    <td>Athlete vs Athlete</td>
-                    <td>2/3/2023 3 a.m.</td>
-                    <td>
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false"><i class="fas fa-ellipsis-h fa-fw"></i></a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li>
-                                <a href="{{ route('tournament.team.manage') }}" class="dropdown-item">
-                                    Manage Event
-                                </a>
-                            </li>
-                            <li>
-                                <button class="dropdown-item text-danger deleteButton">
-                                    Delete
-                                </button>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-                {{-- TODO foreach till here --}}
-            </tbody>
-        </table>
+
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-one-tab" data-bs-toggle="tab" data-bs-target="#nav-one" type="button"
+                    role="tab" aria-controls="nav-one" aria-selected="true">Upcoming</button>
+                <button class="nav-link" id="nav-two-tab" data-bs-toggle="tab" data-bs-target="#nav-two" type="button"
+                    role="tab" aria-controls="nav-two" aria-selected="false">Ongoing</button>
+                <button class="nav-link" id="nav-three-tab" data-bs-toggle="tab" data-bs-target="#nav-three" type="button"
+                    role="tab" aria-controls="nav-three" aria-selected="false">Finished</button>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-one" role="tabpanel" aria-labelledby="nav-one-tab">
+                @include('tournament.event.upcoming')
+            </div>
+            <div class="tab-pane fade" id="nav-two" role="tabpanel" aria-labelledby="nav-two-tab">
+                @include('tournament.event.ongoing')
+            </div>
+            <div class="tab-pane fade" id="nav-three" role="tabpanel" aria-labelledby="nav-three-tab">
+                @include('tournament.event.finished')
+            </div>
+        </div>
     </div>
 
-    {{-- Add Events --}}
+    {{-- Add Modal --}}
     @include('tournament.event.add')
+
+    {{-- Delete Modal --}}
+    @include('tournament.event.delete')
 @stop
 
 @section('scripts')

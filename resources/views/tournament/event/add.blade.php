@@ -14,11 +14,13 @@
                         <div class="col-md-6">
                             <div class="form-group mb-2">
                                 <label>Event Name</label>
-                                <input name="name" type="text" class="form-control" placeholder="Enter team name">
+                                <input name="name" type="text" class="form-control"
+                                    placeholder="Enter event name">
                             </div>
                             <div class="form-group mb-2">
                                 <label>Code</label>
-                                <input name="category" type="text" class="form-control" placeholder="Enter category">
+                                <input name="category" type="text" class="form-control"
+                                    placeholder="Enter event code">
                             </div>
                             <div class="form-group mb-2">
                                 <label>Category</label>
@@ -47,10 +49,9 @@
                         <div class="row">
                             <p class="text-decoration-underline"><b>Rules</b></p>
                             <div class="form-group mb-2">
-                                <label>Event Rule</label>
-                                {{--
-                                    How many Individual per team
-                                    --}}
+                                <label>How many athletes per team allowed?</label>
+                                <input name="category" type="number" class="form-control"
+                                    placeholder="Enter number of athletes">
                             </div>
                         </div>
                     </div>

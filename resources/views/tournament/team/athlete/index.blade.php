@@ -26,6 +26,8 @@
 @stop
 
 @section('content')
+    @include('tournament.team.partial.tab')
+
     <div class="container">
         @isset($message)
             <div class="alert alert-danger" role="alert">

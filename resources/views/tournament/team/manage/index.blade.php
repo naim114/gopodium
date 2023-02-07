@@ -26,6 +26,8 @@
 @stop
 
 @section('content')
+    @include('tournament.team.partial.tab')
+
     <div class="container">
         @isset($message)
             <div class="alert alert-danger" role="alert">
@@ -51,15 +53,6 @@
                     </div>
                 </div>
 
-                <a class="mb-2 btn btn-secondary w-100" href="{{ route('tournament.team.athlete') }}">
-                    Manage Athlete
-                </a>
-                <a class="mb-2 btn btn-secondary w-100" href="">
-                    View Event List
-                </a>
-                <a class="mb-2 btn btn-secondary w-100" href="">
-                    View Results
-                </a>
                 <button class="mb-2 btn btn-danger w-100 text-bold deleteButton">
                     Delete Team
                 </button>

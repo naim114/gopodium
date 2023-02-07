@@ -8,7 +8,7 @@
     <a href="{{ route('tournament') }}">TOURNEY CODE HERE</a> /
     <a href="{{ route('tournament.event') }}">{{ trans('app.tourney.events') }}</a> /
     <a href="{{ route('tournament.event.manage') }}">EVENT NAME HERE</a> /
-    <a>Manage</a>
+    <a>Settings</a>
 @stop
 
 @section('content')
@@ -20,6 +20,8 @@
         @endisset
     </div>
 
+    {{-- Delete Modal --}}
+    @include('tournament.event.delete')
 @stop
 
 @section('scripts')

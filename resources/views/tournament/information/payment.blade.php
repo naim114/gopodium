@@ -21,9 +21,9 @@
                         aria-expanded="false"><i class="fas fa-ellipsis-h fa-fw"></i></a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
-                            <a href="" class="dropdown-item text-danger text-bold">
+                            <button class="dropdown-item text-danger text-bold deleteButton">
                                 Delete
-                            </a>
+                            </button>
                         </li>
                     </ul>
                 </td>

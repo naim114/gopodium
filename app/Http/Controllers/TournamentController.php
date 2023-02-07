@@ -57,6 +57,11 @@ class TournamentController extends Controller
         return view('tournament.event.manage');
     }
 
+    public function event_settings()
+    {
+        return view('tournament.event.settings');
+    }
+
     public function event_add()
     {
     }

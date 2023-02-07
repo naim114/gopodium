@@ -5,7 +5,8 @@
     </div>
     <div class="form-group mb-3">
         <label for="code">Start Date</label>
-        <input type="date" name="start_at" value="" class="form-control" placeholder="Enter Start Date">
+        <input type="date" name="start_at" value="" class="form-control" placeholder="Enter Start Date"
+            readonly>
     </div>
     <div class="form-group mb-3">
         <label for="code">End Date</label>
@@ -15,15 +16,16 @@
 <div class="col-md-6">
     <div class="form-group mb-3">
         <label for="organizer">Duration</label>
-        <input type="number" name="duration" value="" class="form-control" placeholder="Enter Duration">
+        <input type="number" name="duration" value="" class="form-control" placeholder="Enter Duration" readonly>
     </div>
     <div class="form-group mb-3">
         <label for="organizer">Tournament Type</label>
-        <select name="type" class="mt-2 form-control" required>
-            {{-- Foreach here --}}
+        <input type="number" value="" class="form-control" readonly>
+
+        {{-- With Permission Only --}}
+        {{-- <select name="type" class="mt-2 form-control" required>
             <option value="">Type Name</option>
-            {{-- Foreach till here --}}
-        </select>
+        </select> --}}
     </div>
 </div>
 <div class="d-flex flex-row-reverse mb-3">

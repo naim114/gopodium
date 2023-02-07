@@ -55,6 +55,19 @@
         <div class="row">
             <div class="card mb-3">
                 <div class="card-header">
+                    <h5>Tournament Rules</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @include('tournament.information.rules')
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="card mb-3">
+                <div class="card-header">
                     <h5>Registration Details</h5>
                 </div>
                 <div class="card-body">
@@ -68,8 +81,11 @@
         </div>
     </div>
 
-    {{-- Add Modal --}}
+    {{-- Add Payment Record Modal --}}
     @include('tournament.information.payment_add')
+
+    {{-- Delete Payment Record Modal --}}
+    @include('tournament.information.payment_delete')
 @stop
 
 
@@ -88,6 +104,15 @@
 
         $(".closeAddModal").click(function() {
             $('#addModal').modal('hide');
+        });
+
+        // delete modal
+        $(".deleteButton").click(function() {
+            $('#deleteModal').modal('show');
+        });
+
+        $(".closeDeleteModal").click(function() {
+            $('#deleteModal').modal('hide');
         });
 
         // front-end for logo button

@@ -287,4 +287,16 @@ Route::group(['middleware' => ['auth', 'status']], function () {
         '/event',
         [TournamentController::class, 'event']
     )->name('tournament.event');
+
+    // TODO get by id
+    Route::get(
+        '/event/manage',
+        [TournamentController::class, 'event_manage']
+    )->name('tournament.event.manage');
+
+    // TODO get by id
+    Route::get(
+        '/event/settings',
+        [TournamentController::class, 'event_settings']
+    )->name('tournament.event.settings');
 });
