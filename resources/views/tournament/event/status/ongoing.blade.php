@@ -1,4 +1,4 @@
-<table id="permissionsTable" class="table table-striped table-hover table-responsive">
+<table class="table table-striped table-hover table-responsive">
     <thead class="thead-dark">
         <tr>
             <th scope="col">#</th>
@@ -20,8 +20,8 @@
             <td>EVE001</td>
             <td>L</td>
             <td>Final</td>
-            <td>Athlete vs Athlete</td>
-            <td>2/3/2023 3 a.m.</td>
+            <td>Individual Matchup</td>
+            <td>2/3/2023 3.45 p.m.</td>
             <td>
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false"><i class="fas fa-ellipsis-h fa-fw"></i></a>

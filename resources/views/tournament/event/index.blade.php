@@ -11,11 +11,8 @@
 
 @section('content')
     <div class="container">
-        @isset($message)
-            <div class="alert alert-danger" role="alert">
-                {{ $message }}
-            </div>
-        @endisset
+        @include('tournament.partial.tab')
+
         <button class="btn btn-primary mb-2 addButton">
             + Add Events
         </button>
@@ -30,24 +27,25 @@
                     role="tab" aria-controls="nav-three" aria-selected="false">Finished</button>
             </div>
         </nav>
+
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-one" role="tabpanel" aria-labelledby="nav-one-tab">
-                @include('tournament.event.upcoming')
+                @include('tournament.event.status.upcoming')
             </div>
             <div class="tab-pane fade" id="nav-two" role="tabpanel" aria-labelledby="nav-two-tab">
-                @include('tournament.event.ongoing')
+                @include('tournament.event.status.ongoing')
             </div>
             <div class="tab-pane fade" id="nav-three" role="tabpanel" aria-labelledby="nav-three-tab">
-                @include('tournament.event.finished')
+                @include('tournament.event.status.finished')
             </div>
         </div>
     </div>
 
     {{-- Add Modal --}}
-    @include('tournament.event.add')
+    @include('tournament.event.manage.add')
 
     {{-- Delete Modal --}}
-    @include('tournament.event.delete')
+    @include('tournament.event.manage.delete')
 @stop
 
 @section('scripts')

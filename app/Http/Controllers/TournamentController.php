@@ -54,12 +54,12 @@ class TournamentController extends Controller
 
     public function event_manage()
     {
-        return view('tournament.event.manage');
+        return view('tournament.event.participant.manage');
     }
 
     public function event_settings()
     {
-        return view('tournament.event.settings');
+        return view('tournament.event.settings.index');
     }
 
     public function event_add()
@@ -68,5 +68,11 @@ class TournamentController extends Controller
 
     public function event_delete()
     {
+    }
+
+    // program
+    public function program()
+    {
+        return view('tournament.program.index');
     }
 }

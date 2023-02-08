@@ -31,34 +31,6 @@
                         {{ trans('app.tourneys') }}
                     </a>
 
-                    {{-- Tournament --}}
-                    <div class="sb-sidenav-menu-heading">{{ trans('app.tourneys') }}</div>
-
-                    {{-- TODO FOREACH HERE --}}
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                        data-bs-target="#collapseTourney" aria-expanded="false" aria-controls="collapseTourney">
-                        <div class="sb-nav-link-icon"><i class="fas fa-trophy"></i></div>
-                        {{ 'TOURNAMENT 1' }}
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                    </a>
-
-                    <div class="collapse" id="collapseTourney" aria-labelledby="headingOne"
-                        data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="{{ route('tournament') }}">{{ trans('app.tourney.info') }}</a>
-                            <a class="nav-link"
-                                href="{{ route('tournament.team') }}">{{ trans('app.tourney.team') }}</a>
-                            <a class="nav-link"
-                                href="{{ route('tournament.event') }}">{{ trans('app.tourney.events') }}</a>
-                            <a class="nav-link"
-                                href="{{ route('tournament') }}">{{ trans('app.tourney.schedule') }}</a>
-                            <a class="nav-link" href="{{ route('tournament') }}">{{ trans('app.tourney.result') }}</a>
-                            <a class="nav-link"
-                                href="{{ route('tournament') }}">{{ trans('app.tourney.program') }}</a>
-                        </nav>
-                    </div>
-                    {{-- TODO FOREACH TILL HERE --}}
-
                     {{-- Administrations --}}
                     @if (has_permission('users.manage') ||
                             has_permission('users.activity') ||

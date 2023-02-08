@@ -29,15 +29,11 @@
     @include('tournament.team.partial.tab')
 
     <div class="container">
-        @isset($message)
-            <div class="alert alert-danger" role="alert">
-                {{ $message }}
-            </div>
-        @endisset
+
         <button class="btn btn-primary mb-2 addButton">
             + Add Athlete
         </button>
-        <table id="permissionsTable" class="table table-striped table-hover table-responsive">
+        <table class="table table-striped table-hover table-responsive">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>

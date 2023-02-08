@@ -1,6 +1,6 @@
 <div class="col">
     <p>Payment Record</p>
-    <table id="permissionsTable" class="table table-striped table-hover table-responsive">
+    <table class="table table-striped table-hover table-responsive">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>

@@ -2,7 +2,7 @@
     <form method="POST" enctype="multipart/form-data" action="">
         @csrf
         <img id="preview" class="img-thumbnail" style="height: 150px; width: 150px"
-            src="{{ asset('assets/img/default-team.png') }}">
+            src="{{ asset('assets/img/default-trophy.jpg') }}">
 
         <button type="button" id="changeLogoButton" class="btn btn-secondary btn-block mt-3 w-100">
             <i class="fa fa-camera pr-2 pl-2"></i>

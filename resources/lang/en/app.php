@@ -69,6 +69,9 @@ return [
 
 
     'tourney.events' => 'Events',
+    'tourney.event' => 'Event',
+    'tourney.event.settings' => 'Event Settings',
+
     'tourney.schedule' => 'Schedule',
     'tourney.result' => 'Result',
     'tourney.program' => 'Program Book',

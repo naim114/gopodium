@@ -29,11 +29,7 @@
     @include('tournament.team.partial.tab')
 
     <div class="container">
-        @isset($message)
-            <div class="alert alert-danger" role="alert">
-                {{ $message }}
-            </div>
-        @endisset
+
 
         <div class="row">
             <div class="col-md-4 col-sm-6 pt-2 pb-2">

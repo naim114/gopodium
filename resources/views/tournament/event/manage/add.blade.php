@@ -37,12 +37,14 @@
                                 <select name="type" class="mt-2 form-control" required>
                                     <option value="">Individual Matchup</option>
                                     <option value="">Team Matchup</option>
-                                    <option value="">Race</option>
+                                    <option value="">Individual Heat</option>
+                                    <option value="">Team Heat</option>
                                 </select>
                             </div>
                             <div class="form-group mb-2">
                                 <label>Date & Time</label>
-                                <input name="category" type="text" class="form-control" placeholder="Enter category">
+                                <input name="datetime" type="datetime-local" class="form-control"
+                                    placeholder="Enter category">
                             </div>
                         </div>
                         <hr>

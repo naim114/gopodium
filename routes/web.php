@@ -299,4 +299,9 @@ Route::group(['middleware' => ['auth', 'status']], function () {
         '/event/settings',
         [TournamentController::class, 'event_settings']
     )->name('tournament.event.settings');
+
+    Route::get(
+        '/program',
+        [TournamentController::class, 'program']
+    )->name('tournament.program');
 });
