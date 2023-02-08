@@ -46,17 +46,22 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('tournament.team.athlete') }}" class="dropdown-item">
+                                <a href="{{ route('tournament.team.athletes') }}" class="dropdown-item">
                                     Athletes
                                 </a>
                             </li>
                             <li>
-                                <a href="" class="dropdown-item">
-                                    Event List
+                                <a href="{{ route('tournament.team.event') }}" class="dropdown-item">
+                                    Events
                                 </a>
                             </li>
                             <li>
-                                <a href="" class="dropdown-item">
+                                <a href="{{ route('tournament.team.schedule') }}" class="dropdown-item">
+                                    Schedule
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('tournament.team.result') }}" class="dropdown-item">
                                     Results
                                 </a>
                             </li>

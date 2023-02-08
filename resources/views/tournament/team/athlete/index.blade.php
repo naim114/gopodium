@@ -1,6 +1,6 @@
 @extends('layouts.dashboard-master')
 
-@section('page-title', trans('app.tourney.team.athlete'))
+@section('page-title', 'TEAM NAME HERE')
 
 @section('custom-head')
     <style>
@@ -22,7 +22,7 @@
 @section('breadcrumb')
     <a href="{{ route('tournament') }}">TOURNEY CODE HERE</a> /
     <a href="{{ route('tournament.team.manage') }}">TEAM NAME HERE</a> /
-    <a>{{ trans('app.tourney.team.manage') }}</a>
+    <a>{{ trans('app.tourney.team.athlete') }}</a>
 @stop
 
 @section('content')
@@ -52,13 +52,8 @@
                             aria-expanded="false"><i class="fas fa-ellipsis-h fa-fw"></i></a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li>
-                                <a href="" class="dropdown-item">
-                                    Event List
-                                </a>
-                            </li>
-                            <li>
-                                <a href="" class="dropdown-item">
-                                    Results
+                                <a href="{{ route('tournament.team.athlete') }}" class="dropdown-item">
+                                    Schedule & Result
                                 </a>
                             </li>
                             <li>

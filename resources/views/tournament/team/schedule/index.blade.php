@@ -22,13 +22,14 @@
 @section('breadcrumb')
     <a href="{{ route('tournament') }}">TOURNEY CODE HERE</a> /
     <a href="{{ route('tournament.team.manage') }}">TEAM NAME HERE</a> /
-    <a>{{ trans('app.tourney.results') }}</a>
+    <a>{{ trans('app.tourney.schedule') }}</a>
 @stop
 
 @section('content')
     @include('tournament.team.partial.tab')
 
     <div class="container">
+        <h5>Saturday, 5 December 2022</h5>
         <table class="table table-striped table-hover table-responsive">
             <thead class="thead-dark">
                 <tr>
@@ -38,8 +39,7 @@
                     <th scope="col">Category</th>
                     <th scope="col">Round</th>
                     <th scope="col">Type</th>
-                    <th scope="col">Date & Time</th>
-                    <th scope="col">Result</th>
+                    <th scope="col">Time</th>
                 </tr>
             </thead>
             <tbody>
@@ -52,10 +52,7 @@
                     <td>L</td>
                     <td>Final</td>
                     <td>Individual Matchup</td>
-                    <td>2/3/2023 3.45 p.m.</td>
-                    <td>
-                        <a href="{{ route('tournament.result.event') }}">View Result</a>
-                    </td>
+                    <td>3.45 p.m.</td>
                 </tr>
                 {{-- TODO foreach till here --}}
             </tbody>

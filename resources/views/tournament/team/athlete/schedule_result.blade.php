@@ -2,27 +2,13 @@
 
 @section('page-title', 'TEAM NAME HERE')
 
-@section('custom-head')
-    <style>
-        .hide {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            border: 0;
-        }
-    </style>
-@stop
-
 @section('user-name', Auth::user()->username)
 
 @section('breadcrumb')
     <a href="{{ route('tournament') }}">TOURNEY CODE HERE</a> /
     <a href="{{ route('tournament.team.manage') }}">TEAM NAME HERE</a> /
-    <a>{{ trans('app.tourney.results') }}</a>
+    <a>ATHLETE NAME</a>
+
 @stop
 
 @section('content')

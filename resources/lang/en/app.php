@@ -73,7 +73,11 @@ return [
     'tourney.event.settings' => 'Event Settings',
 
     'tourney.schedule' => 'Schedule',
+
     'tourney.result' => 'Result',
+    'tourney.results' => 'Results',
+
+
     'tourney.program' => 'Program Book',
 
     'users' => 'Users',

@@ -264,8 +264,13 @@ Route::group(['middleware' => ['auth', 'status']], function () {
     )->name('tournament.team.manage');
 
     Route::get(
-        '/team/athlete',
+        '/team/athletes',
         [TournamentController::class, 'team_athlete']
+    )->name('tournament.team.athletes');
+
+    Route::get(
+        '/team/athlete',
+        [TournamentController::class, 'team_athlete_schedule_result']
     )->name('tournament.team.athlete');
 
     Route::get(
@@ -274,9 +279,14 @@ Route::group(['middleware' => ['auth', 'status']], function () {
     )->name('tournament.team.event');
 
     Route::get(
+        '/team/schedule',
+        [TournamentController::class, 'team_schedule']
+    )->name('tournament.team.schedule');
+
+    Route::get(
         '/team/result',
         [TournamentController::class, 'team_result']
-    )->name('tournament.team.event');
+    )->name('tournament.team.result');
 
     // TODO get by id all of the above
 
@@ -299,6 +309,21 @@ Route::group(['middleware' => ['auth', 'status']], function () {
         '/event/settings',
         [TournamentController::class, 'event_settings']
     )->name('tournament.event.settings');
+
+    Route::get(
+        '/schedule',
+        [TournamentController::class, 'schedule']
+    )->name('tournament.schedule');
+
+    Route::get(
+        '/result',
+        [TournamentController::class, 'result']
+    )->name('tournament.result');
+
+    Route::get(
+        '/result/event',
+        [TournamentController::class, 'result_event']
+    )->name('tournament.result.event');
 
     Route::get(
         '/program',

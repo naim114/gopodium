@@ -6,13 +6,19 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link {{ is_current_route_name('tournament.team.athlete') ? 'active' : '' }}"
-            href="{{ route('tournament.team.athlete') }}">Athletes</a>
+        <a class="nav-link {{ is_current_route_name('tournament.team.athletes') || is_current_route_name('tournament.team.athlete') ? 'active' : '' }}"
+            href="{{ route('tournament.team.athletes') }}">Athletes</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="">Events</a>
+        <a class="nav-link {{ is_current_route_name('tournament.team.event') ? 'active' : '' }}"
+            href="{{ route('tournament.team.event') }}">Events</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="">Result</a>
+        <a class="nav-link {{ is_current_route_name('tournament.team.schedule') ? 'active' : '' }}"
+            href="{{ route('tournament.team.schedule') }}">Schedule</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{ is_current_route_name('tournament.team.result') ? 'active' : '' }}"
+            href="{{ route('tournament.team.result') }}">Result</a>
     </li>
 </ul>

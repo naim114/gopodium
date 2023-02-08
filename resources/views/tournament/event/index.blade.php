@@ -17,7 +17,7 @@
             + Add Events
         </button>
 
-        <nav>
+        <nav class="mb-2">
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 <button class="nav-link active" id="nav-one-tab" data-bs-toggle="tab" data-bs-target="#nav-one" type="button"
                     role="tab" aria-controls="nav-one" aria-selected="true">Upcoming</button>
@@ -49,7 +49,12 @@
 @stop
 
 @section('scripts')
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
     <script>
+        $(document).ready(function() {
+            $('.table').DataTable();
+        });
+
         // add modal
         $(".addButton").click(function() {
             $('#addModal').modal('show');

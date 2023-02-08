@@ -1,34 +1,18 @@
 @extends('layouts.dashboard-master')
 
-@section('page-title', 'TEAM NAME HERE')
-
-@section('custom-head')
-    <style>
-        .hide {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            border: 0;
-        }
-    </style>
-@stop
+@section('page-title', trans('app.tourney.results'))
 
 @section('user-name', Auth::user()->username)
 
 @section('breadcrumb')
     <a href="{{ route('tournament') }}">TOURNEY CODE HERE</a> /
-    <a href="{{ route('tournament.team.manage') }}">TEAM NAME HERE</a> /
     <a>{{ trans('app.tourney.results') }}</a>
 @stop
 
 @section('content')
-    @include('tournament.team.partial.tab')
-
     <div class="container">
+        @include('tournament.partial.tab')
+
         <table class="table table-striped table-hover table-responsive">
             <thead class="thead-dark">
                 <tr>

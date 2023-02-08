@@ -34,9 +34,19 @@ class TournamentController extends Controller
         return view('tournament.team.athlete.index');
     }
 
+    public function team_athlete_schedule_result()
+    {
+        return view('tournament.team.athlete.schedule_result');
+    }
+
     public function team_event()
     {
         return view('tournament.team.event.index');
+    }
+
+    public function team_schedule()
+    {
+        return view('tournament.team.schedule.index');
     }
 
     public function team_result()
@@ -68,6 +78,23 @@ class TournamentController extends Controller
 
     public function event_delete()
     {
+    }
+
+    // schedule
+    public function schedule()
+    {
+        return view('tournament.schedule.index');
+    }
+
+    // result
+    public function result()
+    {
+        return view('tournament.result.index');
+    }
+
+    public function result_event()
+    {
+        return view('tournament.result.event');
     }
 
     // program

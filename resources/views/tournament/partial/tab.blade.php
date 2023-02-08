@@ -13,6 +13,14 @@
                 href="{{ route('tournament.event') }}">{{ trans('app.tourney.event') }}</a>
         </li>
         <li class="nav-item">
+            <a class="nav-link {{ is_current_route_name('tournament.schedule') ? 'active' : '' }}"
+                href="{{ route('tournament.schedule') }}">{{ trans('app.tourney.schedule') }}</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ is_current_route_name('tournament.result') ? 'active' : '' }}"
+                href="{{ route('tournament.result') }}">{{ trans('app.tourney.results') }}</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link {{ is_current_route_name('tournament.program') ? 'active' : '' }}"
                 href="{{ route('tournament.program') }}">{{ trans('app.tourney.program') }}</a>
         </li>

@@ -1,34 +1,19 @@
 @extends('layouts.dashboard-master')
 
-@section('page-title', 'TEAM NAME HERE')
-
-@section('custom-head')
-    <style>
-        .hide {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            border: 0;
-        }
-    </style>
-@stop
+@section('page-title', trans('app.tourney.schedule'))
 
 @section('user-name', Auth::user()->username)
 
 @section('breadcrumb')
     <a href="{{ route('tournament') }}">TOURNEY CODE HERE</a> /
-    <a href="{{ route('tournament.team.manage') }}">TEAM NAME HERE</a> /
-    <a>{{ trans('app.tourney.results') }}</a>
+    <a>{{ trans('app.tourney.schedule') }}</a>
 @stop
 
 @section('content')
-    @include('tournament.team.partial.tab')
-
     <div class="container">
+        @include('tournament.partial.tab')
+
+        <h5>Saturday, 5 December 2022</h5>
         <table class="table table-striped table-hover table-responsive">
             <thead class="thead-dark">
                 <tr>
@@ -38,8 +23,7 @@
                     <th scope="col">Category</th>
                     <th scope="col">Round</th>
                     <th scope="col">Type</th>
-                    <th scope="col">Date & Time</th>
-                    <th scope="col">Result</th>
+                    <th scope="col">Time</th>
                 </tr>
             </thead>
             <tbody>
@@ -52,22 +36,10 @@
                     <td>L</td>
                     <td>Final</td>
                     <td>Individual Matchup</td>
-                    <td>2/3/2023 3.45 p.m.</td>
-                    <td>
-                        <a href="{{ route('tournament.result.event') }}">View Result</a>
-                    </td>
+                    <td>3.45 p.m.</td>
                 </tr>
                 {{-- TODO foreach till here --}}
             </tbody>
         </table>
     </div>
-@stop
-
-@section('scripts')
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('.table').DataTable();
-        });
-    </script>
 @stop

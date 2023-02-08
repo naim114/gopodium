@@ -54,7 +54,7 @@
                     <td>1/2/2023 10.34 a.m</td>
                     <td>2/2/2023 12.00 p.m</td>
                     <td>5/2/2023 12.00 p.m</td>
-                    <td>Ongoing</td>
+                    <td class="text-success"><b>Active</b></td>
                     <td>
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false"><i class="fas fa-ellipsis-h fa-fw"></i></a>
@@ -64,10 +64,11 @@
                                     Manage
                                 </a>
                             </li>
+                            {{-- TODO only to that have permission --}}
                             <li>
-                                <a href="" class="dropdown-item">
-                                    Hide from sidebar
-                                </a>
+                                <button class="dropdown-item editButton">
+                                    Change Status
+                                </button>
                             </li>
                         </ul>
                     </td>
@@ -79,6 +80,9 @@
 
     {{-- Add Modal --}}
     @include('tournament.manage.add')
+
+    {{-- Edit Modal --}}
+    @include('tournament.manage.edit')
 @stop
 
 @section('scripts')
@@ -95,6 +99,15 @@
 
         $(".closeAddModal").click(function() {
             $('#addModal').modal('hide');
+        });
+
+        // edit modal
+        $(".editButton").click(function() {
+            $('#editModal').modal('show');
+        });
+
+        $(".closeEditModal").click(function() {
+            $('#editModal').modal('hide');
         });
     </script>
 @stop
