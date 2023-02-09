@@ -27,8 +27,13 @@
                     </a>
 
                     <a class="nav-link" href="{{ route('tournament.manage') }}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                        My {{ trans('app.tourney.team') }}
+                    </a>
+
+                    <a class="nav-link" href="{{ route('tournament.manage') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-trophy"></i></div>
-                        {{ trans('app.tourneys') }}
+                        My {{ trans('app.tourneys') }}
                     </a>
 
                     {{-- Administrations --}}

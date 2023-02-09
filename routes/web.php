@@ -9,6 +9,7 @@ use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TournamentController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,54 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+/**
+ *  home - frontpage of website
+ */
+Route::get(
+    '/',
+    [HomeController::class, 'index']
+)->name('main');
+
+Route::get(
+    '/s/home',
+    [HomeController::class, 'index']
+)->name('main.home');
+
+Route::get(
+    '/s/tournament',
+    [HomeController::class, 'tournament']
+)->name('main.tourney');
+
+Route::get(
+    '/s/tournament/team',
+    [HomeController::class, 'index']
+)->name('main.tourney.team');
+
+Route::get(
+    '/s/tournament/event',
+    [HomeController::class, 'index']
+)->name('main.tourney.event');
+
+Route::get(
+    '/s/tournament/schedule',
+    [HomeController::class, 'index']
+)->name('main.tourney.schedule');
+
+Route::get(
+    '/s/tournament/result',
+    [HomeController::class, 'index']
+)->name('main.tourney.result');
+
+Route::get(
+    '/s/help',
+    [HomeController::class, 'help']
+)->name('main.help');
+
+Route::get(
+    '/s/contact',
+    [HomeController::class, 'contact']
+)->name('main.contact');
 
 /**
  *  ban - route to redirect to if user status is Banned
@@ -56,9 +105,9 @@ Route::group(['middleware' => ['auth', 'status']], function () {
      *  dashboard - index route
      */
     Route::get(
-        '/',
+        '/dashboard',
         [DashboardController::class, 'index']
-    )->name('dashboard')->middleware('auth');;
+    )->name('dashboard')->middleware('auth');
 
 
     /**

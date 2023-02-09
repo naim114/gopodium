@@ -56,6 +56,11 @@ return [
     'activity' => 'Activity Log',
     'administration' => 'Administration',
 
+    // main
+    'main.home' => 'Home',
+    'main.contact' => 'Contact',
+    'main.help' => 'Help',
+
     // manage tournament
     'tourneys' => 'Tournaments',
     'tourney.manage' => 'Manage Tournaments',
