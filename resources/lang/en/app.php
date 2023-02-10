@@ -56,10 +56,22 @@ return [
     'activity' => 'Activity Log',
     'administration' => 'Administration',
 
+    // notification
+    'notification' => 'Notification',
+
+    // payment
+    'payment' => 'Payment',
+
     // main
     'main.home' => 'Home',
     'main.contact' => 'Contact',
     'main.help' => 'Help',
+    'main.help.faq' => 'FAQ',
+    'main.help.credit' => 'Credit',
+    'main.help.manual' => 'User Manual',
+
+    'teams' => 'Teams',
+    'teams.manage' => 'Manage Teams',
 
     // manage tournament
     'tourneys' => 'Tournaments',
@@ -83,7 +95,7 @@ return [
     'tourney.results' => 'Results',
 
 
-    'tourney.program' => 'Program Book',
+    'tourney.standing' => 'Standing',
 
     'users' => 'Users',
     'users.activity' => 'User Activity',

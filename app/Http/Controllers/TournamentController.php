@@ -97,9 +97,9 @@ class TournamentController extends Controller
         return view('tournament.result.event');
     }
 
-    // program
-    public function program()
+    // standing
+    public function standing()
     {
-        return view('tournament.program.index');
+        return view('tournament.standing.index');
     }
 }

@@ -55,7 +55,9 @@
             class="bi bi-arrow-up-short"></i></a>
 
     @include('main.partial.script')
+    @include('components.js-script')
 
+    @yield('script')
 </body>
 
 </html>

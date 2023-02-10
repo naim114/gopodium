@@ -1,11 +1,11 @@
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form method="POST" action="">
+        <form method="POST" action="{{ route('permissions.delete') }}">
             @csrf
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="deleteModalLabel">
-                        Delete Payment Record
+                        Delete Notification
                     </h5>
                 </div>
                 <div class="modal-body">
@@ -15,7 +15,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary closeDeleteModal"
                         data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="btn btn-danger">Confirm Delete</button>
                 </div>
             </div>
         </form>

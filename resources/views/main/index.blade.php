@@ -67,29 +67,122 @@
         </div>
     </section><!-- End About Section -->
 
+    <!-- ======= Features Section ======= -->
+    <section id="features" class="features" data-aos="fade-up">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Features</h2>
+                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
+                    sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias
+                    ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+            </div>
+
+            <div class="row content">
+                <div class="col-md-5" data-aos="fade-right" data-aos-delay="100">
+                    <img src="{{ asset('main/img/features-1.png') }}" class="img-fluid" alt="">
+                </div>
+                <div class="col-md-7 pt-4" data-aos="fade-left" data-aos-delay="100">
+                    <h3>Create a tournament</h3>
+                    <p class="fst-italic">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore
+                        magna aliqua.
+                    </p>
+                    <ul>
+                        <li><i class="bi bi-check"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </li>
+                        <li><i class="bi bi-check"></i> Duis aute irure dolor in reprehenderit in voluptate velit.
+                        </li>
+                        <li><i class="bi bi-check"></i> Ullam est qui quos consequatur eos accusamus.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row content">
+                <div class="col-md-5 order-1 order-md-2" data-aos="fade-left">
+                    <img src="{{ asset('main/img/features-2.png') }}" class="img-fluid" alt="">
+                </div>
+                <div class="col-md-7 pt-5 order-2 order-md-1" data-aos="fade-right">
+                    <h3>Personalize your tournament</h3>
+                    <p class="fst-italic">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore
+                        magna aliqua.
+                    </p>
+                    <p>
+                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                        reprehenderit in voluptate
+                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in
+                        culpa qui officia deserunt mollit anim id est laborum
+                    </p>
+                </div>
+            </div>
+
+            <div class="row content">
+                <div class="col-md-5" data-aos="fade-right">
+                    <img src="{{ asset('main/img/features-3.png') }}" class="img-fluid" alt="">
+                </div>
+                <div class="col-md-7 pt-5" data-aos="fade-left">
+                    <h3>Invite team managers</h3>
+                    <p>Cupiditate placeat cupiditate placeat est ipsam culpa. Delectus quia minima quod. Sunt saepe
+                        odit aut quia voluptatem hic voluptas dolor doloremque.</p>
+                    <ul>
+                        <li><i class="bi bi-check"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </li>
+                        <li><i class="bi bi-check"></i> Duis aute irure dolor in reprehenderit in voluptate velit.
+                        </li>
+                        <li><i class="bi bi-check"></i> Facilis ut et voluptatem aperiam. Autem soluta ad fugiat.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row content">
+                <div class="col-md-5 order-1 order-md-2" data-aos="fade-left">
+                    <img src="{{ asset('main/img/features-4.png') }}" class="img-fluid" alt="">
+                </div>
+                <div class="col-md-7 pt-5 order-2 order-md-1" data-aos="fade-right">
+                    <h3>Organize your tournament</h3>
+                    <p class="fst-italic">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore
+                        magna aliqua.
+                    </p>
+                    <p>
+                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                        reprehenderit in voluptate
+                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in
+                        culpa qui officia deserunt mollit anim id est laborum
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End Features Section -->
+
     <!-- ======= Pricing Section ======= -->
     <section id="pricing" class="pricing section-bg">
         <div class="container" data-aos="fade-up">
 
             <div class="section-title">
                 <h2>Pricing</h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
-                    sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias
-                    ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
             </div>
 
             <div class="row">
 
                 <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
                     <div class="box">
-                        <h3>Free</h3>
-                        <h4><sup>$</sup>0<span> / month</span></h4>
+                        <h3>Rookie</h3>
+                        <h4><sup>RM</sup>20<span></span></h4>
                         <ul>
-                            <li>Aida dere</li>
-                            <li>Nec feugiat nisl</li>
-                            <li>Nulla at volutpat dola</li>
-                            <li class="na">Pharetra massa</li>
-                            <li class="na">Massa ultricies mi</li>
+                            <li>3 Teams</li>
+                            <li>5 Athletes per Team</li>
+                            <li>10 Events</li>
+                            <li class="na">Invite Team Managers</li>
+                            <li class="na">Personalization</li>
                         </ul>
                         <div class="btn-wrap">
                             <a href="#" class="btn-buy">Buy Now</a>
@@ -99,14 +192,14 @@
 
                 <div class="col-lg-4 col-md-6 mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="100">
                     <div class="box featured">
-                        <h3>Business</h3>
-                        <h4><sup>$</sup>19<span> / month</span></h4>
+                        <h3>All-Star</h3>
+                        <h4><sup>RM</sup>35<span></span></h4>
                         <ul>
-                            <li>Aida dere</li>
-                            <li>Nec feugiat nisl</li>
-                            <li>Nulla at volutpat dola</li>
-                            <li>Pharetra massa</li>
-                            <li class="na">Massa ultricies mi</li>
+                            <li>4 Teams</li>
+                            <li>20 Athletes per Team</li>
+                            <li>20 Events</li>
+                            <li>Invite Team Managers</li>
+                            <li>Personalization</li>
                         </ul>
                         <div class="btn-wrap">
                             <a href="#" class="btn-buy">Buy Now</a>
@@ -116,14 +209,14 @@
 
                 <div class="col-lg-4 col-md-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="200">
                     <div class="box">
-                        <h3>Developer</h3>
-                        <h4><sup>$</sup>29<span> / month</span></h4>
+                        <h3>MVP</h3>
+                        <h4><sup>RM</sup>50<span></span></h4>
                         <ul>
-                            <li>Aida dere</li>
-                            <li>Nec feugiat nisl</li>
-                            <li>Nulla at volutpat dola</li>
-                            <li>Pharetra massa</li>
-                            <li>Massa ultricies mi</li>
+                            <li>Unlimited Teams</li>
+                            <li>Unlimited Athletes per Team</li>
+                            <li>Unlimited Events</li>
+                            <li>Invite Team Managers</li>
+                            <li>Personalization</li>
                         </ul>
                         <div class="btn-wrap">
                             <a href="#" class="btn-buy">Buy Now</a>
@@ -134,102 +227,7 @@
         </div>
     </section><!-- End Pricing Section -->
 
-    <!-- ======= Frequently Asked Questions Section ======= -->
-    <section id="faq" class="faq">
-        <div class="container" data-aos="fade-up">
+    @include('main.partial.faq')
 
-            <div class="section-title">
-                <h2>Frequently Asked Questions</h2>
-            </div>
-
-            <ul class="faq-list">
-
-                <li>
-                    <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">Non consectetur a
-                        erat nam at lectus urna duis? <i class="bi bi-chevron-down icon-show"></i><i
-                            class="bi bi-chevron-up icon-close"></i></div>
-                    <div id="faq1" class="collapse" data-bs-parent=".faq-list">
-                        <p>
-                            Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non
-                            curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus
-                            non.
-                        </p>
-                    </div>
-                </li>
-
-                <li>
-                    <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">Feugiat scelerisque
-                        varius morbi enim nunc faucibus a pellentesque? <i class="bi bi-chevron-down icon-show"></i><i
-                            class="bi bi-chevron-up icon-close"></i>
-                    </div>
-                    <div id="faq2" class="collapse" data-bs-parent=".faq-list">
-                        <p>
-                            Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum
-                            velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec
-                            pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus
-                            turpis massa tincidunt dui.
-                        </p>
-                    </div>
-                </li>
-
-                <li>
-                    <div data-bs-toggle="collapse" href="#faq3" class="collapsed question">Dolor sit amet
-                        consectetur adipiscing elit pellentesque habitant morbi? <i
-                            class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i>
-                    </div>
-                    <div id="faq3" class="collapse" data-bs-parent=".faq-list">
-                        <p>
-                            Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus
-                            pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum
-                            tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna
-                            molestie at elementum eu facilisis sed odio morbi quis
-                        </p>
-                    </div>
-                </li>
-
-                <li>
-                    <div data-bs-toggle="collapse" href="#faq4" class="collapsed question">Ac odio tempor orci
-                        dapibus. Aliquam eleifend mi in nulla? <i class="bi bi-chevron-down icon-show"></i><i
-                            class="bi bi-chevron-up icon-close"></i></div>
-                    <div id="faq4" class="collapse" data-bs-parent=".faq-list">
-                        <p>
-                            Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum
-                            velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec
-                            pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus
-                            turpis massa tincidunt dui.
-                        </p>
-                    </div>
-                </li>
-
-                <li>
-                    <div data-bs-toggle="collapse" href="#faq5" class="collapsed question">Tempus quam
-                        pellentesque nec nam aliquam sem et tortor consequat? <i
-                            class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i>
-                    </div>
-                    <div id="faq5" class="collapse" data-bs-parent=".faq-list">
-                        <p>
-                            Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est
-                            ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit
-                            adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
-                        </p>
-                    </div>
-                </li>
-                <li>
-                    <div data-bs-toggle="collapse" href="#faq6" class="collapsed question">Tortor vitae purus
-                        faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i
-                            class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i>
-                    </div>
-                    <div id="faq6" class="collapse" data-bs-parent=".faq-list">
-                        <p>
-                            Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo
-                            integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc
-                            eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque.
-                            Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus.
-                            Nibh tellus molestie nunc non blandit massa enim nec.
-                        </p>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </section><!-- End Frequently Asked Questions Section -->
+    @include('main.partial.contact')
 @endsection

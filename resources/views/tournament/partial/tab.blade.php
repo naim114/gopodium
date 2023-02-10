@@ -21,8 +21,8 @@
                 href="{{ route('tournament.result') }}">{{ trans('app.tourney.results') }}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {{ is_current_route_name('tournament.program') ? 'active' : '' }}"
-                href="{{ route('tournament.program') }}">{{ trans('app.tourney.program') }}</a>
+            <a class="nav-link {{ is_current_route_name('tournament.standing') ? 'active' : '' }}"
+                href="{{ route('tournament.standing') }}">{{ trans('app.tourney.standing') }}</a>
         </li>
     </ul>
 </div>

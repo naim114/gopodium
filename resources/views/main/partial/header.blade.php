@@ -11,13 +11,20 @@
                         href="{{ route('main.home') }}">Home</a></li>
                 <li><a class="nav-link {{ is_current_route_name('main.tourney') ? 'active' : '' }}"
                         href="{{ route('main.tourney') }}">Tournaments</a></li>
-                <li><a class="nav-link {{ is_current_route_name('main.help') ? 'active' : '' }}"
-                        href="{{ route('main.help') }}">Help</a></li>
+                <li class="dropdown"><a href="#"><span>Help</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="{{ route('main.help.faq') }}">{{ trans('app.main.help.faq') }}</a></li>
+                        <li><a href="{{ route('main.help.manual') }}">{{ trans('app.main.help.manual') }}</a></li>
+                        <li><a href="#">{{ trans('app.main.help.credit') }}</a></li>
+                        <li><a href="{{ trans('app.privacy-policy') }}">Policies</a></li>
+                        <li><a href="{{ trans('app.terms-conditions') }}">Terms & Conditions</a></li>
+                    </ul>
+                </li>
                 <li><a class="nav-link {{ is_current_route_name('main.contact') ? 'active' : '' }}"
                         href="{{ route('main.contact') }}">Contact</a></li>
                 <li><a class="getstarted" href="{{ route('dashboard') }}">
                         @if (null !== Auth::user())
-                            My Account
+                            Account
                         @else
                             Log In
                         @endif

@@ -1,6 +1,6 @@
 @extends('layouts.dashboard-master')
 
-@section('page-title', trans('app.tourney.manage'))
+@section('page-title', trans('app.tourneys'))
 
 @section('custom-head')
     <style>
@@ -20,7 +20,7 @@
 @section('user-name', Auth::user()->username)
 
 @section('breadcrumb')
-    <a href="{{ route('tournament.manage') }}">{{ trans('app.tourney') }}</a> /
+    <a href="{{ route('tournament.manage') }}">{{ trans('app.tourneys') }}</a> /
     <a>{{ trans('app.tourney.manage') }}</a>
 @stop
 

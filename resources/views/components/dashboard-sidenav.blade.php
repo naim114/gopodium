@@ -21,19 +21,29 @@
                         {{ trans('app.account') }}
                     </a>
 
-                    <a class="nav-link" href="{{ route('activity') }}">
+                    {{-- <a class="nav-link" href="{{ route('activity') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                         {{ trans('app.activity') }}
+                    </a> --}}
+
+                    <a class="nav-link" href="{{ route('notification') }}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-bell"></i></div>
+                        {{ trans('app.notification') }}
                     </a>
 
-                    <a class="nav-link" href="{{ route('tournament.manage') }}">
+                    <a class="nav-link" href="{{ route('payment') }}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-wallet"></i></div>
+                        {{ trans('app.payment') }}
+                    </a>
+
+                    <a class="nav-link" href="{{ route('team') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
-                        My {{ trans('app.tourney.team') }}
+                        {{ trans('app.teams') }}
                     </a>
 
                     <a class="nav-link" href="{{ route('tournament.manage') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-trophy"></i></div>
-                        My {{ trans('app.tourneys') }}
+                        {{ trans('app.tourneys') }}
                     </a>
 
                     {{-- Administrations --}}

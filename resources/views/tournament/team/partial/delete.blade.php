@@ -5,7 +5,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="deleteModalLabel">
-                        Delete Teamx
+                        Delete Team
                     </h5>
                 </div>
                 <div class="modal-body">

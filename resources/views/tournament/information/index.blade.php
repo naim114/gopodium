@@ -69,19 +69,11 @@
                 <div class="card-body">
                     <div class="row">
                         @include('tournament.information.registration')
-                        <hr>
-                        @include('tournament.information.payment')
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    {{-- Add Payment Record Modal --}}
-    @include('tournament.information.payment_add')
-
-    {{-- Delete Payment Record Modal --}}
-    @include('tournament.information.payment_delete')
 @stop
 
 
@@ -91,24 +83,6 @@
         $(document).ready(function() {
             $('.table').DataTable();
             $('#fileInput').val(null);
-        });
-
-        // add modal
-        $(".addButton").click(function() {
-            $('#addModal').modal('show');
-        });
-
-        $(".closeAddModal").click(function() {
-            $('#addModal').modal('hide');
-        });
-
-        // delete modal
-        $(".deleteButton").click(function() {
-            $('#deleteModal').modal('show');
-        });
-
-        $(".closeDeleteModal").click(function() {
-            $('#deleteModal').modal('hide');
         });
 
         // front-end for logo button

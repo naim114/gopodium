@@ -30,6 +30,11 @@
 
     <div class="container">
 
+        @isset($message)
+            <div class="alert alert-danger mb-3" role="alert">
+                {{ $message }}
+            </div>
+        @endisset
 
         <div class="row">
             <div class="col-md-4 col-sm-6 pt-2 pb-2">
@@ -54,7 +59,19 @@
                 </button>
             </div>
         </div>
+
+        <hr>
+
+        <div class="col">
+            @include('tournament.team.manage.managers')
+        </div>
     </div>
+
+    {{-- Invite Modal --}}
+    @include('tournament.team.manage.invite')
+
+    {{-- Uninvite Modal --}}
+    @include('tournament.team.manage.uninvite')
 
     {{-- Delete Modal --}}
     @include('tournament.team.manage.delete')
@@ -62,9 +79,29 @@
 
 
 @section('scripts')
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
     <script>
         $(document).ready(function() {
             $('#fileInput').val(null);
+            $('.table').DataTable();
+        });
+
+        // invite modal
+        $(".inviteButton").click(function() {
+            $('#inviteModal').modal('show');
+        });
+
+        $(".closeInviteModal").click(function() {
+            $('#inviteModal').modal('hide');
+        });
+
+        // uninvite modal
+        $(".uninviteButton").click(function() {
+            $('#uninviteModal').modal('show');
+        });
+
+        $(".closeUninviteModal").click(function() {
+            $('#uninviteModal').modal('hide');
         });
 
         // delete modal

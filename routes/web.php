@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ActivityLogController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
@@ -10,6 +11,8 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\TournamentController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -44,28 +47,48 @@ Route::get(
 
 Route::get(
     '/s/tournament/team',
-    [HomeController::class, 'index']
+    [HomeController::class, 'tournament_team']
 )->name('main.tourney.team');
 
 Route::get(
+    '/s/tournament/athlete',
+    [HomeController::class, 'tournament_athlete']
+)->name('main.tourney.athlete');
+
+Route::get(
     '/s/tournament/event',
-    [HomeController::class, 'index']
+    [HomeController::class, 'tournament_event']
 )->name('main.tourney.event');
 
 Route::get(
+    '/s/tournament/event/result',
+    [HomeController::class, 'tournament_event_result']
+)->name('main.tourney.event_result');
+
+Route::get(
     '/s/tournament/schedule',
-    [HomeController::class, 'index']
+    [HomeController::class, 'tournament_schedule']
 )->name('main.tourney.schedule');
 
 Route::get(
     '/s/tournament/result',
-    [HomeController::class, 'index']
+    [HomeController::class, 'tournament_result']
 )->name('main.tourney.result');
 
 Route::get(
-    '/s/help',
-    [HomeController::class, 'help']
-)->name('main.help');
+    '/s/tournament/standing',
+    [HomeController::class, 'tournament_standing']
+)->name('main.tourney.standing');
+
+Route::get(
+    '/s/help/faq',
+    [HomeController::class, 'help_faq']
+)->name('main.help.faq');
+
+Route::get(
+    '/s/help/manual',
+    [HomeController::class, 'help_manual']
+)->name('main.help.manual');
 
 Route::get(
     '/s/contact',
@@ -285,6 +308,35 @@ Route::group(['middleware' => ['auth', 'status']], function () {
     )->name('settings.favicon')->middleware('permissions:settings.general');
 
     /**
+     *  notification
+     */
+    Route::get(
+        '/notification',
+        [NotificationController::class, 'index']
+    )->name('notification');
+
+    Route::get(
+        '/notification/view',
+        [NotificationController::class, 'view']
+    )->name('notification.view');
+
+    /**
+     *  payment
+     */
+    Route::get(
+        '/payment',
+        [PaymentController::class, 'index']
+    )->name('payment');
+
+    /**
+     *  team
+     */
+    Route::get(
+        '/teams',
+        [TeamController::class, 'index']
+    )->name('team');
+
+    /**
      *  tournament - manage tournament ---> TODO restrict to non owner
      */
     Route::get(
@@ -375,7 +427,7 @@ Route::group(['middleware' => ['auth', 'status']], function () {
     )->name('tournament.result.event');
 
     Route::get(
-        '/program',
-        [TournamentController::class, 'program']
-    )->name('tournament.program');
+        '/standing',
+        [TournamentController::class, 'standing']
+    )->name('tournament.standing');
 });
