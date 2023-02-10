@@ -56,6 +56,9 @@ return [
     'activity' => 'Activity Log',
     'administration' => 'Administration',
 
+    // plan
+    'plan' => 'Plans',
+
     // notification
     'notification' => 'Notification',
 

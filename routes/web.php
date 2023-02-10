@@ -12,6 +12,7 @@ use App\Http\Controllers\TournamentController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\PlanController;
 use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -306,6 +307,29 @@ Route::group(['middleware' => ['auth', 'status']], function () {
         '/settings/favicon',
         [SettingsController::class, 'favicon']
     )->name('settings.favicon')->middleware('permissions:settings.general');
+
+    /**
+     * plan
+     */
+    Route::get(
+        '/plan',
+        [PlanController::class, 'index']
+    )->name('plan')->middleware('permissions:plan');
+
+    Route::post(
+        '/plan/add',
+        [PlanController::class, 'add']
+    )->name('plan.add')->middleware('permissions:plan');
+
+    Route::post(
+        '/plan/edit',
+        [PlanController::class, 'edit']
+    )->name('plan.edit')->middleware('permissions:plan');
+
+    Route::post(
+        '/plan/delete',
+        [PlanController::class, 'delete']
+    )->name('plan.delete')->middleware('permissions:plan');
 
     /**
      *  notification

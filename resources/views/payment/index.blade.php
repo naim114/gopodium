@@ -15,6 +15,7 @@
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
+                    <th scope="col">Payment Type</th>
                     <th scope="col">Create at</th>
                     <th scope="col">File</th>
                 </tr>
@@ -24,6 +25,7 @@
                 <tr>
                     {{-- <th scope="row">{{ $count++ }}</th> --}}
                     <th scope="row">1</th>
+                    <td>Rookie Plan</td>
                     <td>10/10/10 10.00 a.m.</td>
                     <td><a href="">View</a></td>
                 </tr>

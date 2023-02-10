@@ -68,6 +68,13 @@
                         </a>
                     @endif
 
+                    @if (has_permission('plan'))
+                        <a class="nav-link" href="{{ route('plan') }}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-money-check-alt"></i></div>
+                            {{ trans('app.plan') }}
+                        </a>
+                    @endif
+
                     @if (has_permission('roles.manage') || has_permission('permissions.manage'))
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                             data-bs-target="#collapseRole" aria-expanded="false" aria-controls="collapseRole">
