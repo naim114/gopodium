@@ -1,6 +1,6 @@
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form method="POST" action="{{ route('permissions.delete') }}">
+        <form method="POST" action="{{ route('notification.delete') }}">
             @csrf
             <div class="modal-content">
                 <div class="modal-header">

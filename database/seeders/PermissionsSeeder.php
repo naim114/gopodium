@@ -65,6 +65,13 @@ class PermissionsSeeder extends Seeder
             'removable' => false
         ]);
 
+        $permissions[] = Permission::create([
+            'name' => 'notification',
+            'display_name' => 'Post Notification',
+            'description' => '',
+            'removable' => false
+        ]);
+
         // $adminRole->attachPermissions($permissions);
 
         DB::table('permission_role')->insert(array(
@@ -99,6 +106,11 @@ class PermissionsSeeder extends Seeder
 
         DB::table('permission_role')->insert(array(
             'permission_id' => 7,
+            'role_id' => 1,
+        ));
+
+        DB::table('permission_role')->insert(array(
+            'permission_id' => 8,
             'role_id' => 1,
         ));
     }

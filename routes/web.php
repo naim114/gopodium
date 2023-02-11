@@ -340,9 +340,19 @@ Route::group(['middleware' => ['auth', 'status']], function () {
     )->name('notification');
 
     Route::get(
-        '/notification/view',
+        '/notification/view/{id}',
         [NotificationController::class, 'view']
     )->name('notification.view');
+
+    Route::post(
+        '/notification/add',
+        [NotificationController::class, 'add']
+    )->name('notification.add')->middleware('permissions:notification');
+
+    Route::post(
+        '/notification/delete',
+        [NotificationController::class, 'delete']
+    )->name('notification.delete');
 
     /**
      *  payment
