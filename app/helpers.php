@@ -1,10 +1,12 @@
 <?php
 
 use App\Models\Permission;
+use App\Models\Plan;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Carbon\Carbon;
 
 // if (!function_exists('user_email')) {
 //     function user_email()
@@ -44,6 +46,41 @@ if (!function_exists('get_user_detail')) {
             ->first();
 
         echo $user->$detail;
+    }
+}
+
+if (!function_exists('get_plan_detail')) {
+    function get_plan_detail($id, $detail)
+    {
+        $plan = Plan::where('id', $id)
+            ->first();
+
+        return $plan->$detail;
+    }
+}
+
+if (!function_exists('calculate_tournament_detail')) {
+    function calculate_tournament_detail($tournament, $item)
+    {
+        if ($item == 'end_at') {
+            // calculate end date
+            return $tournament->end_at = $tournament->start_at->addDays(get_plan_detail($tournament->plan_id, 'duration'));
+        } else if ($item == 'status') {
+            $today = Carbon::now();
+
+            // upcoming (start_at < today && end_at < today)
+            if ($tournament->start_at > $today && $tournament->end_at > $today) {
+                return 'upcoming';
+            }
+            // ongoing (start_at <= today && end_at >= today)
+            elseif ($tournament->start_at <= $today && $tournament->end_at >= $today) {
+                return 'ongoing';
+            }
+            // finish (start_at > today && end_at > today)
+            elseif ($tournament->start_at < $today && $tournament->end_at < $today) {
+                return 'finished';
+            }
+        }
     }
 }
 

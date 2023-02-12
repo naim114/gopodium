@@ -18,6 +18,7 @@ class Plan extends Model
         'team_limit',
         'athlete_limit',
         'event_limit',
+        'duration',
         'invite',
         'personalization',
     ];

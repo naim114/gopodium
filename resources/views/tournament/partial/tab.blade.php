@@ -2,7 +2,7 @@
     <ul class="nav nav-pills">
         <li class="nav-item">
             <a class="nav-link {{ is_current_route_name('tournament') ? 'active' : '' }}"
-                href="{{ route('tournament') }}">{{ trans('app.tourney.info') }}</a>
+                href="{{ route('tournament', ['id' => $tourney->id]) }}">{{ trans('app.tourney.info') }}</a>
         </li>
         <li class="nav-item">
             <a class="nav-link {{ is_current_route_name('tournament.team') ? 'active' : '' }}"

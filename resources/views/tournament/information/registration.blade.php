@@ -1,35 +1,28 @@
 <div class="col-md-6">
     <div class="form-group mb-3">
-        <label for="name">Registered at</label>
-        <input type="text" name="name" value="" class="form-control" readonly>
+        <label>Registered at</label>
+        <input type="text" value="{{ $tourney->created_at->format('d/m/Y H:i:s') }}" class="form-control" readonly>
     </div>
     <div class="form-group mb-3">
-        <label for="code">Start Date</label>
-        <input type="date" name="start_at" value="" class="form-control" placeholder="Enter Start Date"
-            readonly>
+        <label>Plan Name</label>
+        <input type="text" value="{{ $tourney->name }}" class="form-control" readonly>
     </div>
     <div class="form-group mb-3">
-        <label for="code">End Date</label>
-        <input type="date" value="" class="form-control" placeholder="End Date" readonly>
+        <label for="organizer">Duration</label>
+        <input type="text" value="{{ $tourney->duration }}" class="form-control" readonly>
     </div>
 </div>
 <div class="col-md-6">
     <div class="form-group mb-3">
-        <label for="organizer">Duration</label>
-        <input type="number" name="duration" value="" class="form-control" placeholder="Enter Duration" readonly>
+        <label for="code">Start Date</label>
+        <input type="text" value="{{ $tourney->start_at->format('d/m/Y') }}" class="form-control" readonly>
+    </div>
+    <div class="form-group mb-3">
+        <label for="code">End Date</label>
+        <input type="text" value="{{ $tourney->end_at->format('d/m/Y') }}" class="form-control" readonly>
     </div>
     <div class="form-group mb-3">
         <label for="organizer">Tournament Type</label>
-        <input type="number" value="" class="form-control" readonly>
-
-        {{-- With Permission Only --}}
-        {{-- <select name="type" class="mt-2 form-control" required>
-            <option value="">Type Name</option>
-        </select> --}}
+        <input type="text" value="{{ $tourney->type }}" class="form-control" readonly>
     </div>
-</div>
-<div class="d-flex flex-row-reverse mb-3">
-    <button type="submit" class="btn btn-primary float-right">
-        Update Registration Record {{-- TODO w/ permission only --}}
-    </button>
 </div>

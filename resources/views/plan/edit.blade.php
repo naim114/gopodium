@@ -36,6 +36,11 @@
                         <input id="event_limit" name="event_limit" type="number" class="form-control"
                             placeholder="Enter number of events allowed">
                     </div>
+                    <div class="form-group mb-2">
+                        <label>Duration (Day)</label>
+                        <input id="duration" name="duration" type="number" class="form-control"
+                            placeholder="Enter number of day(s) user allowed to manage" required>
+                    </div>
                     <div class="form-check mb-2">
                         <input class="form-check-input" type="checkbox" id="invite" name="invite">
                         <label class="form-check-label" for="defaultCheck1">

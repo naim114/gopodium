@@ -181,6 +181,7 @@
                             <li>3 Teams</li>
                             <li>5 Athletes per Team</li>
                             <li>10 Events</li>
+                            <li>7 Days Tournament</li>
                             <li class="na">Invite Team Managers</li>
                             <li class="na">Personalization</li>
                         </ul>
@@ -198,6 +199,7 @@
                             <li>4 Teams</li>
                             <li>20 Athletes per Team</li>
                             <li>20 Events</li>
+                            <li>14 Days Tournament</li>
                             <li>Invite Team Managers</li>
                             <li>Personalization</li>
                         </ul>
@@ -215,6 +217,7 @@
                             <li>Unlimited Teams</li>
                             <li>Unlimited Athletes per Team</li>
                             <li>Unlimited Events</li>
+                            <li>30 Days Tournament</li>
                             <li>Invite Team Managers</li>
                             <li>Personalization</li>
                         </ul>

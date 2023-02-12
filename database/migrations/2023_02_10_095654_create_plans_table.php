@@ -20,6 +20,7 @@ class CreatePlansTable extends Migration
             $table->integer('team_limit')->default(3);
             $table->integer('athlete_limit')->default(5);
             $table->integer('event_limit')->default(10);
+            $table->integer('duration')->default(7);
             $table->boolean('invite')->default(false);
             $table->boolean('personalization')->default(false);
             $table->timestamps();

@@ -34,8 +34,11 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
-                    {{-- <th scope="col">User</th>   --}}{{-- only for user that have permision to manage all tournament  --}}
+                    @if (has_permission('tournament.all'))
+                        <th scope="col">User</th>
+                    @endif
                     <th scope="col">Code</th>
+                    <th scope="col">Plan</th>
                     <th scope="col">Registered at</th>
                     <th scope="col">Start Date</th>
                     <th scope="col">Expiration Date</th>
@@ -44,36 +47,54 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- TODO foreach here --}}
-                <tr>
-                    {{-- <th scope="row">{{ $count++ }}</th> --}}
-                    <th scope="row">1</th>
-                    <td>TOURNAMENT 1</td>
-                    {{-- <td>Username</td>  --}}{{-- only for user that have permision to manage all tournament  --}}
-                    <td>MMSM2020</td>
-                    <td>1/2/2023 10.34 a.m</td>
-                    <td>2/2/2023 12.00 p.m</td>
-                    <td>5/2/2023 12.00 p.m</td>
-                    <td class="text-success"><b>Active</b></td>
-                    <td>
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false"><i class="fas fa-ellipsis-h fa-fw"></i></a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li>
-                                <a href="{{ route('tournament') }}" class="dropdown-item">
-                                    Manage
-                                </a>
-                            </li>
-                            {{-- TODO only to that have permission --}}
-                            <li>
-                                <button class="dropdown-item editButton">
-                                    Change Status
-                                </button>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-                {{-- TODO foreach till here --}}
+                @foreach ($tournaments as $tourney)
+                    <tr>
+                        <th scope="row">{{ $count++ }}</th>
+                        <td>{{ $tourney->name }}</td>
+                        @if (has_permission('tournament.all'))
+                            <td><a
+                                    href="{{ route('users.view', ['action' => 'profile', 'id' => $tourney->owner_id]) }}">{{ get_user_detail($tourney->owner_id, 'username') }}</a>
+                            </td>
+                        @endif
+                        <td>{{ $tourney->code }}</td>
+                        <td>{{ get_plan_detail($tourney->plan_id, 'name') }}</td>
+                        <td>{{ $tourney->created_at->format('d/m/Y') }}</td>
+                        <td>{{ $tourney->start_at->format('d/m/Y') }}</td>
+                        <td>{{ $tourney->end_at->format('d/m/Y') }}</td>
+
+                        @if ($tourney->status == 'upcoming')
+                            <td>
+                                <p class="text-secondary"><b>Upcoming</b></p>
+                            </td>
+                        @elseif ($tourney->status == 'ongoing')
+                            <td>
+                                <p class="text-warning"><b>Ongoing</b></p>
+                            </td>
+                        @elseif ($tourney->status == 'finished')
+                            <td>
+                                <p class="text-success"><b>Finished</b></p>
+                            </td>
+                        @endif
+
+                        <td>
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false"><i class="fas fa-ellipsis-h fa-fw"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a href="{{ route('tournament', ['id' => $tourney->id]) }}" class="dropdown-item">
+                                        Manage
+                                    </a>
+                                </li>
+                                {{-- TODO only to that have permission --}}
+                                <li>
+                                    <button class="dropdown-item editButton">
+                                        Change Status
+                                    </button>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

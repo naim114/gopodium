@@ -20,7 +20,7 @@
 @section('user-name', Auth::user()->username)
 
 @section('breadcrumb')
-    <a href="{{ route('tournament') }}">TOURNEY CODE HERE</a> /
+    <a href="{{ route('tournament', ['id' => $tourney->id]) }}">{{ $tourney->name }}</a> /
     <a>{{ trans('app.tourney.info') }}</a>
 @stop
 
@@ -29,14 +29,14 @@
         @include('tournament.partial.tab')
 
         <div class="row">
-            <div class="col-md-4 col-sm-6 pt-2 pb-2">
+            <div class="col-md-4 col-sm-6">
                 <div class="card">
                     <div class="card-body">
                         @include('tournament.information.logo')
                     </div>
                 </div>
             </div>
-            <div class="col-md-8 col-sm-6 pt-2 pb-2">
+            <div class="col-md-8 col-sm-6">
                 <div class="card mb-3">
                     <div class="card-header">
                         <h5>Tournament Details</h5>
@@ -49,26 +49,30 @@
         </div>
 
         <div class="row">
-            <div class="card mb-3">
-                <div class="card-header">
-                    <h5>Tournament Rules</h5>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        @include('tournament.information.rules')
+            <div class="col">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h5>Tournament Rules</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            @include('tournament.information.rules')
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="card mb-3">
-                <div class="card-header">
-                    <h5>Registration Details</h5>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        @include('tournament.information.registration')
+            <div class="col">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h5>Registration Details</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            @include('tournament.information.registration')
+                        </div>
                     </div>
                 </div>
             </div>

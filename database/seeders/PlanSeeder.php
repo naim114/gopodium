@@ -20,6 +20,7 @@ class PlanSeeder extends Seeder
             'team_limit' => 3,
             'athlete_limit' => 5,
             'event_limit' => 10,
+            'duration' => 7,
             'invite' => false,
             'personalization' => false,
         ]);
@@ -30,6 +31,7 @@ class PlanSeeder extends Seeder
             'team_limit' => 4,
             'athlete_limit' => 20,
             'event_limit' => 20,
+            'duration' => 14,
             'invite' => true,
             'personalization' => true,
         ]);
@@ -40,6 +42,7 @@ class PlanSeeder extends Seeder
             'team_limit' => 500,
             'athlete_limit' => 500,
             'event_limit' => 500,
+            'duration' => 30,
             'invite' => true,
             'personalization' => true,
         ]);

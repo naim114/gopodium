@@ -26,6 +26,7 @@ class PlanController extends Controller
             'team_limit' => $request->team_limit,
             'athlete_limit' => $request->athlete_limit,
             'event_limit' => $request->event_limit,
+            'duration' => $request->duration,
             'invite' =>  $request->invite == "on" ? true : false,
             'personalization' =>  $request->personalization == "on" ? true : false,
         ]);
@@ -46,6 +47,7 @@ class PlanController extends Controller
                 'team_limit' => $request->team_limit,
                 'athlete_limit' => $request->athlete_limit,
                 'event_limit' => $request->event_limit,
+                'duration' => $request->duration,
                 'invite' =>  $request->invite == "on" ? true : false,
                 'personalization' =>  $request->personalization == "on" ? true : false,
             ]);

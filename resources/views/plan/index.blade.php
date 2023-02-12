@@ -20,6 +20,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Plan</th>
                     <th scope="col">Price (RM)</th>
+                    <th scope="col">Duration (Day)</th>
                     <th scope="col">Create at</th>
                     <th scope="col">Update at</th>
                     <th scope="col">Action</th>
@@ -31,6 +32,7 @@
                         <th scope="row">{{ $count++ }}</th>
                         <td>{{ $plan->name }}</td>
                         <td>{{ number_format($plan->price / 100, 2, '.', ' ') }}</td>
+                        <td>{{ $plan->duration }}</td>
                         <td>{{ $plan->created_at->format('d/m/Y H:i:s') }}</td>
                         <td>{{ $plan->updated_at->format('d/m/Y H:i:s') }}</td>
                         <td>
@@ -86,6 +88,7 @@
             $('#team_limit').val(plan.team_limit);
             $('#athlete_limit').val(plan.athlete_limit);
             $('#event_limit').val(plan.event_limit);
+            $('#duration').val(plan.duration);
             $("#invite").prop("checked", plan.invite);
             $("#personalization").prop("checked", plan.personalization);
         });

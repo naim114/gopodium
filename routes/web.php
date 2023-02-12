@@ -378,11 +378,25 @@ Route::group(['middleware' => ['auth', 'status']], function () {
         [TournamentController::class, 'manage']
     )->name('tournament.manage');
 
-    // TODO get by tournament id
     Route::get(
-        '/tournament',
+        '/tournament/{id}',
         [TournamentController::class, 'index']
     )->name('tournament');
+
+    Route::post(
+        '/tournament/edit/detail',
+        [TournamentController::class, 'detail']
+    )->name('tournament.edit.detail');
+
+    Route::post(
+        '/tournament/edit/rule',
+        [TournamentController::class, 'rule']
+    )->name('tournament.edit.rule');
+
+    Route::post(
+        '/tournament/edit/logo',
+        [TournamentController::class, 'logo']
+    )->name('tournament.edit.logo');
 
     /**
      * Team
