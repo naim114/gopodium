@@ -381,22 +381,22 @@ Route::group(['middleware' => ['auth', 'status']], function () {
     Route::get(
         '/tournament/{id}',
         [TournamentController::class, 'index']
-    )->name('tournament');
+    )->name('tournament')->middleware('tournament.permission');
 
     Route::post(
         '/tournament/edit/detail',
         [TournamentController::class, 'detail']
-    )->name('tournament.edit.detail');
+    )->name('tournament.edit.detail')->middleware('tournament.permission');
 
     Route::post(
         '/tournament/edit/rule',
         [TournamentController::class, 'rule']
-    )->name('tournament.edit.rule');
+    )->name('tournament.edit.rule')->middleware('tournament.permission');
 
     Route::post(
         '/tournament/edit/logo',
         [TournamentController::class, 'logo']
-    )->name('tournament.edit.logo');
+    )->name('tournament.edit.logo')->middleware('tournament.permission');
 
     /**
      * Team

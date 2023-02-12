@@ -4,6 +4,7 @@ namespace App\Http;
 
 use App\Http\Middleware\CheckPermissions;
 use App\Http\Middleware\CheckStatus;
+use App\Http\Middleware\CheckTournamentPermission;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -57,6 +58,7 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         'permissions' => CheckPermissions::class,
+        'tournament.permission' => CheckTournamentPermission::class,
         'status' => CheckStatus::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,

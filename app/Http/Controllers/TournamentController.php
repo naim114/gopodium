@@ -30,11 +30,6 @@ class TournamentController extends Controller
     {
         $tourney = Tournament::where('id', $request->id)->first();
 
-        // block if user is not owner and dont have permission
-        if ($tourney->owner_id != Auth::user()->id && !has_permission('tournament.all')) {
-            return back();
-        }
-
         // get tournament type
         $type = TournamentType::where('id', $tourney->tournament_type_id)->first();
 
@@ -53,11 +48,6 @@ class TournamentController extends Controller
     public function detail(Request $request)
     {
         $tourney = Tournament::where('id', $request->id)->first();
-
-        // block if user is not owner and dont have permission
-        if ($tourney->owner_id != Auth::user()->id && !has_permission('tournament.all')) {
-            abort(403, 'Forbidden');
-        }
 
         // check if code is unique
         $all = Tournament::where('id', '!=', $request->id)->get();
@@ -88,11 +78,6 @@ class TournamentController extends Controller
     {
         $tourney = Tournament::where('id', $request->id)->first();
 
-        // block if user is not owner and dont have permission
-        if ($tourney->owner_id != Auth::user()->id && !has_permission('tournament.all')) {
-            abort(403, 'Forbidden');
-        }
-
         Tournament::where('id', $request->id)
             ->update([
                 'athlete_individual_event_limit' => $request->athlete_individual_event_limit,
@@ -120,11 +105,6 @@ class TournamentController extends Controller
     public function logo(Request $request)
     {
         $tourney = Tournament::where('id', $request->id)->first();
-
-        // block if user is not owner and dont have permission
-        if ($tourney->owner_id != Auth::user()->id && !has_permission('tournament.all')) {
-            abort(403, 'Forbidden');
-        }
 
         $request->validate([
             'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',

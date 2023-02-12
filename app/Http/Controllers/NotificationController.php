@@ -47,12 +47,12 @@ class NotificationController extends Controller
 
         // block if user is not receiver
         if ($notification->receiver_id != Auth::user()->id && $notification->receiver_id != 0) {
-            abort(403, "Forbidden.");
+            abort(403, "Forbidden");
         }
 
         // if notification only has permission can delete
         if ($notification->receiver_id == 0 && !has_permission('notification')) {
-            abort(403, "Forbidden.");
+            abort(403, "Forbidden");
         }
 
         // hard delete in db
