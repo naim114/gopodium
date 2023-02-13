@@ -32,4 +32,9 @@ class Tournament extends Model
     protected $dates = [
         'start_at',
     ];
+
+    public function team()
+    {
+        return $this->hasMany(Team::class);
+    }
 }

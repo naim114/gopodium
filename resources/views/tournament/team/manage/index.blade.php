@@ -21,7 +21,7 @@
 
 @section('breadcrumb')
     <a href="{{ route('tournament', ['id' => $tourney->id]) }}">TOURNEY CODE HERE</a> /
-    <a href="{{ route('tournament.team.manage') }}">TEAM NAME HERE</a> /
+    <a href="{{ route('tournament.team.manage', ['tournament_id' => $tourney->id]) }}">TEAM NAME HERE</a> /
     <a>{{ trans('app.tourney.team.manage') }}</a>
 @stop
 

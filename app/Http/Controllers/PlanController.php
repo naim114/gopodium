@@ -32,7 +32,7 @@ class PlanController extends Controller
         ]);
 
         // user activity log
-        event(new UserActivityEvent(Auth::user(), $request, 'Edit plan ' . $request->name . ' (id: ' . $request->id . ')'));
+        event(new UserActivityEvent(Auth::user(), $request, 'Edit plan ' . $request->name . ' (id: ' . $plan->id . ')'));
 
         return back()->with('success', 'Plan successfully added!');
     }

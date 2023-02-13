@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\StandingType;
+use App\Models\Team;
 use App\Models\Tournament;
 use App\Models\TournamentType;
 use Illuminate\Database\Seeder;
@@ -50,6 +51,24 @@ class TournamentSeeder extends Seeder
             'plan_id' => '2',
             'tournament_type_id' => '1',
             'standing_type_id' => '1',
+        ]);
+
+        Team::create([
+            'name' => 'TEAM A',
+            'category' => '001',
+            'tournament_id' => '1',
+        ]);
+
+        Team::create([
+            'name' => 'TEAM B',
+            'category' => '001',
+            'tournament_id' => '1',
+        ]);
+
+        Team::create([
+            'name' => 'TEAM C',
+            'category' => '001',
+            'tournament_id' => '1',
         ]);
     }
 }

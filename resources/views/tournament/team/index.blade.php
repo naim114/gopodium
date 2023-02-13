@@ -5,7 +5,7 @@
 @section('user-name', Auth::user()->username)
 
 @section('breadcrumb')
-    <a href="{{ route('tournament', ['id' => $tourney->id]) }}">TOURNEY CODE HERE</a> /
+    <a href="{{ route('tournament', ['id' => $tourney->id]) }}">{{ $tourney->code }}</a> /
     <a>{{ trans('app.tourney.team') }}</a>
 @stop
 
@@ -28,52 +28,52 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- TODO foreach here --}}
-                <tr>
-                    {{-- <th scope="row">{{ $count++ }}</th> --}}
-                    <th scope="row">1</th>
-                    <td><img height="35px" src="{{ asset('assets/img/default-team.png') }}" /></td>
-                    <td>TOURNAMENT 1</td>
-                    <td>MMSM2020</td>
-                    <td>5/2/2023 12.00 p.m</td>
-                    <td>
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false"><i class="fas fa-ellipsis-h fa-fw"></i></a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li>
-                                <a href="{{ route('tournament.team.manage') }}" class="dropdown-item">
-                                    Manage Team
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('tournament.team.athletes') }}" class="dropdown-item">
-                                    Athletes
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('tournament.team.event') }}" class="dropdown-item">
-                                    Events
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('tournament.team.schedule') }}" class="dropdown-item">
-                                    Schedule
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('tournament.team.result') }}" class="dropdown-item">
-                                    Results
-                                </a>
-                            </li>
-                            <li>
-                                <button class="dropdown-item text-danger deleteButton">
-                                    Delete
-                                </button>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-                {{-- TODO foreach till here --}}
+                @foreach ($tourney->team as $team)
+                    <tr>
+                        <th scope="row">{{ $count++ }}</th>
+                        <td><img height="35px" src="{{ asset($team->logo_path ?? 'assets/img/default-team.png') }}" /></td>
+                        <td>{{ $team->name }}</td>
+                        <td>{{ $team->category }}</td>
+                        <td>{{ $team->created_at->format('d/m/Y H:i:s') }}</td>
+                        <td>
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false"><i class="fas fa-ellipsis-h fa-fw"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a href="{{ route('tournament.team.manage', ['tournament_id' => $tourney->id]) }}"
+                                        class="dropdown-item">
+                                        Manage Team
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('tournament.team.athletes') }}" class="dropdown-item">
+                                        Athletes
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('tournament.team.event') }}" class="dropdown-item">
+                                        Events
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('tournament.team.schedule') }}" class="dropdown-item">
+                                        Schedule
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('tournament.team.result') }}" class="dropdown-item">
+                                        Results
+                                    </a>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item text-danger deleteButton">
+                                        Delete
+                                    </button>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

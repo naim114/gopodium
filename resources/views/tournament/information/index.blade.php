@@ -20,7 +20,7 @@
 @section('user-name', Auth::user()->username)
 
 @section('breadcrumb')
-    <a href="{{ route('tournament', ['id' => $tourney->id]) }}">{{ $tourney->name }}</a> /
+    <a href="{{ route('tournament', ['id' => $tourney->id]) }}">{{ $tourney->code }}</a> /
     <a>{{ trans('app.tourney.info') }}</a>
 @stop
 
@@ -40,7 +40,6 @@
                 <div class="card mb-3">
                     <div class="card-header">
                         <h5>Tournament Details</h5>
-                        <h5>{{ $tourney->owner_id }}</h5>
                     </div>
                     <div class="card-body">
                         @include('tournament.information.details')

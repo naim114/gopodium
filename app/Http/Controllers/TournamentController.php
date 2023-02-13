@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\StandingType;
+use App\Models\Team;
 use App\Models\Tournament;
 use App\Models\TournamentType;
 use Illuminate\Http\Request;
@@ -142,14 +143,35 @@ class TournamentController extends Controller
     /**
      * Team
      */
-    public function team()
+    public function team(Request $request)
     {
-        return view('tournament.team.index');
+        $tourney = Tournament::find($request->tournament_id);
+        $count = 1;
+
+        return view('tournament.team.index', compact('tourney', 'count'));
     }
 
-    public function team_manage()
+    public function team_manage(Request $request)
     {
-        return view('tournament.team.manage.index');
+        $tourney = Tournament::find($request->tournament_id);
+
+        return view('tournament.team.manage.index', compact('tourney'));
+    }
+
+    public function team_manage_add(Request $request)
+    {
+        $tourney = Tournament::find($request->tournament_id);
+
+        $add = Team::create([
+            "name" => $request->name,
+            "tournament_id" => $request->tournament_id,
+            "category" => $request->category,
+        ]);
+
+        // user activity log
+        event(new UserActivityEvent(Auth::user(), $request, 'Add team ' . $request->name . ' (id: ' . $add->id . ') to Tournament ' . $tourney->name . ' (id: ' . $tourney->id . ')'));
+
+        return back()->with('success', 'Team successfully added!');
     }
 
     public function team_athlete()

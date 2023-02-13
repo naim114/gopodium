@@ -1,6 +1,6 @@
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form method="POST" action="">
+        <form method="POST" action="{{ route('tournament.team.add') }}">
             @csrf
             <div class="modal-content">
                 <div class="modal-header">
@@ -12,6 +12,7 @@
                     <div class="form-group mb-2">
                         <label>Team Name</label>
                         <input name="name" type="text" class="form-control" placeholder="Enter team name">
+                        <input name="tournament_id" type="text" value="{{ $tourney->id }}" hidden>
                     </div>
                     <div class="form-group mb-2">
                         <label>Category</label>
