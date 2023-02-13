@@ -402,22 +402,33 @@ Route::group(['middleware' => ['auth', 'status']], function () {
      * Team
      */
     Route::get(
-        '/team/{tournament_id}',
+        '/tournament/{tournament_id}/team',
         [TournamentController::class, 'team']
     )->name('tournament.team');
 
     Route::get(
-        '/team/manage/{tournament_id}',
+        '/tournament/{tournament_id}/team/manage/{team_id}',
         [TournamentController::class, 'team_manage']
     )->name('tournament.team.manage');
 
     Route::post(
-        '/team/add',
-        [TournamentController::class, 'team_manage_add']
+        '/tournament/team/add',
+        [TournamentController::class, 'team_add']
     )->name('tournament.team.add');
 
+    Route::post(
+        '/tournament/team/edit/detail',
+        [TournamentController::class, 'team_detail']
+    )->name('tournament.team.edit.detail');
 
+    Route::post(
+        '/tournament/team/edit/logo',
+        [TournamentController::class, 'team_logo']
+    )->name('tournament.team.edit.logo');
 
+    /**
+     * Team Athletes
+     */
     Route::get(
         '/team/athletes',
         [TournamentController::class, 'team_athlete']

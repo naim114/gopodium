@@ -1,6 +1,6 @@
 @extends('layouts.dashboard-master')
 
-@section('page-title', 'TEAM NAME HERE')
+@section('page-title', $team->name)
 
 @section('custom-head')
     <style>
@@ -20,8 +20,10 @@
 @section('user-name', Auth::user()->username)
 
 @section('breadcrumb')
-    <a href="{{ route('tournament', ['id' => $tourney->id]) }}">TOURNEY CODE HERE</a> /
-    <a href="{{ route('tournament.team.manage', ['tournament_id' => $tourney->id]) }}">TEAM NAME HERE</a> /
+    <a href="{{ route('tournament', ['id' => $tourney->id]) }}">{{ $tourney->code }}</a> /
+    <a
+        href="{{ route('tournament.team.manage', ['tournament_id' => $tourney->id, 'team_id' => $team->id]) }}">{{ $team->name }}</a>
+    /
     <a>{{ trans('app.tourney.team.manage') }}</a>
 @stop
 
@@ -40,7 +42,7 @@
             <div class="col-md-4 col-sm-6 pt-2 pb-2">
                 <div class="card">
                     <div class="card-body">
-                        @include('tournament.information.logo')
+                        @include('tournament.team.manage.logo')
                     </div>
                 </div>
             </div>

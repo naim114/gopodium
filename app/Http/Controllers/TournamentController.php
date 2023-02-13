@@ -154,24 +154,72 @@ class TournamentController extends Controller
     public function team_manage(Request $request)
     {
         $tourney = Tournament::find($request->tournament_id);
+        $team = Team::find($request->team_id);
 
-        return view('tournament.team.manage.index', compact('tourney'));
+        return view('tournament.team.manage.index', compact('tourney', 'team'));
     }
 
-    public function team_manage_add(Request $request)
+    public function team_add(Request $request)
     {
         $tourney = Tournament::find($request->tournament_id);
 
-        $add = Team::create([
-            "name" => $request->name,
-            "tournament_id" => $request->tournament_id,
-            "category" => $request->category,
-        ]);
+        $add = Team::create($request->all());
 
         // user activity log
         event(new UserActivityEvent(Auth::user(), $request, 'Add team ' . $request->name . ' (id: ' . $add->id . ') to Tournament ' . $tourney->name . ' (id: ' . $tourney->id . ')'));
 
         return back()->with('success', 'Team successfully added!');
+    }
+
+    public function team_detail(Request $request)
+    {
+        $team = Team::find($request->id);
+        $tourney = Tournament::find($team->tournament_id);
+
+        Team::where('id', $request->id)->update([
+            'name' => $request->name,
+            'category' => $request->category,
+        ]);
+
+        // user activity log
+        event(new UserActivityEvent(Auth::user(), $request, 'Edit team detail ' . $request->name . ' (id: ' . $team->id . ') from Tournament ' . $tourney->name . ' (id: ' . $tourney->id . ')'));
+
+        return back()->with('success', 'Team successfully edited!');
+    }
+
+    public function team_logo(Request $request)
+    {
+        $team = Team::find($request->id);
+        $tourney = Tournament::find($team->tournament_id);
+
+        $request->validate([
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        // delete previous logo file (if exist)
+        if (isset($team->logo_path)) {
+            if (File::exists(public_path($team->logo_path))) {
+                File::delete(public_path($team->logo_path));
+            }
+        }
+
+        // creating name and path for the file
+        // time() is current unix timestamp
+        $fileName = time() . '_' . $request->file('logo')->getClientOriginalName();
+
+        $request->logo->move(public_path('upload/tournament/' . $tourney->id . '/team' . '/' . $team->id . '/logo'), $fileName);
+
+        // updating details in db
+        Team::where('id', $request->id)
+            ->update([
+                'logo_path' => 'upload/tournament/' . $tourney->id . '/team' . '/' . $team->id . '/logo' . '/' . $fileName,
+            ]);
+
+
+        // user activity log
+        event(new UserActivityEvent(Auth::user(), $request, 'Edit team logo ' . $request->name . ' (id: ' . $team->id . ') from Tournament ' . $tourney->name . ' (id: ' . $tourney->id . ')'));
+
+        return back()->with('success', 'Team logo successfully edited!');
     }
 
     public function team_athlete()

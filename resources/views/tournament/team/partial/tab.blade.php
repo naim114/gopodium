@@ -1,7 +1,7 @@
 <ul class="nav nav-tabs mb-4">
     <li class="nav-item">
         <a class="nav-link {{ is_current_route_name('tournament.team.manage') ? 'active' : '' }}"
-            href="{{ route('tournament.team.manage', ['tournament_id' => $tourney->id]) }}">
+            href="{{ route('tournament.team.manage', ['tournament_id' => $tourney->id, 'team_id' => $team->id]) }}">
             Manage
         </a>
     </li>

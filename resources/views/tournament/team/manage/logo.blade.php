@@ -1,8 +1,9 @@
 <div class="text-center">
-    <form method="POST" enctype="multipart/form-data" action="">
+    <form method="POST" enctype="multipart/form-data" action="{{ route('tournament.team.edit.logo') }}">
         @csrf
+        <input name="id" type="text" value="{{ $team->id }}" hidden />
         <img id="preview" class="img-thumbnail" style="height: 150px; width: 150px"
-            src="{{ asset('assets/img/default-team.png') }}">
+            src="{{ asset($team->logo_path ?? 'assets/img/default-team.png') }}">
 
         <button type="button" id="changeLogoButton" class="btn btn-secondary btn-block mt-3 w-100">
             <i class="fa fa-camera pr-2 pl-2"></i>
