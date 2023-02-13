@@ -40,6 +40,7 @@
                 <div class="card mb-3">
                     <div class="card-header">
                         <h5>Tournament Details</h5>
+                        <h5>{{ $tourney->owner_id }}</h5>
                     </div>
                     <div class="card-body">
                         @include('tournament.information.details')

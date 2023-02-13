@@ -14,7 +14,7 @@ class CreateTournamentsTable extends Migration
     public function up()
     {
         Schema::create('tournaments', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('name');
             $table->string('code')->index();
             $table->string('organizer');
@@ -22,10 +22,17 @@ class CreateTournamentsTable extends Migration
             $table->string('logo_path')->nullable();
 
             // foregin key
-            $table->integer('owner_id');
-            $table->integer('plan_id');
-            $table->integer('tournament_type_id');
-            $table->integer('standing_type_id');
+            $table->integer('owner_id')->unsigned();
+            $table->foreign('owner_id')->references('id')->on('users')->onUpdate('cascade');
+
+            $table->integer('plan_id')->unsigned();
+            $table->foreign('plan_id')->references('id')->on('plans')->onUpdate('cascade');
+
+            $table->integer('tournament_type_id')->unsigned();
+            $table->foreign('tournament_type_id')->references('id')->on('tournament_types')->onUpdate('cascade');
+
+            $table->integer('standing_type_id')->unsigned();
+            $table->foreign('standing_type_id')->references('id')->on('standing_types')->onUpdate('cascade');
 
             // rules
             $table->integer('athlete_individual_event_limit')->default(3);
