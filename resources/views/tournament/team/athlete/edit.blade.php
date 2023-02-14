@@ -1,6 +1,6 @@
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form method="POST" action="">
+        <form method="POST" action="{{ route('tournament.team.athlete.edit') }}">
             @csrf
             <div class="modal-content">
                 <div class="modal-header">
@@ -11,7 +11,9 @@
                 <div class="modal-body">
                     <div class="form-group mb-2">
                         <label>Athlete Name</label>
-                        <input name="name" type="text" class="form-control" placeholder="Enter athlete name">
+                        <input id="athlete_name" name="name" type="text" class="form-control"
+                            placeholder="Enter athlete name">
+                        <input id="athlete_id" name="id" type="text" hidden>
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -60,7 +60,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <button class="dropdown-item editButton">
+                                    <button data-item="{{ $athlete }}" class="dropdown-item editButton">
                                         Edit
                                     </button>
                                 </li>
@@ -106,6 +106,10 @@
         // edit modal
         $(".editButton").click(function() {
             $('#editModal').modal('show');
+
+            var athlete = $(this).data('item');
+            $('#athlete_id').val(athlete.id);
+            $('#athlete_name').val(athlete.name);
         });
 
         $(".closeEditModal").click(function() {

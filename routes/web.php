@@ -444,6 +444,16 @@ Route::group(['middleware' => ['auth', 'status']], function () {
         [TournamentController::class, 'team_athlete_add']
     )->name('tournament.team.athlete.add');
 
+    Route::post(
+        '/tournament/team/athlete/edit',
+        [TournamentController::class, 'team_athlete_edit']
+    )->name('tournament.team.athlete.edit');
+
+    Route::post(
+        '/tournament/team/athlete/delete',
+        [TournamentController::class, 'team_athlete_delete']
+    )->name('tournament.team.athlete.delete');
+
     // TODO
     Route::get(
         '/team/athlete',
