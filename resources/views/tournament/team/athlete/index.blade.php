@@ -46,34 +46,33 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- TODO foreach here --}}
-                <tr>
-                    {{-- <th scope="row">{{ $count++ }}</th> --}}
-                    <th scope="row">1</th>
-                    <td>ATHLETE NAME</td>
-                    <td>
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false"><i class="fas fa-ellipsis-h fa-fw"></i></a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li>
-                                <a href="{{ route('tournament.team.athlete') }}" class="dropdown-item">
-                                    Schedule & Result
-                                </a>
-                            </li>
-                            <li>
-                                <button class="dropdown-item editButton">
-                                    Edit
-                                </button>
-                            </li>
-                            <li>
-                                <button class="dropdown-item text-danger deleteButton">
-                                    Delete
-                                </button>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-                {{-- TODO foreach till here --}}
+                @foreach ($team->athlete as $athlete)
+                    <tr>
+                        <th scope="row">{{ $count++ }}</th>
+                        <td>{{ $athlete->name }}</td>
+                        <td>
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false"><i class="fas fa-ellipsis-h fa-fw"></i></a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a href="{{ route('tournament.team.athlete') }}" class="dropdown-item">
+                                        Schedule & Result
+                                    </a>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item editButton">
+                                        Edit
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item text-danger deleteButton">
+                                        Delete
+                                    </button>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

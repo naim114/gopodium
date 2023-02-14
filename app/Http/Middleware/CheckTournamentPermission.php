@@ -19,7 +19,10 @@ class CheckTournamentPermission
     public function handle(Request $request, Closure $next)
     {
         try {
-            $tourney = Tournament::where('id', $request->id)->first();
+
+            $id = $request->id ?? $request->tournament_id;
+
+            $tourney = Tournament::where('id', $id)->first();
 
             // allow if user is owner or have permission
             if ($tourney->owner_id == Auth::user()->id || has_permission('tournament.all')) {

@@ -404,7 +404,7 @@ Route::group(['middleware' => ['auth', 'status']], function () {
     Route::get(
         '/tournament/{tournament_id}/team',
         [TournamentController::class, 'team']
-    )->name('tournament.team');
+    )->name('tournament.team')->middleware('tournament.permission');
 
     Route::get(
         '/tournament/{tournament_id}/team/{team_id}/manage',
@@ -430,7 +430,6 @@ Route::group(['middleware' => ['auth', 'status']], function () {
         '/tournament/team/delete',
         [TournamentController::class, 'team_delete']
     )->name('tournament.team.delete');
-
 
     /**
      * Team Athletes

@@ -248,8 +248,9 @@ class TournamentController extends Controller
     {
         $tourney = Tournament::find($request->tournament_id);
         $team = Team::find($request->team_id);
+        $count = 1;
 
-        return view('tournament.team.athlete.index', compact('tourney', 'team'));
+        return view('tournament.team.athlete.index', compact('tourney', 'team', 'count'));
     }
 
     public function team_athlete_schedule_result()
