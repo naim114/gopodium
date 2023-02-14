@@ -244,9 +244,12 @@ class TournamentController extends Controller
         return redirect()->route('tournament.team', ['tournament_id' => $tourney->id]);
     }
 
-    public function team_athlete()
+    public function team_athlete(Request $request)
     {
-        return view('tournament.team.athlete.index');
+        $tourney = Tournament::find($request->tournament_id);
+        $team = Team::find($request->team_id);
+
+        return view('tournament.team.athlete.index', compact('tourney', 'team'));
     }
 
     public function team_athlete_schedule_result()

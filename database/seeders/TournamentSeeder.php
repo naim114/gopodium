@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Athlete;
 use App\Models\StandingType;
 use App\Models\Team;
 use App\Models\Tournament;
@@ -69,6 +70,51 @@ class TournamentSeeder extends Seeder
             'name' => 'TEAM C',
             'category' => '001',
             'tournament_id' => '1',
+        ]);
+
+        Athlete::create([
+            'name' => 'Mat',
+            'team_id' => '1',
+        ]);
+
+        Athlete::create([
+            'name' => 'Bo',
+            'team_id' => '1',
+        ]);
+
+        Athlete::create([
+            'name' => 'Tak',
+            'team_id' => '1',
+        ]);
+
+        Athlete::create([
+            'name' => 'Ali',
+            'team_id' => '2',
+        ]);
+
+        Athlete::create([
+            'name' => 'Abu',
+            'team_id' => '2',
+        ]);
+
+        Athlete::create([
+            'name' => 'Kareem',
+            'team_id' => '2',
+        ]);
+
+        Athlete::create([
+            'name' => 'Mahmoud',
+            'team_id' => '3',
+        ]);
+
+        Athlete::create([
+            'name' => 'Hakeem',
+            'team_id' => '3',
+        ]);
+
+        Athlete::create([
+            'name' => 'Yusuf',
+            'team_id' => '3',
         ]);
     }
 }

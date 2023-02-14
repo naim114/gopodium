@@ -407,7 +407,7 @@ Route::group(['middleware' => ['auth', 'status']], function () {
     )->name('tournament.team');
 
     Route::get(
-        '/tournament/{tournament_id}/team/manage/{team_id}',
+        '/tournament/{tournament_id}/team/{team_id}/manage',
         [TournamentController::class, 'team_manage']
     )->name('tournament.team.manage');
 
@@ -436,7 +436,7 @@ Route::group(['middleware' => ['auth', 'status']], function () {
      * Team Athletes
      */
     Route::get(
-        '/team/athletes',
+        '/tournament/{tournament_id}/team/{team_id}/athletes',
         [TournamentController::class, 'team_athlete']
     )->name('tournament.team.athletes');
 

@@ -46,7 +46,8 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('tournament.team.athletes') }}" class="dropdown-item">
+                                    <a href="{{ route('tournament.team.athletes', ['tournament_id' => $tourney->id, 'team_id' => $team->id]) }}"
+                                        class="dropdown-item">
                                         Athletes
                                     </a>
                                 </li>

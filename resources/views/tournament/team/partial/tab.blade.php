@@ -7,7 +7,7 @@
     </li>
     <li class="nav-item">
         <a class="nav-link {{ is_current_route_name('tournament.team.athletes') || is_current_route_name('tournament.team.athlete') ? 'active' : '' }}"
-            href="{{ route('tournament.team.athletes') }}">Athletes</a>
+            href="{{ route('tournament.team.athletes', ['tournament_id' => $tourney->id, 'team_id' => $team->id]) }}">Athletes</a>
     </li>
     <li class="nav-item">
         <a class="nav-link {{ is_current_route_name('tournament.team.event') ? 'active' : '' }}"
