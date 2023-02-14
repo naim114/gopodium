@@ -222,6 +222,28 @@ class TournamentController extends Controller
         return back()->with('success', 'Team logo successfully edited!');
     }
 
+    public function team_delete(Request $request)
+    {
+        $team = Team::find($request->id);
+        $tourney = Tournament::find($team->tournament_id);
+
+        // delete logo file (if exist)
+        if (isset($team->logo_path)) {
+            if (File::exists(public_path($team->logo_path))) {
+                File::delete(public_path($team->logo_path));
+            }
+        }
+
+        // soft delete in db
+        Team::where('id', $request->id)
+            ->delete();
+
+        // user activity log
+        event(new UserActivityEvent(Auth::user(), $request, 'Delete team ' . $request->name . ' (id: ' . $team->id . ') from Tournament ' . $tourney->name . ' (id: ' . $tourney->id . ')'));
+
+        return redirect()->route('tournament.team', ['tournament_id' => $tourney->id]);
+    }
+
     public function team_athlete()
     {
         return view('tournament.team.athlete.index');

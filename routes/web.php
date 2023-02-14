@@ -426,6 +426,12 @@ Route::group(['middleware' => ['auth', 'status']], function () {
         [TournamentController::class, 'team_logo']
     )->name('tournament.team.edit.logo');
 
+    Route::post(
+        '/tournament/team/delete',
+        [TournamentController::class, 'team_delete']
+    )->name('tournament.team.delete');
+
+
     /**
      * Team Athletes
      */

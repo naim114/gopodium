@@ -56,7 +56,7 @@
                     </div>
                 </div>
 
-                <button class="mb-2 btn btn-danger w-100 text-bold deleteButton">
+                <button data-item="{{ $team }}" class="mb-2 btn btn-danger w-100 text-bold deleteButton">
                     Delete Team
                 </button>
             </div>
@@ -108,10 +108,33 @@
 
         // delete modal
         $(".deleteButton").click(function() {
+            $("#submit").prop("disabled", true);
             $('#deleteModal').modal('show');
+
+            var team = $(this).data('item');
+            $('#del_id').val(team.id);
+            $('#del_name').val(team.name);
+
+            $('#del_text').val(null);
+
+            $('#warning').text(`
+                WARNING:
+                Are you sure you want to delete ${team.name}? Previous data can't be retrieve back.
+                All the athletes data under this team will be deleted too.
+                Type the plan name and click Confirm Delete to confirm plan deletion.
+            `);
         });
 
         $(".closeDeleteModal").click(function() {
+            $('#deleteModal').modal('hide');
+        });
+
+        $("#del_text").change(function() {
+            $("#submit").prop("disabled", !($('#del_text').val() == $('#del_name').val()));
+        });
+
+        $(".closeDeleteModal").click(function() {
+            $("#submit").prop("disabled", true);
             $('#deleteModal').modal('hide');
         });
 
