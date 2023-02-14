@@ -14,6 +14,7 @@ class Athlete extends Model
 
     protected $fillable = [
         'name',
+        'team_id',
     ];
 
     public function team()

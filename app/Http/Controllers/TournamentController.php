@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Athlete;
 use App\Models\StandingType;
 use App\Models\Team;
 use App\Models\Tournament;
@@ -251,6 +252,19 @@ class TournamentController extends Controller
         $count = 1;
 
         return view('tournament.team.athlete.index', compact('tourney', 'team', 'count'));
+    }
+
+    public function team_athlete_add(Request $request)
+    {
+        $team = Team::find($request->team_id);
+        $tourney = Tournament::find($team->tournament_id);
+
+        $add = Athlete::create($request->all());
+
+        // user activity log
+        event(new UserActivityEvent(Auth::user(), $request, 'Add athlete ' . $request->name . ' (id: ' . $add->id . ') to Tournament ' . $tourney->name . ' (id: ' . $tourney->id . ')'));
+
+        return back()->with('success', 'Athlete successfully added!');
     }
 
     public function team_athlete_schedule_result()

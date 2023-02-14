@@ -439,6 +439,12 @@ Route::group(['middleware' => ['auth', 'status']], function () {
         [TournamentController::class, 'team_athlete']
     )->name('tournament.team.athletes');
 
+    Route::post(
+        '/tournament/team/athlete/add',
+        [TournamentController::class, 'team_athlete_add']
+    )->name('tournament.team.athlete.add');
+
+    // TODO
     Route::get(
         '/team/athlete',
         [TournamentController::class, 'team_athlete_schedule_result']
