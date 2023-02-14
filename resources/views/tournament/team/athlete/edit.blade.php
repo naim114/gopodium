@@ -13,7 +13,7 @@
                         <label>Athlete Name</label>
                         <input id="athlete_name" name="name" type="text" class="form-control"
                             placeholder="Enter athlete name">
-                        <input id="athlete_id" name="id" type="text" hidden>
+                        <input class="athlete_id" name="id" type="text" hidden>
                     </div>
                 </div>
                 <div class="modal-footer">

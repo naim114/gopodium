@@ -65,7 +65,7 @@
                                     </button>
                                 </li>
                                 <li>
-                                    <button class="dropdown-item text-danger deleteButton">
+                                    <button data-item="{{ $athlete }}" class="dropdown-item text-danger deleteButton">
                                         Delete
                                     </button>
                                 </li>
@@ -108,7 +108,7 @@
             $('#editModal').modal('show');
 
             var athlete = $(this).data('item');
-            $('#athlete_id').val(athlete.id);
+            $('.athlete_id').val(athlete.id);
             $('#athlete_name').val(athlete.name);
         });
 
@@ -118,11 +118,28 @@
 
         // delete modal
         $(".deleteButton").click(function() {
+            $("#submit").prop("disabled", true);
             $('#deleteModal').modal('show');
+
+            var athlete = $(this).data('item');
+            $('.athlete_id').val(athlete.id);
+            $('#del_name').val(athlete.name);
+
+            $('#del_text').val(null);
+
+            $('#warning').text(`
+                WARNING:
+                Are you sure you want to delete ${athlete.name}? Previous data can't be retrieve back.
+                Type the plan name and click Confirm Delete to confirm plan deletion.
+            `);
         });
 
         $(".closeDeleteModal").click(function() {
             $('#deleteModal').modal('hide');
+        });
+
+        $("#del_text").change(function() {
+            $("#submit").prop("disabled", !($('#del_text').val() == $('#del_name').val()));
         });
     </script>
 @stop

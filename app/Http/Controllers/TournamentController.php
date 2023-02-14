@@ -283,24 +283,18 @@ class TournamentController extends Controller
 
     public function team_athlete_delete(Request $request)
     {
-        $team = Team::find($request->id);
+        $athlete = Athlete::find($request->id);
+        $team = Team::find($athlete->team_id);
         $tourney = Tournament::find($team->tournament_id);
 
-        // delete logo file (if exist)
-        if (isset($team->logo_path)) {
-            if (File::exists(public_path($team->logo_path))) {
-                File::delete(public_path($team->logo_path));
-            }
-        }
-
         // soft delete in db
-        Team::where('id', $request->id)
+        Athlete::where('id', $request->id)
             ->delete();
 
         // user activity log
-        event(new UserActivityEvent(Auth::user(), $request, 'Delete team ' . $request->name . ' (id: ' . $team->id . ') from Tournament ' . $tourney->name . ' (id: ' . $tourney->id . ')'));
+        event(new UserActivityEvent(Auth::user(), $request, 'Delete athlete ' . $request->name . ' (id: ' . $athlete->id . ') to Tournament ' . $tourney->name . ' (id: ' . $tourney->id . ')'));
 
-        return redirect()->route('tournament.team', ['tournament_id' => $tourney->id]);
+        return back()->with('success', 'Athlete ' . $athlete->name . ' successfully delete!');
     }
 
     public function team_athlete_schedule_result()
