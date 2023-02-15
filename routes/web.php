@@ -460,16 +460,19 @@ Route::group(['middleware' => ['auth', 'status']], function () {
         [TournamentController::class, 'team_athlete_schedule_result']
     )->name('tournament.team.athlete');
 
+    // TODO
     Route::get(
         '/team/event',
         [TournamentController::class, 'team_event']
     )->name('tournament.team.event');
 
+    // TODO
     Route::get(
         '/team/schedule',
         [TournamentController::class, 'team_schedule']
     )->name('tournament.team.schedule');
 
+    // TODO
     Route::get(
         '/team/result',
         [TournamentController::class, 'team_result']
@@ -481,7 +484,7 @@ Route::group(['middleware' => ['auth', 'status']], function () {
      * Event
      */
     Route::get(
-        '/event',
+        'tournament/{tournament_id}/event',
         [TournamentController::class, 'event']
     )->name('tournament.event');
 

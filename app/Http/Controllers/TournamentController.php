@@ -320,9 +320,11 @@ class TournamentController extends Controller
     /**
      * Event
      */
-    public function event()
+    public function event(Request $request)
     {
-        return view('tournament.event.index');
+        $tourney = Tournament::find($request->tournament_id);
+
+        return view('tournament.event.index', compact('tourney'));
     }
 
     public function event_manage()
