@@ -154,6 +154,8 @@ class TournamentSeeder extends Seeder
             'round' => 'Semi-Final',
             'event_type_id' => '1',
             'tournament_id' => '1',
+            'start_at' => '2023-02-11 08:30:00',
+            'end_at' => '2023-02-11 09:00:00',
         ]);
 
         Event::create([
@@ -163,6 +165,8 @@ class TournamentSeeder extends Seeder
             'round' => 'Semi-Final',
             'event_type_id' => '1',
             'tournament_id' => '1',
+            'start_at' => '2023-02-11 09:00:00',
+            'end_at' => '2023-02-11 09:30:00',
         ]);
 
         Event::create([
@@ -172,6 +176,8 @@ class TournamentSeeder extends Seeder
             'round' => 'Final',
             'event_type_id' => '1',
             'tournament_id' => '1',
+            'start_at' => '2023-02-12 08:30:00',
+            'end_at' => '2023-02-12 09:00:00',
         ]);
 
         // team matchup
@@ -182,6 +188,8 @@ class TournamentSeeder extends Seeder
             'round' => 'Semi-Final',
             'event_type_id' => '2',
             'tournament_id' => '1',
+            'start_at' => '2023-02-11 08:30:00',
+            'end_at' => '2023-02-11 09:00:00',
         ]);
 
         Event::create([
@@ -191,6 +199,8 @@ class TournamentSeeder extends Seeder
             'round' => 'Semi-Final',
             'event_type_id' => '2',
             'tournament_id' => '1',
+            'start_at' => '2023-02-11 09:00:00',
+            'end_at' => '2023-02-11 09:30:00',
         ]);
 
         Event::create([
@@ -200,6 +210,8 @@ class TournamentSeeder extends Seeder
             'round' => 'Final',
             'event_type_id' => '2',
             'tournament_id' => '1',
+            'start_at' => '2023-02-12 08:30:00',
+            'end_at' => '2023-02-12 09:00:00',
         ]);
 
         // ind heat
@@ -210,6 +222,8 @@ class TournamentSeeder extends Seeder
             'round' => 'Final',
             'event_type_id' => '3',
             'tournament_id' => '1',
+            'start_at' => '2023-02-11 10:00:00',
+            'end_at' => '2023-02-11 10:30:00',
         ]);
 
         // team heat
@@ -220,6 +234,8 @@ class TournamentSeeder extends Seeder
             'round' => 'Final',
             'event_type_id' => '4',
             'tournament_id' => '1',
+            'start_at' => '2023-02-11 11:00:00',
+            'end_at' => '2023-02-11 11:30:00',
         ]);
     }
 }

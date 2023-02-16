@@ -20,6 +20,8 @@ class CreateEventsTable extends Migration
             $table->string('category');
             $table->string('round');
             $table->integer('athlete_per_team_limit')->default(3)->nullable();
+            $table->dateTime('start_at');
+            $table->dateTime('end_at');
 
             // foreign key
             $table->integer('event_type_id')->unsigned();
