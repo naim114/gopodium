@@ -15,4 +15,9 @@ class StandingType extends Model
         'name',
         'description',
     ];
+
+    public function tournament()
+    {
+        return $this->hasMany(Tournament::class);
+    }
 }

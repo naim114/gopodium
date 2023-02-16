@@ -20,4 +20,14 @@ class Event extends Model
         'athlete_per_team_limit',
         'event_type_id',
     ];
+
+    public function event_type()
+    {
+        return $this->belongsTo(EventType::class);
+    }
+
+    public function tournament()
+    {
+        return $this->belongsTo(Tournament::class);
+    }
 }

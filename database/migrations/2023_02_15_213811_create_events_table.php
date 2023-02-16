@@ -25,6 +25,9 @@ class CreateEventsTable extends Migration
             $table->integer('event_type_id')->unsigned();
             $table->foreign('event_type_id')->references('id')->on('event_types')->onUpdate('cascade');
 
+            $table->integer('tournament_id')->unsigned();
+            $table->foreign('tournament_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+
             $table->timestamps();
             $table->softDeletes();
         });

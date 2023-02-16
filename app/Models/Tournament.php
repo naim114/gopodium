@@ -33,8 +33,23 @@ class Tournament extends Model
         'start_at',
     ];
 
+    public function tournament_type()
+    {
+        return $this->belongsTo(TournamentType::class);
+    }
+
+    public function standing_type()
+    {
+        return $this->belongsTo(StandingType::class);
+    }
+
     public function team()
     {
         return $this->hasMany(Team::class);
+    }
+
+    public function event()
+    {
+        return $this->hasMany(Event::class);
     }
 }

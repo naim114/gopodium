@@ -153,6 +153,7 @@ class TournamentSeeder extends Seeder
             'category' => 'Men',
             'round' => 'Semi-Final',
             'event_type_id' => '1',
+            'tournament_id' => '1',
         ]);
 
         Event::create([
@@ -161,6 +162,7 @@ class TournamentSeeder extends Seeder
             'category' => 'Men',
             'round' => 'Semi-Final',
             'event_type_id' => '1',
+            'tournament_id' => '1',
         ]);
 
         Event::create([
@@ -169,6 +171,7 @@ class TournamentSeeder extends Seeder
             'category' => 'Men',
             'round' => 'Final',
             'event_type_id' => '1',
+            'tournament_id' => '1',
         ]);
 
         // team matchup
@@ -178,6 +181,7 @@ class TournamentSeeder extends Seeder
             'category' => 'Women',
             'round' => 'Semi-Final',
             'event_type_id' => '2',
+            'tournament_id' => '1',
         ]);
 
         Event::create([
@@ -186,6 +190,7 @@ class TournamentSeeder extends Seeder
             'category' => 'Women',
             'round' => 'Semi-Final',
             'event_type_id' => '2',
+            'tournament_id' => '1',
         ]);
 
         Event::create([
@@ -194,6 +199,7 @@ class TournamentSeeder extends Seeder
             'category' => 'Women',
             'round' => 'Final',
             'event_type_id' => '2',
+            'tournament_id' => '1',
         ]);
 
         // ind heat
@@ -203,6 +209,7 @@ class TournamentSeeder extends Seeder
             'category' => 'Men',
             'round' => 'Final',
             'event_type_id' => '3',
+            'tournament_id' => '1',
         ]);
 
         // team heat
@@ -212,6 +219,7 @@ class TournamentSeeder extends Seeder
             'category' => 'Women',
             'round' => 'Final',
             'event_type_id' => '4',
+            'tournament_id' => '1',
         ]);
     }
 }

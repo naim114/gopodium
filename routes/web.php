@@ -486,7 +486,7 @@ Route::group(['middleware' => ['auth', 'status']], function () {
     Route::get(
         'tournament/{tournament_id}/event',
         [TournamentController::class, 'event']
-    )->name('tournament.event');
+    )->name('tournament.event')->middleware('tournament.permission');
 
     // TODO get by id
     Route::get(
