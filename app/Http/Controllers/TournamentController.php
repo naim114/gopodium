@@ -324,7 +324,23 @@ class TournamentController extends Controller
     {
         $tourney = Tournament::find($request->tournament_id);
 
-        return view('tournament.event.index', compact('tourney'));
+        $upcoming = array();
+        $ongoing = array();
+        $finished = array();
+
+        foreach ($tourney->event as $event) {
+            $event->status = calculate_status($event);
+
+            if ($event->status == 'upcoming') {
+                array_push($upcoming, $event);
+            } elseif ($event->status == 'ongoing') {
+                array_push($ongoing, $event);
+            } elseif ($event->status == 'finished') {
+                array_push($finished, $event);
+            }
+        }
+
+        return view('tournament.event.index', compact('tourney', 'upcoming', 'ongoing', 'finished'));
     }
 
     public function event_manage()

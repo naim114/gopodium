@@ -7,43 +7,47 @@
             <th scope="col">Category</th>
             <th scope="col">Round</th>
             <th scope="col">Type</th>
-            <th scope="col">Date & Time</th>
+            <th scope="col">Start at</th>
+            <th scope="col">End at</th>
             <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
-        {{-- TODO foreach here --}}
-        <tr>
-            {{-- <th scope="row">{{ $count++ }}</th> --}}
-            <th scope="row">1</th>
-            <td>EVENT NAME</td>
-            <td>EVE001</td>
-            <td>L</td>
-            <td>Final</td>
-            <td>Individual Matchup</td>
-            <td>2/3/2023 3.45 p.m.</td>
-            <td>
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fas fa-ellipsis-h fa-fw"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li>
-                        <a href="{{ route('tournament.event.manage') }}" class="dropdown-item">
-                            Manage
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('tournament.event.settings') }}" class="dropdown-item">
-                            Settings
-                        </a>
-                    </li>
-                    <li>
-                        <button class="dropdown-item text-danger deleteButton">
-                            Delete
-                        </button>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-        {{-- TODO foreach till here --}}
+        @php
+            $count = 1;
+        @endphp
+        @foreach ($finished as $event)
+            <tr>
+                <th scope="row">{{ $count++ }}</th>
+                <td>{{ $event->name }}</td>
+                <td>{{ $event->code }}</td>
+                <td>{{ $event->category }}</td>
+                <td>{{ $event->round }}</td>
+                <td>{{ $event->event_type->name }}</td>
+                <td>{{ $event->start_at->format('d/m/Y h:i A') }}</td>
+                <td>{{ $event->end_at->format('d/m/Y h:i A') }}</td>
+                <td>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false"><i class="fas fa-ellipsis-h fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li>
+                            <a href="{{ route('tournament.event.manage') }}" class="dropdown-item">
+                                Manage
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('tournament.event.settings') }}" class="dropdown-item">
+                                Settings
+                            </a>
+                        </li>
+                        <li>
+                            <button class="dropdown-item text-danger deleteButton">
+                                Delete
+                            </button>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        @endforeach
     </tbody>
 </table>

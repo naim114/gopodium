@@ -33,8 +33,8 @@
                         <td>{{ $plan->name }}</td>
                         <td>{{ number_format($plan->price / 100, 2, '.', ' ') }}</td>
                         <td>{{ $plan->duration }}</td>
-                        <td>{{ $plan->created_at->format('d/m/Y H:i:s') }}</td>
-                        <td>{{ $plan->updated_at->format('d/m/Y H:i:s') }}</td>
+                        <td>{{ $plan->created_at->format('d/m/Y h:i A') }}</td>
+                        <td>{{ $plan->updated_at->format('d/m/Y h:i A') }}</td>
                         <td>
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false"><i class="fas fa-ellipsis-h fa-fw"></i></a>

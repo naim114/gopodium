@@ -1,7 +1,7 @@
 <div class="col-md-6">
     <div class="form-group mb-3">
         <label>Registered at</label>
-        <input type="text" value="{{ $tourney->created_at->format('d/m/Y H:i:s') }}" class="form-control" readonly>
+        <input type="text" value="{{ $tourney->created_at->format('d/m/Y h:i A') }}" class="form-control" readonly>
     </div>
     <div class="form-group mb-3">
         <label>Plan Name</label>

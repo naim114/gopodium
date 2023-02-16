@@ -19,9 +19,13 @@ class Event extends Model
         'round',
         'athlete_per_team_limit',
         'event_type_id',
+    ];
+
+    protected $dates = [
         'start_at',
         'end_at',
     ];
+
 
     public function event_type()
     {

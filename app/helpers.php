@@ -84,6 +84,26 @@ if (!function_exists('calculate_tournament_detail')) {
     }
 }
 
+if (!function_exists('calculate_status')) {
+    function calculate_status($object)
+    {
+        $today = Carbon::now();
+
+        // upcoming (start_at < today && end_at < today)
+        if ($object->start_at > $today && $object->end_at > $today) {
+            return 'upcoming';
+        }
+        // ongoing (start_at <= today && end_at >= today)
+        elseif ($object->start_at <= $today && $object->end_at >= $today) {
+            return 'ongoing';
+        }
+        // finish (start_at > today && end_at > today)
+        elseif ($object->start_at < $today && $object->end_at < $today) {
+            return 'finished';
+        }
+    }
+}
+
 if (!function_exists('is_current_route_name')) {
     function is_current_route_name($route_name)
     {

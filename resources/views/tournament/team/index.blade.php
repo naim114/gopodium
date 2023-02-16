@@ -34,7 +34,7 @@
                         <td><img height="35px" src="{{ asset($team->logo_path ?? 'assets/img/default-team.png') }}" /></td>
                         <td>{{ $team->name }}</td>
                         <td>{{ $team->category }}</td>
-                        <td>{{ $team->created_at->format('d/m/Y H:i:s') }}</td>
+                        <td>{{ $team->created_at->format('d/m/Y h:i A') }}</td>
                         <td>
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false"><i class="fas fa-ellipsis-h fa-fw"></i></a>
