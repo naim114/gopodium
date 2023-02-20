@@ -19,6 +19,9 @@ class Event extends Model
         'round',
         'athlete_per_team_limit',
         'event_type_id',
+        'start_at',
+        'end_at',
+        'tournament_id',
     ];
 
     protected $dates = [

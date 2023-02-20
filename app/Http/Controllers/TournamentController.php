@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Athlete;
+use App\Models\Event;
+use App\Models\EventType;
 use App\Models\StandingType;
 use App\Models\Team;
 use App\Models\Tournament;
@@ -340,7 +342,26 @@ class TournamentController extends Controller
             }
         }
 
-        return view('tournament.event.index', compact('tourney', 'upcoming', 'ongoing', 'finished'));
+        $types = EventType::all();
+
+        return view('tournament.event.index', compact('tourney', 'upcoming', 'ongoing', 'finished', 'types'));
+    }
+
+    public function event_add(Request $request)
+    {
+        $tourney = Tournament::find($request->tournament_id);
+
+        $add = Event::create($request->all());
+
+        // user activity log
+        event(new UserActivityEvent(Auth::user(), $request, 'Add Event ' . $request->name . ' (id: ' . $add->id . ') to Tournament ' . $tourney->name . ' (id: ' . $tourney->id . ')'));
+
+        return back()->with('success', 'Event successfully added!');
+    }
+
+
+    public function event_delete()
+    {
     }
 
     public function event_manage()
@@ -351,14 +372,6 @@ class TournamentController extends Controller
     public function event_settings()
     {
         return view('tournament.event.settings.index');
-    }
-
-    public function event_add()
-    {
-    }
-
-    public function event_delete()
-    {
     }
 
     // schedule

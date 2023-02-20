@@ -488,6 +488,16 @@ Route::group(['middleware' => ['auth', 'status']], function () {
         [TournamentController::class, 'event']
     )->name('tournament.event')->middleware('tournament.permission');
 
+    Route::post(
+        'tournament/add',
+        [TournamentController::class, 'event_add']
+    )->name('tournament.event.add')->middleware('tournament.permission');
+
+    Route::post(
+        'tournament/delete',
+        [TournamentController::class, 'event_delete']
+    )->name('tournament.event.delete')->middleware('tournament.permission');
+
     // TODO get by id
     Route::get(
         '/event/manage',
