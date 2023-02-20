@@ -66,11 +66,29 @@
 
         // delete modal
         $(".deleteButton").click(function() {
+            $("#submit").prop("disabled", true);
             $('#deleteModal').modal('show');
+
+            var event = $(this).data('item');
+            $('.event_id').val(event.id);
+            $('.tournament_id').val(event.tournament_id);
+            $('#del_name').val(event.name);
+
+            $('#del_text').val(null);
+
+            $('#warning').text(`
+                WARNING:
+                Are you sure you want to delete ${event.name}? Previous data can't be retrieve back.
+                Type the event name and click Confirm Delete to confirm event deletion.
+            `);
         });
 
         $(".closeDeleteModal").click(function() {
             $('#deleteModal').modal('hide');
+        });
+
+        $("#del_text").change(function() {
+            $("#submit").prop("disabled", !($('#del_text').val() == $('#del_name').val()));
         });
     </script>
 @stop

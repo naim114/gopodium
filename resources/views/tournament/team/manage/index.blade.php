@@ -121,7 +121,7 @@
                 WARNING:
                 Are you sure you want to delete ${team.name}? Previous data can't be retrieve back.
                 All the athletes data under this team will be deleted too.
-                Type the plan name and click Confirm Delete to confirm plan deletion.
+                Type the team name and click Confirm Delete to confirm team deletion.
             `);
         });
 

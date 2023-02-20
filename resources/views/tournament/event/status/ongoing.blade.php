@@ -43,7 +43,7 @@
                             </a>
                         </li>
                         <li>
-                            <button class="dropdown-item text-danger deleteButton">
+                            <button class="dropdown-item text-danger deleteButton" data-item="{{ $event }}">
                                 Delete
                             </button>
                         </li>

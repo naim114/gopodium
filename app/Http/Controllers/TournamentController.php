@@ -361,6 +361,17 @@ class TournamentController extends Controller
 
     public function event_delete(Request $request)
     {
+        $event = Event::find($request->id);
+        $tourney = Tournament::find($event->tournament_id);
+
+        // soft delete in db
+        Event::where('id', $request->id)
+            ->delete();
+
+        // user activity log
+        event(new UserActivityEvent(Auth::user(), $request, 'Delete event ' . $event->name . ' (id: ' . $event->id . ') from Tournament ' . $tourney->name . ' (id: ' . $tourney->id . ')'));
+
+        return redirect()->route('tournament.event', ['tournament_id' => $tourney->id])->with('success', 'Event successfully deleted!');
     }
 
     public function event_manage(Request $request)

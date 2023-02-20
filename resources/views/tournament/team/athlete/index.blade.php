@@ -130,7 +130,7 @@
             $('#warning').text(`
                 WARNING:
                 Are you sure you want to delete ${athlete.name}? Previous data can't be retrieve back.
-                Type the plan name and click Confirm Delete to confirm plan deletion.
+                Type the athlete name and click Confirm Delete to confirm athlete deletion.
             `);
         });
 

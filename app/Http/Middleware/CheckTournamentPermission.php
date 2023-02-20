@@ -20,7 +20,7 @@ class CheckTournamentPermission
     {
         try {
 
-            $id = $request->id ?? $request->tournament_id;
+            $id = $request->tournament_id ?? $request->id;
 
             $tourney = Tournament::where('id', $id)->first();
 

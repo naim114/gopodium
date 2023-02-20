@@ -501,12 +501,12 @@ Route::group(['middleware' => ['auth', 'status']], function () {
     Route::get(
         'tournament/{tournament_id}/event/{event_id}/manage',
         [TournamentController::class, 'event_manage']
-    )->name('tournament.event.manage');
+    )->name('tournament.event.manage')->middleware('tournament.permission');
 
     Route::get(
         'tournament/{tournament_id}/event/{event_id}/settings',
         [TournamentController::class, 'event_settings']
-    )->name('tournament.event.settings');
+    )->name('tournament.event.settings')->middleware('tournament.permission');
 
     Route::get(
         '/schedule',
