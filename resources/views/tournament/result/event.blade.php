@@ -5,7 +5,7 @@
 @section('user-name', Auth::user()->username)
 
 @section('breadcrumb')
-    <a href="{{ route('tournament', ['id' => $tourney->id]) }}">TOURNEY CODE HERE</a> /
+    <a href="{{ route('tournament', ['id' => $tourney->id]) }}">{{ $tourney->code }}</a> /
     <a href="{{ route('tournament.result') }}">{{ trans('app.tourney.results') }}</a> /
     <a>EVENT NAME HERE</a>
 @stop

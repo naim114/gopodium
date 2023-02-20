@@ -31,12 +31,14 @@
                         aria-expanded="false"><i class="fas fa-ellipsis-h fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li>
-                            <a href="{{ route('tournament.event.manage') }}" class="dropdown-item">
+                            <a href="{{ route('tournament.event.manage', ['tournament_id' => $tourney->id, 'event_id' => $event->id]) }}"
+                                class="dropdown-item">
                                 Manage
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('tournament.event.settings') }}" class="dropdown-item">
+                            <a href="{{ route('tournament.event.settings', ['tournament_id' => $tourney->id, 'event_id' => $event->id]) }}"
+                                class="dropdown-item">
                                 Settings
                             </a>
                         </li>

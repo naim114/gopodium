@@ -359,19 +359,25 @@ class TournamentController extends Controller
         return back()->with('success', 'Event successfully added!');
     }
 
-
-    public function event_delete()
+    public function event_delete(Request $request)
     {
     }
 
-    public function event_manage()
+    public function event_manage(Request $request)
     {
-        return view('tournament.event.participant.manage');
+        $tourney = Tournament::find($request->tournament_id);
+        $event = Event::find($request->event_id);
+
+        return view('tournament.event.participant.manage', compact('tourney', 'event'));
     }
 
-    public function event_settings()
+    public function event_settings(Request $request)
     {
-        return view('tournament.event.settings.index');
+        $tourney = Tournament::find($request->tournament_id);
+        $event = Event::find($request->event_id);
+        $types = EventType::all();
+
+        return view('tournament.event.settings.index', compact('tourney', 'event', 'types'));
     }
 
     // schedule

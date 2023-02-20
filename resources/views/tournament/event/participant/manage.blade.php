@@ -1,13 +1,15 @@
 @extends('layouts.dashboard-master')
 
-@section('page-title', 'EVENT NAME HERE')
+@section('page-title', $event->name)
 
 @section('user-name', Auth::user()->username)
 
 @section('breadcrumb')
-    <a href="{{ route('tournament', ['id' => $tourney->id]) }}">TOURNEY CODE HERE</a> /
+    <a href="{{ route('tournament', ['id' => $tourney->id]) }}">{{ $tourney->code }}</a> /
     <a href="{{ route('tournament.event', ['tournament_id' => $tourney->id]) }}">{{ trans('app.tourney.events') }}</a> /
-    <a href="{{ route('tournament.event.manage') }}">EVENT NAME HERE</a> /
+    <a
+        href="{{ route('tournament.event.manage', ['tournament_id' => $tourney->id, 'event_id' => $event->id]) }}">{{ $event->name }}</a>
+    /
     <a>Manage</a>
 @stop
 
@@ -19,18 +21,18 @@
     @include('tournament.event.tab')
 
     {{-- Individual --}}
-    {{-- Indivudal Matchup --}}
-    @if (false)
+    {{-- Individual Matchup --}}
+    @if ($event->event_type->name == 'Individual Matchup')
         @include('tournament.event.participant.individual.matchup')
     @endif
 
-    {{-- Indivudal Heat --}}
-    @if (false)
+    {{-- Individual Heat --}}
+    @if ($event->event_type->name == 'Individual Heat')
         @include('tournament.event.participant.individual.heat')
     @endif
 
     {{-- Individual Modal --}}
-    @if (false)
+    @if ($event->event_type->name == 'Individual Matchup' || $event->event_type->name == 'Individual Heat')
         {{-- Add Modal --}}
         @include('tournament.event.participant.individual.add')
 
@@ -43,17 +45,17 @@
 
     {{-- Team --}}
     {{-- Team Matchup --}}
-    @if (true)
+    @if ($event->event_type->name == 'Team Matchup')
         @include('tournament.event.participant.team.matchup')
     @endif
 
     {{-- Team Heat --}}
-    @if (true)
+    @if ($event->event_type->name == 'Team Heat')
         @include('tournament.event.participant.team.heat')
     @endif
 
     {{-- Team Modal --}}
-    @if (true)
+    @if ($event->event_type->name == 'Team Matchup' || $event->event_type->name == 'Team Heat')
         {{-- Add Modal --}}
         @include('tournament.event.participant.team.add')
 

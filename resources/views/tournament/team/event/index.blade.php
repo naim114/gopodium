@@ -20,7 +20,7 @@
 @section('user-name', Auth::user()->username)
 
 @section('breadcrumb')
-    <a href="{{ route('tournament', ['id' => $tourney->id]) }}">TOURNEY CODE HERE</a> /
+    <a href="{{ route('tournament', ['id' => $tourney->id]) }}">{{ $tourney->code }}</a> /
     <a href="{{ route('tournament.team.manage', ['tournament_id' => $tourney->id, 'team_id' => $team->id]) }}">TEAM NAME
         HERE</a> /
     <a>{{ trans('app.tourney.events') }}</a>
