@@ -374,6 +374,29 @@ class TournamentController extends Controller
         return redirect()->route('tournament.event', ['tournament_id' => $tourney->id])->with('success', 'Event successfully deleted!');
     }
 
+    public function event_edit(Request $request)
+    {
+        $event = Event::find($request->id);
+        $tourney = Tournament::find($event->tournament_id);
+
+        Event::where('id', $request->id)
+            ->update([
+                'name' => $request->name,
+                'code' => $request->code,
+                'category' => $request->category,
+                'round' => $request->round,
+                'athlete_per_team_limit' => $request->athlete_per_team_limit,
+                'event_type_id' => $request->event_type_id,
+                'start_at' => $request->start_at,
+                'end_at' => $request->end_at,
+            ]);
+
+        // user activity log
+        event(new UserActivityEvent(Auth::user(), $request, 'Edit Event ' . $event->name . ' (id: ' . $event->id . ') settings of Tournament ' . $tourney->name . ' (id: ' . $tourney->id . ')'));
+
+        return back()->with('success', 'Event successfully edited!');
+    }
+
     public function event_manage(Request $request)
     {
         $tourney = Tournament::find($request->tournament_id);
