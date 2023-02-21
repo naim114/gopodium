@@ -39,4 +39,9 @@ class Event extends Model
     {
         return $this->belongsTo(Tournament::class);
     }
+
+    public function participant()
+    {
+        return $this->hasMany(Participant::class);
+    }
 }

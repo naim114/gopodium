@@ -19,4 +19,9 @@ class Participant extends Model
         'athlete_id',
         'team_id',
     ];
+
+    public function event()
+    {
+        return $this->belongsTo(Event::class);
+    }
 }
