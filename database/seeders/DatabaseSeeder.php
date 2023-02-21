@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PlanSeeder::class);
         $this->call(NotificationSeeder::class);
         $this->call(TournamentSeeder::class);
+        $this->call(EventSeeder::class);
 
         Model::reguard();
     }

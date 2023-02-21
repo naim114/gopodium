@@ -3,8 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Athlete;
-use App\Models\Event;
-use App\Models\EventType;
 use App\Models\StandingType;
 use App\Models\Team;
 use App\Models\Tournament;
@@ -95,6 +93,11 @@ class TournamentSeeder extends Seeder
         ]);
 
         Athlete::create([
+            'name' => 'July',
+            'team_id' => '1',
+        ]);
+
+        Athlete::create([
             'name' => 'Ali',
             'team_id' => '2',
         ]);
@@ -106,6 +109,11 @@ class TournamentSeeder extends Seeder
 
         Athlete::create([
             'name' => 'Kareem',
+            'team_id' => '2',
+        ]);
+
+        Athlete::create([
+            'name' => 'Molly',
             'team_id' => '2',
         ]);
 
@@ -124,118 +132,9 @@ class TournamentSeeder extends Seeder
             'team_id' => '3',
         ]);
 
-        // event type
-        EventType::create([
-            'name' => 'Individual Matchup',
-            'description' => 'Two person versus each other',
-        ]);
-
-        EventType::create([
-            'name' => 'Team Matchup',
-            'description' => 'Two team versus each other',
-        ]);
-
-        EventType::create([
-            'name' => 'Individual Heat',
-            'description' => 'More than two person versus each other',
-        ]);
-
-        EventType::create([
-            'name' => 'Team Heat',
-            'description' => 'More than two team versus each other',
-        ]);
-
-        // event
-        // ind matchup
-        Event::create([
-            'name' => 'Ping Pong Men Individual',
-            'code' => 'PP001',
-            'category' => 'Men',
-            'round' => 'Semi-Final',
-            'event_type_id' => '1',
-            'tournament_id' => '1',
-            'start_at' => '2023-02-11 08:30:00',
-            'end_at' => '2023-02-11 09:00:00',
-        ]);
-
-        Event::create([
-            'name' => 'Ping Pong Men Individual',
-            'code' => 'PP002',
-            'category' => 'Men',
-            'round' => 'Semi-Final',
-            'event_type_id' => '1',
-            'tournament_id' => '1',
-            'start_at' => '2023-02-11 09:00:00',
-            'end_at' => '2023-02-11 09:30:00',
-        ]);
-
-        Event::create([
-            'name' => 'Ping Pong Men Individual',
-            'code' => 'PP003',
-            'category' => 'Men',
-            'round' => 'Final',
-            'event_type_id' => '1',
-            'tournament_id' => '1',
-            'start_at' => '2023-02-12 08:30:00',
-            'end_at' => '2023-02-12 09:00:00',
-        ]);
-
-        // team matchup
-        Event::create([
-            'name' => 'Badminton Women Double',
-            'code' => 'BM001',
-            'category' => 'Women',
-            'round' => 'Semi-Final',
-            'event_type_id' => '2',
-            'tournament_id' => '1',
-            'start_at' => '2023-02-11 08:30:00',
-            'end_at' => '2023-02-11 09:00:00',
-        ]);
-
-        Event::create([
-            'name' => 'Badminton Women Double',
-            'code' => 'BM002',
-            'category' => 'Women',
-            'round' => 'Semi-Final',
-            'event_type_id' => '2',
-            'tournament_id' => '1',
-            'start_at' => '2023-02-11 09:00:00',
-            'end_at' => '2023-02-11 09:30:00',
-        ]);
-
-        Event::create([
-            'name' => 'Badminton Women Double',
-            'code' => 'BM001',
-            'category' => 'Women',
-            'round' => 'Final',
-            'event_type_id' => '2',
-            'tournament_id' => '1',
-            'start_at' => '2023-02-12 08:30:00',
-            'end_at' => '2023-02-12 09:00:00',
-        ]);
-
-        // ind heat
-        Event::create([
-            'name' => '100M Men',
-            'code' => 'TR001',
-            'category' => 'Men',
-            'round' => 'Final',
-            'event_type_id' => '3',
-            'tournament_id' => '1',
-            'start_at' => '2023-02-11 10:00:00',
-            'end_at' => '2023-02-11 10:30:00',
-        ]);
-
-        // team heat
-        Event::create([
-            'name' => '4 X 200M Women',
-            'code' => 'TR002',
-            'category' => 'Women',
-            'round' => 'Final',
-            'event_type_id' => '4',
-            'tournament_id' => '1',
-            'start_at' => '2023-02-11 11:00:00',
-            'end_at' => '2023-02-11 11:30:00',
+        Athlete::create([
+            'name' => 'Emmy',
+            'team_id' => '3',
         ]);
     }
 }
