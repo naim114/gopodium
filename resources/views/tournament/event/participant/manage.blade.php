@@ -114,6 +114,12 @@
 
         // delete Individual modal
         $(".deleteIndividualButton").click(function() {
+            var participant = $(this).data('item');
+            $('#warning').text(`
+                WARNING:
+                Are you sure you want to delete ${participant.athlete.name} participant record for this event? Previous data can't be retrieve back.
+            `);
+            $('#deleteIndividualModalId').val(participant.id);
             $('#deleteIndividualModal').modal('show');
         });
 

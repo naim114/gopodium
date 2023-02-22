@@ -450,6 +450,26 @@ class TournamentController extends Controller
         }
     }
 
+    public function participant_delete(Request $request)
+    {
+        $participant = Participant::find($request->id);
+        $event = Event::find($participant->event_id);
+        $tourney = Tournament::find($event->tournament_id);
+
+        // soft delete in db
+        Participant::where('id', $request->id)
+            ->delete();
+
+        // user activity log
+        event(new UserActivityEvent(
+            Auth::user(),
+            $request,
+            'Delete participant ' . $participant->athlete->name . ' (Score: ' . $request->score ?? null . ') of Event ' . $event->name . ' (id: ' . $event->id . ') of Tournament ' . $tourney->name . ' (id: ' . $tourney->id . ')'
+        ));
+
+        return back()->with('success', 'Participant successfully deleted!');
+    }
+
     // schedule
     public function schedule()
     {

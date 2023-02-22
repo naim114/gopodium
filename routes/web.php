@@ -517,6 +517,11 @@ Route::group(['middleware' => ['auth', 'status']], function () {
         [TournamentController::class, 'participant_manage']
     )->name('tournament.event.participant.manage')->middleware('tournament.permission');
 
+    Route::post(
+        'tournament/participant/delete',
+        [TournamentController::class, 'participant_delete']
+    )->name('tournament.event.participant.delete')->middleware('tournament.permission');
+
     Route::get(
         '/schedule',
         [TournamentController::class, 'schedule']
