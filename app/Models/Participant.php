@@ -13,7 +13,7 @@ class Participant extends Model
     protected $table = 'participants';
 
     protected $fillable = [
-        'mark',
+        'score',
         'note',
         'event_id',
         'athlete_id',
@@ -23,5 +23,15 @@ class Participant extends Model
     public function event()
     {
         return $this->belongsTo(Event::class);
+    }
+
+    public function athlete()
+    {
+        return $this->belongsTo(Athlete::class);
+    }
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
     }
 }

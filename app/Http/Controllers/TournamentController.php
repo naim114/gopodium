@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Athlete;
 use App\Models\Event;
 use App\Models\EventType;
+use App\Models\Participant;
 use App\Models\StandingType;
 use App\Models\Team;
 use App\Models\Tournament;
@@ -412,6 +413,41 @@ class TournamentController extends Controller
         $types = EventType::all();
 
         return view('tournament.event.settings.index', compact('tourney', 'event', 'types'));
+    }
+
+    public function participant_manage(Request $request)
+    {
+        if (isset($request->id)) {
+            // update
+            $participant = Participant::find($request->id);
+            $event = Event::find($participant->event_id);
+            $tourney = Tournament::find($event->tournament_id);
+
+            Participant::where('id', $request->id)
+                ->update([
+                    'score' => $request->score ?? null,
+                    'note' => $request->note ?? null,
+                    'athlete_id' => $request->athlete_id ?? null,
+                    'team_id' => $request->team_id ?? null,
+                ]);
+
+            // user activity log
+            event(new UserActivityEvent(Auth::user(), $request, 'Edit participant ' . $participant->athlete->name . ' (Score: ' . $request->score ?? null . ') of Event ' . $event->name . ' (id: ' . $event->id . ') of Tournament ' . $tourney->name . ' (id: ' . $tourney->id . ')'));
+
+            return back()->with('success', 'Participant successfully updated!');
+        } else {
+            // add
+            $event = Event::find($request->event_id);
+            $tourney = Tournament::find($request->tournament_id);
+            $athlete = Athlete::find($request->athlete_id);
+
+            Participant::create($request->all());
+
+            // user activity log
+            event(new UserActivityEvent(Auth::user(), $request, 'Add participant ' . $athlete->name . ' (id: ' . $athlete->id . ') of Event ' . $event->name . ' (id: ' . $event->id . ') to Tournament ' . $tourney->name . ' (id: ' . $tourney->id . ')'));
+
+            return back()->with('success', 'Participant successfully added!');
+        }
     }
 
     // schedule

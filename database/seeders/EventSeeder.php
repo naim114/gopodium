@@ -58,14 +58,12 @@ class EventSeeder extends Seeder
         ]);
 
         Participant::create([
-            'mark' => '0',
             'note' => '',
             'event_id' => '1',
             'athlete_id' => '1',
         ]);
 
         Participant::create([
-            'mark' => '0',
             'note' => '',
             'event_id' => '1',
             'athlete_id' => '5',
@@ -84,14 +82,12 @@ class EventSeeder extends Seeder
         ]);
 
         Participant::create([
-            'mark' => '0',
             'note' => '',
             'event_id' => '2',
             'athlete_id' => '6',
         ]);
 
         Participant::create([
-            'mark' => '0',
             'note' => '',
             'event_id' => '2',
             'athlete_id' => '9',
@@ -123,28 +119,24 @@ class EventSeeder extends Seeder
         ]);
 
         Participant::create([
-            'mark' => '0',
             'note' => '',
             'event_id' => '4',
             'athlete_id' => '2',
         ]);
 
         Participant::create([
-            'mark' => '0',
             'note' => '',
             'event_id' => '4',
             'athlete_id' => '3',
         ]);
 
         Participant::create([
-            'mark' => '0',
             'note' => '',
             'event_id' => '4',
             'athlete_id' => '10',
         ]);
 
         Participant::create([
-            'mark' => '0',
             'note' => '',
             'event_id' => '4',
             'athlete_id' => '11',
@@ -188,42 +180,36 @@ class EventSeeder extends Seeder
         ]);
 
         Participant::create([
-            'mark' => '0',
             'note' => '',
             'event_id' => '7',
             'athlete_id' => '1',
         ]);
 
         Participant::create([
-            'mark' => '0',
             'note' => '',
             'event_id' => '7',
             'athlete_id' => '2',
         ]);
 
         Participant::create([
-            'mark' => '0',
             'note' => '',
             'event_id' => '7',
             'athlete_id' => '5',
         ]);
 
         Participant::create([
-            'mark' => '0',
             'note' => '',
             'event_id' => '7',
             'athlete_id' => '6',
         ]);
 
         Participant::create([
-            'mark' => '0',
             'note' => '',
             'event_id' => '7',
             'athlete_id' => '9',
         ]);
 
         Participant::create([
-            'mark' => '0',
             'note' => '',
             'event_id' => '7',
             'athlete_id' => '10',
@@ -243,84 +229,72 @@ class EventSeeder extends Seeder
         ]);
 
         Participant::create([
-            'mark' => '0',
             'note' => '',
             'event_id' => '8',
             'athlete_id' => '1',
         ]);
 
         Participant::create([
-            'mark' => '0',
             'note' => '',
             'event_id' => '8',
             'athlete_id' => '2',
         ]);
 
         Participant::create([
-            'mark' => '0',
             'note' => '',
             'event_id' => '8',
             'athlete_id' => '3',
         ]);
 
         Participant::create([
-            'mark' => '0',
             'note' => '',
             'event_id' => '8',
             'athlete_id' => '4',
         ]);
 
         Participant::create([
-            'mark' => '0',
             'note' => '',
             'event_id' => '8',
             'athlete_id' => '5',
         ]);
 
         Participant::create([
-            'mark' => '0',
             'note' => '',
             'event_id' => '8',
             'athlete_id' => '6',
         ]);
 
         Participant::create([
-            'mark' => '0',
             'note' => '',
             'event_id' => '8',
             'athlete_id' => '7',
         ]);
 
         Participant::create([
-            'mark' => '0',
             'note' => '',
             'event_id' => '8',
             'athlete_id' => '8',
         ]);
 
         Participant::create([
-            'mark' => '0',
             'note' => '',
             'event_id' => '8',
             'athlete_id' => '9',
         ]);
 
         Participant::create([
-            'mark' => '0',
             'note' => '',
             'event_id' => '8',
             'athlete_id' => '10',
         ]);
 
         Participant::create([
-            'mark' => '0',
             'note' => '',
             'event_id' => '8',
             'athlete_id' => '11',
         ]);
 
         Participant::create([
-            'mark' => '0',
             'note' => '',
             'event_id' => '8',
             'athlete_id' => '12',

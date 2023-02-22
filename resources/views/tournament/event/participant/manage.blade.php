@@ -65,10 +65,17 @@
         {{-- Delete Modal --}}
         @include('tournament.event.participant.team.delete')
     @endif
-
 @stop
 
 @section('scripts')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- CDN link used below is compatible with this example -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
     <script>
         // INDIVIDUAL
         // add Individual modal
@@ -82,7 +89,23 @@
 
         // edit Individual modal
         $(".editIndividualButton").click(function() {
-            $('#editIndividualModal').modal('show');
+            var participant = $(this).data('item');
+
+            if (participant == '') {
+                $(".individualAthlete select").val("").change();
+                $('.selectpicker').selectpicker('refresh');
+                $("#score").val(null);
+                $("#id").val(null);
+                $("#note").val(null);
+                $('#editIndividualModal').modal('show');
+            } else {
+                $(".individualAthlete select").val(participant.athlete.id).change();
+                $('.selectpicker').selectpicker('refresh');
+                $("#score").val(participant.score);
+                $("#id").val(participant.id);
+                $("#note").val(participant.note);
+                $('#editIndividualModal').modal('show');
+            }
         });
 
         $(".closeEditIndividualModal").click(function() {

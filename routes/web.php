@@ -432,7 +432,7 @@ Route::group(['middleware' => ['auth', 'status']], function () {
     )->name('tournament.team.delete');
 
     /**
-     * Team Athletes
+     * Team Athletes TODO INVITE MANAGERS
      */
     Route::get(
         '/tournament/{tournament_id}/team/{team_id}/athletes',
@@ -511,6 +511,11 @@ Route::group(['middleware' => ['auth', 'status']], function () {
         'tournament/{tournament_id}/event/{event_id}/settings',
         [TournamentController::class, 'event_settings']
     )->name('tournament.event.settings')->middleware('tournament.permission');
+
+    Route::post(
+        'tournament/participant/manage',
+        [TournamentController::class, 'participant_manage']
+    )->name('tournament.event.participant.manage')->middleware('tournament.permission');
 
     Route::get(
         '/schedule',
