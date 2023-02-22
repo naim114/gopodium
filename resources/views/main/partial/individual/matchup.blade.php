@@ -15,10 +15,7 @@
             <td>Q</td>
         </tr>
         <tr class="active" aria-disabled="true">
-            <td></td>
-            <td></td>
-            <td><b>VS</b></td>
-            <td></td>
+            <td colspan="4" class="text-center"><b>VS</b></td>
         </tr>
         <tr>
             <td>ATHLETE</td>

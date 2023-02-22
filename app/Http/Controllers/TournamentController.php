@@ -6,6 +6,7 @@ use App\Models\Athlete;
 use App\Models\Event;
 use App\Models\EventType;
 use App\Models\Participant;
+use App\Models\ParticipantItem;
 use App\Models\StandingType;
 use App\Models\Team;
 use App\Models\Tournament;
@@ -419,32 +420,62 @@ class TournamentController extends Controller
     {
         if (isset($request->id)) {
             // update
-            $participant = Participant::find($request->id);
-            $event = Event::find($participant->event_id);
-            $tourney = Tournament::find($event->tournament_id);
+            if (isset($request->athlete_id)) {
+                // individual
+                $participant = Participant::find($request->id);
+                $event = Event::find($participant->event_id);
+                $tourney = Tournament::find($event->tournament_id);
 
-            Participant::where('id', $request->id)
-                ->update([
-                    'score' => $request->score ?? null,
-                    'note' => $request->note ?? null,
-                    'athlete_id' => $request->athlete_id ?? null,
-                    'team_id' => $request->team_id ?? null,
-                ]);
+                Participant::where('id', $request->id)
+                    ->update([
+                        'score' => $request->score ?? null,
+                        'note' => $request->note ?? null,
+                        'athlete_id' => $request->athlete_id,
+                    ]);
 
-            // user activity log
-            event(new UserActivityEvent(Auth::user(), $request, 'Edit participant ' . $participant->athlete->name . ' (Score: ' . $request->score ?? null . ') of Event ' . $event->name . ' (id: ' . $event->id . ') of Tournament ' . $tourney->name . ' (id: ' . $tourney->id . ')'));
+                // user activity log
+                event(new UserActivityEvent(Auth::user(), $request, 'Edit participant athlete ' . $participant->athlete->name . ' (Score: ' . $request->score ?? null . ') of Event ' . $event->name . ' (id: ' . $event->id . ') of Tournament ' . $tourney->name . ' (id: ' . $tourney->id . ')'));
+            } else {
+                // team
+                $participant = Participant::find($request->id);
+                $event = Event::find($participant->event_id);
+                $tourney = Tournament::find($event->tournament_id);
+
+                // if update team then delete participant item
+                if ($participant->team_id != $request->team_id) {
+                    ParticipantItem::where('participant_id', $request->id)->delete();
+                }
+
+                Participant::where('id', $request->id)
+                    ->update([
+                        'score' => $request->score ?? null,
+                        'note' => $request->note ?? null,
+                        'team_id' => $request->team_id,
+                    ]);
+
+                // user activity log
+                event(new UserActivityEvent(Auth::user(), $request, 'Edit participant team ' . $participant->team->name . ' (Score: ' . $request->score ?? null . ') of Event ' . $event->name . ' (id: ' . $event->id . ') of Tournament ' . $tourney->name . ' (id: ' . $tourney->id . ')'));
+            }
 
             return back()->with('success', 'Participant successfully updated!');
         } else {
             // add
             $event = Event::find($request->event_id);
             $tourney = Tournament::find($request->tournament_id);
-            $athlete = Athlete::find($request->athlete_id);
 
             Participant::create($request->all());
 
-            // user activity log
-            event(new UserActivityEvent(Auth::user(), $request, 'Add participant ' . $athlete->name . ' (id: ' . $athlete->id . ') of Event ' . $event->name . ' (id: ' . $event->id . ') to Tournament ' . $tourney->name . ' (id: ' . $tourney->id . ')'));
+            if (isset($request->athlete_id)) {
+                $athlete = Athlete::find($request->athlete_id);
+
+                // user activity log
+                event(new UserActivityEvent(Auth::user(), $request, 'Add participant athlete ' . $athlete->name . ' (id: ' . $athlete->id . ') of Event ' . $event->name . ' (id: ' . $event->id . ') to Tournament ' . $tourney->name . ' (id: ' . $tourney->id . ')'));
+            } else {
+                $team = Team::find($request->team_id);
+
+                // user activity log
+                event(new UserActivityEvent(Auth::user(), $request, 'Add participant team ' . $team->name . ' (id: ' . $team->id . ') of Event ' . $event->name . ' (id: ' . $event->id . ') to Tournament ' . $tourney->name . ' (id: ' . $tourney->id . ')'));
+            }
 
             return back()->with('success', 'Participant successfully added!');
         }
@@ -456,6 +487,11 @@ class TournamentController extends Controller
         $event = Event::find($participant->event_id);
         $tourney = Tournament::find($event->tournament_id);
 
+        // delete participant item if exist
+        if (isset($participant->team_id)) {
+            ParticipantItem::where('participant_id', $request->id)->delete();
+        }
+
         // soft delete in db
         Participant::where('id', $request->id)
             ->delete();
@@ -464,7 +500,7 @@ class TournamentController extends Controller
         event(new UserActivityEvent(
             Auth::user(),
             $request,
-            'Delete participant ' . $participant->athlete->name . ' (Score: ' . $request->score ?? null . ') of Event ' . $event->name . ' (id: ' . $event->id . ') of Tournament ' . $tourney->name . ' (id: ' . $tourney->id . ')'
+            'Delete participant ' . $participant->athlete->name . ' (Score: ' . $participant->score ?? null . ') of Event ' . $event->name . ' (id: ' . $event->id . ') of Tournament ' . $tourney->name . ' (id: ' . $tourney->id . ')'
         ));
 
         return back()->with('success', 'Participant successfully deleted!');

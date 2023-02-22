@@ -21,4 +21,9 @@ class ParticipantItem extends Model
     {
         return $this->belongsTo(Participant::class);
     }
+
+    public function athlete()
+    {
+        return $this->belongsTo(Athlete::class);
+    }
 }

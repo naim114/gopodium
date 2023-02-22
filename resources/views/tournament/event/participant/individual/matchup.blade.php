@@ -37,11 +37,7 @@
         </tr>
 
         <tr class="active" aria-disabled="true">
-            <td></td>
-            <td></td>
-            <td><b>VS</b></td>
-            <td></td>
-            <td></td>
+            <td colspan="5" class="text-center"><b>VS</b></td>
         </tr>
 
         <tr>

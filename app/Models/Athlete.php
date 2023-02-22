@@ -26,4 +26,9 @@ class Athlete extends Model
     {
         return $this->hasMany(Participant::class);
     }
+
+    public function participant_item()
+    {
+        return $this->hasMany(ParticipantItem::class);
+    }
 }

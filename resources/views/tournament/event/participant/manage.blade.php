@@ -97,15 +97,15 @@
                 $("#score").val(null);
                 $("#id").val(null);
                 $("#note").val(null);
-                $('#editIndividualModal').modal('show');
             } else {
                 $(".individualAthlete select").val(participant.athlete.id).change();
                 $('.selectpicker').selectpicker('refresh');
-                $("#score").val(participant.score);
                 $("#id").val(participant.id);
+                $("#score").val(participant.score);
                 $("#note").val(participant.note);
-                $('#editIndividualModal').modal('show');
             }
+            $('#editIndividualModal').modal('show');
+
         });
 
         $(".closeEditIndividualModal").click(function() {
@@ -115,6 +115,7 @@
         // delete Individual modal
         $(".deleteIndividualButton").click(function() {
             var participant = $(this).data('item');
+
             $('#warning').text(`
                 WARNING:
                 Are you sure you want to delete ${participant.athlete.name} participant record for this event? Previous data can't be retrieve back.
@@ -139,6 +140,20 @@
 
         // edit Team modal
         $(".editTeamButton").click(function() {
+            var participant = $(this).data('item');
+
+            if (participant == '') {
+                $("#id").val(null);
+                $("#team").val('');
+                $("#score").val(null);
+                $("#note").val(null);
+            } else {
+                $("#id").val(participant.id);
+                $('#team').val(participant.team.id);
+                $('#score').val(participant.score);
+                $('#note').val(participant.note);
+            }
+
             $('#editTeamModal').modal('show');
         });
 
@@ -148,6 +163,14 @@
 
         // delete Team modal
         $(".deleteTeamButton").click(function() {
+            var participant = $(this).data('item');
+
+            $('#warning').text(`
+                WARNING:
+                Are you sure you want to delete ${participant.team.name} participant record for this event? Associated athlete record will be deleted too. Previous data can't be retrieve back.
+            `);
+            $('#deleteTeamModalId').val(participant.id);
+
             $('#deleteTeamModal').modal('show');
         });
 

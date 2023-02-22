@@ -13,9 +13,7 @@
             <td>Q</td>
         </tr>
         <tr class="active" aria-disabled="true">
-            <td></td>
-            <td><b>VS</b></td>
-            <td></td>
+            <td colspan="3" class="text-center"><b>VS</b></td>
         </tr>
         <tr>
             <td><a href="{{ route('main.tourney.team') }}">TEAM</a></td>

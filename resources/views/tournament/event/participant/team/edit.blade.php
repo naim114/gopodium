@@ -1,7 +1,7 @@
 <div class="modal fade" id="editTeamModal" tabindex="-1" role="dialog" aria-labelledby="editTeamModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form method="POST" action="">
+        <form method="POST" action="{{ route('tournament.event.participant.manage') }}">
             @csrf
             <div class="modal-content">
                 <div class="modal-header">
@@ -10,23 +10,33 @@
                     </h5>
                 </div>
                 <div class="modal-body">
+                    <p>WARNING: Once you change team, associated athlete record will be deleted too.</p>
+
                     <div class="form-group mb-2">
                         <label>Team</label>
-                        <select name="type" class="mt-2 form-control" required>
-                            {{-- FOREACH HERE --}}
-                            <option value="">TEAM NAME HERE</option>
-                            {{-- FOREACH HERE --}}
+                        <select id="team" name="team_id" class="mt-2 form-control" required>
+                            <option value="">Select a team</option>
+                            @foreach ($tourney->team as $team)
+                                <option value="{{ $team->id }}">
+                                    {{ $team->name }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
 
                     <div class="form-group mb-2">
                         <label>Score</label>
-                        <input type="number" class="form-control" placeholder="Enter score">
+                        <input id="id" name="id" type="text" hidden>
+                        <input id="score" name="score" type="number" step="0.001" class="form-control"
+                            placeholder="Enter score">
+                        <input name="event_id" type="text" value="{{ $event->id }}" hidden>
+                        <input name="tournament_id" type="text" value="{{ $tourney->id }}" hidden>
                     </div>
 
                     <div class="form-group mb-2">
                         <label>Notes</label>
-                        <input type="text" class="form-control" placeholder="Enter note">
+                        <input id="note" name="note" type="text" class="form-control"
+                            placeholder="Enter note">
                     </div>
                 </div>
 
