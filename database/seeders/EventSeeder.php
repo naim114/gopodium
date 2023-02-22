@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Event;
 use App\Models\EventType;
 use App\Models\Participant;
+use App\Models\ParticipantItem;
 
 class EventSeeder extends Seeder
 {
@@ -58,13 +59,11 @@ class EventSeeder extends Seeder
         ]);
 
         Participant::create([
-            'note' => '',
             'event_id' => '1',
             'athlete_id' => '1',
         ]);
 
         Participant::create([
-            'note' => '',
             'event_id' => '1',
             'athlete_id' => '5',
         ]);
@@ -82,13 +81,11 @@ class EventSeeder extends Seeder
         ]);
 
         Participant::create([
-            'note' => '',
             'event_id' => '2',
             'athlete_id' => '6',
         ]);
 
         Participant::create([
-            'note' => '',
             'event_id' => '2',
             'athlete_id' => '9',
         ]);
@@ -118,27 +115,35 @@ class EventSeeder extends Seeder
             'end_at' => '2023-02-11 09:00:00',
         ]);
 
-        Participant::create([
-            'note' => '',
+        // team a
+        $p = Participant::create([
             'event_id' => '4',
+            'team_id' => '1',
+        ]);
+
+        ParticipantItem::create([
+            'participant_id' => $p->id,
             'athlete_id' => '2',
         ]);
 
-        Participant::create([
-            'note' => '',
-            'event_id' => '4',
+        ParticipantItem::create([
+            'participant_id' => $p->id,
             'athlete_id' => '3',
         ]);
 
-        Participant::create([
-            'note' => '',
+        // team b
+        $p = Participant::create([
             'event_id' => '4',
+            'team_id' => '3',
+        ]);
+
+        ParticipantItem::create([
+            'participant_id' => $p->id,
             'athlete_id' => '10',
         ]);
 
-        Participant::create([
-            'note' => '',
-            'event_id' => '4',
+        ParticipantItem::create([
+            'participant_id' => $p->id,
             'athlete_id' => '11',
         ]);
 
@@ -180,37 +185,31 @@ class EventSeeder extends Seeder
         ]);
 
         Participant::create([
-            'note' => '',
             'event_id' => '7',
             'athlete_id' => '1',
         ]);
 
         Participant::create([
-            'note' => '',
             'event_id' => '7',
             'athlete_id' => '2',
         ]);
 
         Participant::create([
-            'note' => '',
             'event_id' => '7',
             'athlete_id' => '5',
         ]);
 
         Participant::create([
-            'note' => '',
             'event_id' => '7',
             'athlete_id' => '6',
         ]);
 
         Participant::create([
-            'note' => '',
             'event_id' => '7',
             'athlete_id' => '9',
         ]);
 
         Participant::create([
-            'note' => '',
             'event_id' => '7',
             'athlete_id' => '10',
         ]);
@@ -228,75 +227,81 @@ class EventSeeder extends Seeder
             'end_at' => '2023-02-11 11:30:00',
         ]);
 
-        Participant::create([
-            'note' => '',
+        // team a
+        $p = Participant::create([
             'event_id' => '8',
+            'team_id' => '1',
+        ]);
+
+        ParticipantItem::create([
+            'participant_id' => $p->id,
             'athlete_id' => '1',
         ]);
 
-        Participant::create([
-            'note' => '',
-            'event_id' => '8',
+        ParticipantItem::create([
+            'participant_id' => $p->id,
             'athlete_id' => '2',
         ]);
 
-        Participant::create([
-            'note' => '',
-            'event_id' => '8',
+        ParticipantItem::create([
+            'participant_id' => $p->id,
             'athlete_id' => '3',
         ]);
 
-        Participant::create([
-            'note' => '',
-            'event_id' => '8',
+        ParticipantItem::create([
+            'participant_id' => $p->id,
             'athlete_id' => '4',
         ]);
 
-        Participant::create([
-            'note' => '',
+        // team b
+        $p = Participant::create([
             'event_id' => '8',
+            'team_id' => '2',
+        ]);
+
+        ParticipantItem::create([
+            'participant_id' => $p->id,
             'athlete_id' => '5',
         ]);
 
-        Participant::create([
-            'note' => '',
-            'event_id' => '8',
+        ParticipantItem::create([
+            'participant_id' => $p->id,
             'athlete_id' => '6',
         ]);
 
-        Participant::create([
-            'note' => '',
-            'event_id' => '8',
+        ParticipantItem::create([
+            'participant_id' => $p->id,
             'athlete_id' => '7',
         ]);
 
-        Participant::create([
-            'note' => '',
-            'event_id' => '8',
+        ParticipantItem::create([
+            'participant_id' => $p->id,
             'athlete_id' => '8',
         ]);
 
-        Participant::create([
-            'note' => '',
+        // team c
+        $p = Participant::create([
             'event_id' => '8',
+            'team_id' => '3',
+        ]);
+
+        ParticipantItem::create([
+            'participant_id' => $p->id,
             'athlete_id' => '9',
         ]);
 
-        Participant::create([
-            'note' => '',
-            'event_id' => '8',
+        ParticipantItem::create([
+            'participant_id' => $p->id,
             'athlete_id' => '10',
         ]);
 
-        Participant::create([
-            'note' => '',
-            'event_id' => '8',
+        ParticipantItem::create([
+            'participant_id' => $p->id,
             'athlete_id' => '11',
         ]);
 
-        Participant::create([
-            'note' => '',
-            'event_id' => '8',
+        ParticipantItem::create([
+            'participant_id' => $p->id,
             'athlete_id' => '12',
         ]);
     }

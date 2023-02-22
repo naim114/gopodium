@@ -34,4 +34,9 @@ class Participant extends Model
     {
         return $this->belongsTo(Team::class);
     }
+
+    public function item()
+    {
+        return $this->hasMany(ParticipantItem::class);
+    }
 }

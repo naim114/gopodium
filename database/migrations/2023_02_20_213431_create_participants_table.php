@@ -16,7 +16,7 @@ class CreateParticipantsTable extends Migration
         Schema::create('participants', function (Blueprint $table) {
             $table->increments('id');
             $table->double('score')->nullable();
-            $table->string('note')->nullable();
+            $table->string('note')->default('')->nullable();
 
             // foreign key
             $table->integer('event_id')->unsigned();
