@@ -16,7 +16,6 @@
                         <input name="tournament_id" type="text" value="{{ $tourney->id }}" hidden>
                         <select id="athletes" name="athlete_id" class="teamAthlete selectpicker mt-2 form-control"
                             data-live-search="true" required>
-                            {{-- jquery append --}}
                         </select>
                     </div>
                 </div>

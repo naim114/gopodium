@@ -40,22 +40,13 @@
                             <input value="{{ $event->category }}" name="category" type="text" class="form-control"
                                 placeholder="Enter category" required>
                         </div>
+
+                    </div>
+                    <div class="col-md-6">
                         <div class="form-group mb-2">
                             <label>Round</label>
                             <input value="{{ $event->round }}" name="round" type="text" class="form-control"
                                 placeholder="Enter round" required>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group mb-2">
-                            <label>Type</label>
-                            <select name="event_type_id" class="mt-2 form-control" required>
-                                @foreach ($types as $type)
-                                    <option value="{{ $type->id }}"
-                                        {{ $type->id == $event->event_type_id ? 'selected' : '' }}>{{ $type->name }}
-                                    </option>
-                                @endforeach
-                            </select>
                         </div>
                         <div class="form-group mb-2">
                             <label>Start Date & Time</label>

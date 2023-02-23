@@ -388,7 +388,6 @@ class TournamentController extends Controller
                 'category' => $request->category,
                 'round' => $request->round,
                 'athlete_per_team_limit' => $request->athlete_per_team_limit,
-                'event_type_id' => $request->event_type_id,
                 'start_at' => $request->start_at,
                 'end_at' => $request->end_at,
             ]);
@@ -403,8 +402,9 @@ class TournamentController extends Controller
     {
         $tourney = Tournament::find($request->tournament_id);
         $event = Event::find($request->event_id);
+        $participants = Participant::where('event_id', $event->id)->orderBy('score', 'desc')->orderBy('created_at', 'asc')->get();
 
-        return view('tournament.event.participant.manage', compact('tourney', 'event'));
+        return view('tournament.event.participant.manage', compact('tourney', 'event', 'participants'));
     }
 
     public function event_settings(Request $request)

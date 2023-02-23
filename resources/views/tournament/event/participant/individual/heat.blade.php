@@ -14,31 +14,34 @@
         </tr>
     </thead>
     <tbody>
-        {{-- TODO foreach here --}}
-        <tr>
-            {{-- <th scope="row">{{ $count++ }}</th> --}}
-            <th scope="row">1</th>
-            <td>ATHLETE</td>
-            <td>TEAM</td>
-            <td>1.00</td>
-            <td>Q</td>
-            <td>
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fas fa-ellipsis-h fa-fw"></i></a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li>
-                        <button class="dropdown-item editIndividualButton">
-                            Manage
-                        </button>
-                    </li>
-                    <li>
-                        <button class="dropdown-item text-danger deleteIndividualButton">
-                            Remove Record
-                        </button>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-        {{-- TODO foreach till here --}}
+        @php
+            $count = 1;
+        @endphp
+        @foreach ($participants as $participant)
+            <tr>
+                <th scope="row">{{ $count++ }}</th>
+                <td>{{ $participant->athlete->name ?? 'None' }}</td>
+                <td>{{ $participant->athlete->team->name ?? 'None' }}</td>
+                <td>{{ $participant->score ?? 'None' }}</td>
+                <td>{{ $participant->note ?? '' }}</td>
+                <td>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false"><i class="fas fa-ellipsis-h fa-fw"></i></a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <button class="dropdown-item editIndividualButton" data-item="{{ $participant }}">
+                                Manage
+                            </button>
+                        </li>
+                        <li>
+                            <button class="dropdown-item text-danger deleteIndividualButton"
+                                data-item="{{ $participant }}">
+                                Remove Record
+                            </button>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        @endforeach
     </tbody>
 </table>
