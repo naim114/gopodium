@@ -36,7 +36,7 @@
         {{-- Add Modal --}}
         @include('tournament.event.participant.individual.add')
 
-        {{-- Delete Modal --}}
+        {{-- Edit Modal --}}
         @include('tournament.event.participant.individual.edit')
 
         {{-- Delete Modal --}}
@@ -59,11 +59,17 @@
         {{-- Add Modal --}}
         @include('tournament.event.participant.team.add')
 
-        {{-- Delete Modal --}}
+        {{-- Edit Modal --}}
         @include('tournament.event.participant.team.edit')
 
         {{-- Delete Modal --}}
         @include('tournament.event.participant.team.delete')
+
+        {{-- Add Item Modal --}}
+        @include('tournament.event.participant.team.item_add')
+
+        {{-- Delete Item Modal --}}
+        @include('tournament.event.participant.team.item_delete')
     @endif
 @stop
 
@@ -78,7 +84,7 @@
 
     <script>
         // INDIVIDUAL
-        // add Individual modal
+        // TODO add Individual modal
         $(".addIndividualButton").click(function() {
             $('#addIndividualModal').modal('show');
         });
@@ -129,7 +135,7 @@
         });
 
         // TEAM
-        // add Team modal
+        // TODO add Team modal
         $(".addTeamButton").click(function() {
             $('#addTeamModal').modal('show');
         });
@@ -176,6 +182,59 @@
 
         $(".closeDeleteTeamModal").click(function() {
             $('#deleteTeamModal').modal('hide');
+        });
+
+        // PARTICIPANT ITEM
+        // add
+        $(".addItemButton").click(function() {
+            var p = $(this).data('participant');
+            $('#p').val(p.id);
+
+            var athletes = $(this).data('item');
+
+            $('#athletes')
+                .find('option')
+                .remove()
+                .end();
+
+            $('#athletes').append($('<option>', {
+                value: '',
+                text: 'Select an athlete',
+            }));
+
+            $.each(athletes, function(i, athlete) {
+                $('#athletes').append($('<option>', {
+                    value: athlete.id,
+                    text: athlete.name,
+                }));
+            });
+            $('.selectpicker').selectpicker('refresh');
+
+            $(".teamAthlete select").val("").change();
+            $('.selectpicker').selectpicker('refresh');
+
+            $('#addItemModal').modal('show');
+        });
+
+        $(".closeAddItemModal").click(function() {
+            $('#addItemModal').modal('hide');
+        });
+
+        // delete
+        $(".deleteItemButton").click(function() {
+            var item = $(this).data('item');
+
+            $('#warningDeleteItem').text(`
+                WARNING:
+                Are you sure you want to delete ${item.athlete.name} as participant for this event? Previous data can't be retrieve back.
+            `);
+            $('#deleteItemModalId').val(item.id);
+
+            $('#deleteItemModal').modal('show');
+        });
+
+        $(".closeDeleteItemModal").click(function() {
+            $('#deleteItemModal').modal('hide');
         });
     </script>
 @stop

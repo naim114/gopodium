@@ -496,14 +496,54 @@ class TournamentController extends Controller
         Participant::where('id', $request->id)
             ->delete();
 
-        // user activity log
-        event(new UserActivityEvent(
-            Auth::user(),
-            $request,
-            'Delete participant ' . $participant->athlete->name . ' (Score: ' . $participant->score ?? null . ') of Event ' . $event->name . ' (id: ' . $event->id . ') of Tournament ' . $tourney->name . ' (id: ' . $tourney->id . ')'
-        ));
+        if (isset($participant->team_id)) {
+            // user activity log
+            event(new UserActivityEvent(
+                Auth::user(),
+                $request,
+                'Delete participant team' . $participant->team->name . ' (Score: ' . $participant->score ?? null . ') of Event ' . $event->name . ' (id: ' . $event->id . ') of Tournament ' . $tourney->name . ' (id: ' . $tourney->id . ')'
+            ));
+        } else {
+            // user activity log
+            event(new UserActivityEvent(
+                Auth::user(),
+                $request,
+                'Delete participant athlete' . $participant->athlete->name . ' (Score: ' . $participant->score ?? null . ') of Event ' . $event->name . ' (id: ' . $event->id . ') of Tournament ' . $tourney->name . ' (id: ' . $tourney->id . ')'
+            ));
+        }
 
         return back()->with('success', 'Participant successfully deleted!');
+    }
+
+    public function participant_item_add(Request $request)
+    {
+        $participant = Participant::find($request->participant_id);
+        $event = Event::find($participant->event_id);
+        $tourney = Tournament::find($event->tournament_id);
+
+        $participant_item = ParticipantItem::create($request->all());
+
+        // user activity log
+        event(new UserActivityEvent(Auth::user(), $request, 'Add ' . $participant_item->athlete->name . ' to participant team ' . $participant->team->name . ' (Score: ' . $request->score ?? null . ') of Event ' . $event->name . ' (id: ' . $event->id . ') of Tournament ' . $tourney->name . ' (id: ' . $tourney->id . ')'));
+
+        return back()->with('success', 'Participant athlete successfully added!');
+    }
+
+    public function participant_item_delete(Request $request)
+    {
+        $participant_item = ParticipantItem::find($request->id);
+        $participant = Participant::find($participant_item->participant_id);
+        $event = Event::find($participant->event_id);
+        $tourney = Tournament::find($event->tournament_id);
+
+        // soft delete in db
+        ParticipantItem::where('id', $request->id)
+            ->delete();
+
+        // user activity log
+        event(new UserActivityEvent(Auth::user(), $request, 'Delete ' . $participant_item->athlete->name . ' from participant team ' . $participant->team->name . ' (Score: ' . $request->score ?? null . ') of Event ' . $event->name . ' (id: ' . $event->id . ') of Tournament ' . $tourney->name . ' (id: ' . $tourney->id . ')'));
+
+        return back()->with('success', 'Participant athlete successfully deleted!');
     }
 
     // schedule

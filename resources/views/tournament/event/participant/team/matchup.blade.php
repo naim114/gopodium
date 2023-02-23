@@ -21,12 +21,14 @@
                             Manage
                         </button>
                     </li>
-                    <li>
-                        <button data-item="{{ $event->participant[0]->team ?? null }}" class="dropdown-item addAthlete">
-                            Add Athlete
-                        </button>
-                    </li>
                     @isset($event->participant[0])
+                        <li>
+                            <button data-participant="{{ $event->participant[0] ?? null }}"
+                                data-item="{{ $event->participant[0]->team->athlete ?? null }}"
+                                class="dropdown-item addItemButton">
+                                Add Athlete
+                            </button>
+                        </li>
                         <li>
                             <button data-item="{{ $event->participant[0] ?? null }}"
                                 class="dropdown-item text-danger deleteTeamButton">
@@ -42,7 +44,8 @@
                 <tr>
                     <td colspan="3">{{ $item->athlete->name }}</td>
                     <td colspan="1">
-                        <a class="nav-link" id="" role="button"><i class="fas fa-trash fa-fw"></i></a>
+                        <a class="nav-link deleteItemButton" data-item="{{ $item }}" role="button"><i
+                                class="fas fa-trash fa-fw"></i></a>
                     </td>
                 </tr>
             @endforeach
@@ -63,12 +66,14 @@
                             Manage
                         </button>
                     </li>
-                    <li>
-                        <button data-item="{{ $event->participant[1] ?? null }}" class="dropdown-item addAthlete">
-                            Add Athlete
-                        </button>
-                    </li>
                     @isset($event->participant[1])
+                        <li>
+                            <button data-participant="{{ $event->participant[1] ?? null }}"
+                                data-item="{{ $event->participant[1]->team->athlete ?? null }}"
+                                class="dropdown-item addItemButton">
+                                Add Athlete
+                            </button>
+                        </li>
                         <li>
                             <button data-item="{{ $event->participant[1] ?? null }}"
                                 class="dropdown-item text-danger deleteTeamButton">
@@ -84,7 +89,8 @@
                 <tr>
                     <td colspan="3">{{ $item->athlete->name }}</td>
                     <td colspan="1">
-                        <a class="nav-link" id="" role="button"><i class="fas fa-trash fa-fw"></i></a>
+                        <a class="nav-link deleteItemButton" data-item="{{ $item }}" role="button"><i
+                                class="fas fa-trash fa-fw"></i></a>
                     </td>
                 </tr>
             @endforeach
