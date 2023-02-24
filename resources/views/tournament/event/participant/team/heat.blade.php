@@ -2,7 +2,7 @@
     + Add Team
 </button>
 
-<table class="table table-striped table-hover table-responsive">
+<table class="table table-hover table-responsive">
     <thead class="thead-dark">
         <tr>
             <th scope="col">#</th>
@@ -13,30 +13,49 @@
         </tr>
     </thead>
     <tbody>
-        {{-- TODO foreach here --}}
-        <tr>
-            {{-- <th scope="row">{{ $count++ }}</th> --}}
-            <th scope="row">1</th>
-            <td>TEAM</td>
-            <td>1.00</td>
-            <td>Q</td>
-            <td>
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fas fa-ellipsis-h fa-fw"></i></a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li>
-                        <button class="dropdown-item editTeamButton">
-                            Manage
-                        </button>
-                    </li>
-                    <li>
-                        <button class="dropdown-item text-danger deleteTeamButton">
-                            Remove Record
-                        </button>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-        {{-- TODO foreach till here --}}
+        @php
+            $count = 1;
+        @endphp
+        @foreach ($participants as $participant)
+            <tr class="table-secondary">
+                <th scope="row">{{ $count++ }}</th>
+                <td>{{ $participant->team->name }}</td>
+                <td>{{ $participant->score ?? 'None' }}</td>
+                <td>{{ $participant->note ?? '' }}</td>
+                <td>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false"><i class="fas fa-ellipsis-h fa-fw"></i></a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <button data-item="{{ $participant ?? null }}"class="dropdown-item editTeamButton">
+                                Manage
+                            </button>
+                        </li>
+                        <li>
+                            <button data-participant="{{ $participant }}" data-item="{{ $participant->team->athlete }}"
+                                class="dropdown-item addItemButton">
+                                Add Athlete
+                            </button>
+                        </li>
+                        <li>
+                            <button data-item="{{ $participant }}" class="dropdown-item text-danger deleteTeamButton">
+                                Remove Record
+                            </button>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            @foreach ($participant->item as $item)
+                <tr>
+                    <td colspan="1">
+                    </td>
+                    <td colspan="3">{{ $item->athlete->name }}</td>
+                    <td colspan="1">
+                        <a class="nav-link deleteItemButton" data-item="{{ $item }}" role="button"><i
+                                class="fas fa-trash fa-fw"></i></a>
+                    </td>
+                </tr>
+            @endforeach
+        @endforeach
     </tbody>
 </table>

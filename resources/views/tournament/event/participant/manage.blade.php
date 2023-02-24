@@ -173,7 +173,7 @@
 
             $('#warning').text(`
                 WARNING:
-                Are you sure you want to delete ${participant.team.name} participant record for this event? Associated athlete record will be deleted too. Previous data can't be retrieve back.
+                Are you sure you want to delete ${participant.team.name} participant record for this event? Associated athlete record will be deleted. Previous data can't be retrieve back.
             `);
             $('#deleteTeamModalId').val(participant.id);
 

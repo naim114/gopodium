@@ -10,7 +10,7 @@
                     </h5>
                 </div>
                 <div class="modal-body">
-                    <p>WARNING: Once you change team, associated athlete record will be deleted too.</p>
+                    <p>WARNING: Once you change team, associated athlete record will be deleted.</p>
 
                     <div class="form-group mb-2">
                         <label>Team</label>
