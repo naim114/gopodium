@@ -566,8 +566,10 @@ class TournamentController extends Controller
     {
         $tourney = Tournament::find($request->tournament_id);
         $event = Event::find($request->event_id);
+        $action = true;
+        $participants = Participant::where('event_id', $event->id)->orderBy('score', 'desc')->orderBy('created_at', 'asc')->get();
 
-        return view('tournament.result.event', compact('tourney', 'event'));
+        return view('tournament.result.event', compact('tourney', 'event', 'action', 'participants'));
     }
 
     // standing

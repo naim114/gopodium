@@ -4,7 +4,9 @@
             <th scope="col">Team</th>
             <th scope="col">Score</th>
             <th scope="col">Notes</th>
-            <th scope="col">Action</th>
+            @if (!isset($action))
+                <th scope="col">Action</th>
+            @endif
         </tr>
     </thead>
     <tbody>
@@ -12,32 +14,35 @@
             <td>{{ $event->participant[0]->team->name ?? 'None' }}</td>
             <td>{{ $event->participant[0]->score ?? 'None' }}</td>
             <td>{{ $event->participant[0]->note ?? ' ' }}</td>
-            <td>
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fas fa-ellipsis-h fa-fw"></i></a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li>
-                        <button data-item="{{ $event->participant[0] ?? null }}" class="dropdown-item editTeamButton">
-                            Manage
-                        </button>
-                    </li>
-                    @isset($event->participant[0])
-                        <li>
-                            <button data-participant="{{ $event->participant[0] ?? null }}"
-                                data-item="{{ $event->participant[0]->team->athlete ?? null }}"
-                                class="dropdown-item addItemButton">
-                                Add Athlete
-                            </button>
-                        </li>
+            @if (!isset($action))
+                <td>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false"><i class="fas fa-ellipsis-h fa-fw"></i></a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
                             <button data-item="{{ $event->participant[0] ?? null }}"
-                                class="dropdown-item text-danger deleteTeamButton">
-                                Remove Record
+                                class="dropdown-item editTeamButton">
+                                Manage
                             </button>
                         </li>
-                    @endisset
-                </ul>
-            </td>
+                        @isset($event->participant[0])
+                            <li>
+                                <button data-participant="{{ $event->participant[0] ?? null }}"
+                                    data-item="{{ $event->participant[0]->team->athlete ?? null }}"
+                                    class="dropdown-item addItemButton">
+                                    Add Athlete
+                                </button>
+                            </li>
+                            <li>
+                                <button data-item="{{ $event->participant[0] ?? null }}"
+                                    class="dropdown-item text-danger deleteTeamButton">
+                                    Remove Record
+                                </button>
+                            </li>
+                        @endisset
+                    </ul>
+                </td>
+            @endif
         </tr>
         @if (isset($event->participant[0]))
             @foreach ($event->participant[0]->item as $item)
@@ -57,32 +62,35 @@
             <td>{{ $event->participant[1]->team->name ?? 'None' }}</td>
             <td>{{ $event->participant[1]->score ?? 'None' }}</td>
             <td>{{ $event->participant[1]->note ?? ' ' }}</td>
-            <td>
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fas fa-ellipsis-h fa-fw"></i></a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li>
-                        <button data-item="{{ $event->participant[1] ?? null }}" class="dropdown-item editTeamButton">
-                            Manage
-                        </button>
-                    </li>
-                    @isset($event->participant[1])
-                        <li>
-                            <button data-participant="{{ $event->participant[1] ?? null }}"
-                                data-item="{{ $event->participant[1]->team->athlete ?? null }}"
-                                class="dropdown-item addItemButton">
-                                Add Athlete
-                            </button>
-                        </li>
+            @if (!isset($action))
+                <td>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false"><i class="fas fa-ellipsis-h fa-fw"></i></a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
                             <button data-item="{{ $event->participant[1] ?? null }}"
-                                class="dropdown-item text-danger deleteTeamButton">
-                                Remove Record
+                                class="dropdown-item editTeamButton">
+                                Manage
                             </button>
                         </li>
-                    @endisset
-                </ul>
-            </td>
+                        @isset($event->participant[1])
+                            <li>
+                                <button data-participant="{{ $event->participant[1] ?? null }}"
+                                    data-item="{{ $event->participant[1]->team->athlete ?? null }}"
+                                    class="dropdown-item addItemButton">
+                                    Add Athlete
+                                </button>
+                            </li>
+                            <li>
+                                <button data-item="{{ $event->participant[1] ?? null }}"
+                                    class="dropdown-item text-danger deleteTeamButton">
+                                    Remove Record
+                                </button>
+                            </li>
+                        @endisset
+                    </ul>
+                </td>
+            @endif
         </tr>
         @if (isset($event->participant[1]))
             @foreach ($event->participant[1]->item as $item)

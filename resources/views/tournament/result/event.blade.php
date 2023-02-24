@@ -6,32 +6,32 @@
 
 @section('breadcrumb')
     <a href="{{ route('tournament', ['id' => $tourney->id]) }}">{{ $tourney->code }}</a> /
-    <a href="{{ route('tournament.result') }}">{{ trans('app.tourney.results') }}</a> /
-    <a>EVENT NAME HERE</a>
+    <a href="{{ route('tournament.result', ['tournament_id' => $tourney->id]) }}">{{ trans('app.tourney.results') }}</a> /
+    <a>{{ $event->name }}</a>
 @stop
 
 @section('content')
     <div class="container">
         {{-- Individual --}}
-        {{-- Indivudal Matchup --}}
-        @if (false)
-            @include('tournament.result.individual.matchup')
+        {{-- Individual Matchup --}}
+        @if ($event->event_type->name == 'Individual Matchup')
+            @include('tournament.event.participant.individual.matchup')
         @endif
 
-        {{-- Indivudal Heat --}}
-        @if (false)
-            @include('tournament.result.individual.heat')
+        {{-- Individual Heat --}}
+        @if ($event->event_type->name == 'Individual Heat')
+            @include('tournament.event.participant.individual.heat')
         @endif
 
         {{-- Team --}}
         {{-- Team Matchup --}}
-        @if (true)
-            @include('tournament.result.team.matchup')
+        @if ($event->event_type->name == 'Team Matchup')
+            @include('tournament.event.participant.team.matchup')
         @endif
 
         {{-- Team Heat --}}
-        @if (true)
-            @include('tournament.result.team.heat')
+        @if ($event->event_type->name == 'Team Heat')
+            @include('tournament.event.participant.team.heat')
         @endif
     </div>
 @stop
