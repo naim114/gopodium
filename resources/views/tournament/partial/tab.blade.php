@@ -14,15 +14,15 @@
         </li>
         <li class="nav-item">
             <a class="nav-link {{ is_current_route_name('tournament.schedule') ? 'active' : '' }}"
-                href="{{ route('tournament.schedule') }}">{{ trans('app.tourney.schedule') }}</a>
+                href="{{ route('tournament.schedule', ['tournament_id' => $tourney->id]) }}">{{ trans('app.tourney.schedule') }}</a>
         </li>
         <li class="nav-item">
             <a class="nav-link {{ is_current_route_name('tournament.result') ? 'active' : '' }}"
-                href="{{ route('tournament.result') }}">{{ trans('app.tourney.results') }}</a>
+                href="{{ route('tournament.result', ['tournament_id' => $tourney->id]) }}">{{ trans('app.tourney.results') }}</a>
         </li>
         <li class="nav-item">
             <a class="nav-link {{ is_current_route_name('tournament.standing') ? 'active' : '' }}"
-                href="{{ route('tournament.standing') }}">{{ trans('app.tourney.standing') }}</a>
+                href="{{ route('tournament.standing', ['tournament_id' => $tourney->id]) }}">{{ trans('app.tourney.standing') }}</a>
         </li>
     </ul>
 </div>

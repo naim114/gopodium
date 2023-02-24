@@ -533,22 +533,22 @@ Route::group(['middleware' => ['auth', 'status']], function () {
     )->name('tournament.event.participant.item_delete')->middleware('tournament.permission');
 
     Route::get(
-        '/schedule',
+        'tournament/{tournament_id}/schedule',
         [TournamentController::class, 'schedule']
     )->name('tournament.schedule');
 
     Route::get(
-        '/result',
+        'tournament/{tournament_id}/result',
         [TournamentController::class, 'result']
     )->name('tournament.result');
 
     Route::get(
-        '/result/event',
+        'tournament/{tournament_id}/event/{event_id}/event',
         [TournamentController::class, 'result_event']
     )->name('tournament.result.event');
 
     Route::get(
-        '/standing',
+        'tournament/{tournament_id}/standing',
         [TournamentController::class, 'standing']
     )->name('tournament.standing');
 });

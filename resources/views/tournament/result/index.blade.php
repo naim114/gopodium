@@ -16,32 +16,32 @@
         <table class="table table-striped table-hover table-responsive">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Code</th>
                     <th scope="col">Category</th>
                     <th scope="col">Round</th>
                     <th scope="col">Type</th>
-                    <th scope="col">Date & Time</th>
+                    <th scope="col">Start at</th>
+                    <th scope="col">End at</th>
                     <th scope="col">Result</th>
                 </tr>
             </thead>
             <tbody>
-                {{-- TODO foreach here --}}
-                <tr>
-                    {{-- <th scope="row">{{ $count++ }}</th> --}}
-                    <th scope="row">1</th>
-                    <td>EVENT NAME</td>
-                    <td>EVE001</td>
-                    <td>L</td>
-                    <td>Final</td>
-                    <td>Individual Matchup</td>
-                    <td>2/3/2023 3.45 p.m.</td>
-                    <td>
-                        <a href="{{ route('tournament.result.event') }}">View Result</a>
-                    </td>
-                </tr>
-                {{-- TODO foreach till here --}}
+                @foreach ($tourney->event as $event)
+                    <tr>
+                        <td>{{ $event->name }}</td>
+                        <td>{{ $event->code }}</td>
+                        <td>{{ $event->category }}</td>
+                        <td>{{ $event->round }}</td>
+                        <td>{{ $event->event_type->name }}</td>
+                        <td>{{ $event->start_at->format('d/m/Y h:i A') }}</td>
+                        <td>{{ $event->end_at->format('d/m/Y h:i A') }}</td>
+                        <td>
+                            <a
+                                href="{{ route('tournament.result.event', ['tournament_id' => $tourney->id, 'event_id' => $event->id]) }}">View</a>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
@@ -51,7 +51,11 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
     <script>
         $(document).ready(function() {
-            $('.table').DataTable();
+            $('.table').DataTable({
+                order: [
+                    [5, 'desc']
+                ],
+            });
         });
     </script>
 @stop

@@ -44,21 +44,25 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- TODO foreach here --}}
-                <tr>
-                    {{-- <th scope="row">{{ $count++ }}</th> --}}
-                    <th scope="row">1</th>
-                    <td>EVENT NAME</td>
-                    <td>EVE001</td>
-                    <td>L</td>
-                    <td>Final</td>
-                    <td>Individual Matchup</td>
-                    <td>2/3/2023 3.45 p.m.</td>
-                    <td>
-                        <a href="{{ route('tournament.result.event') }}">View Result</a>
-                    </td>
-                </tr>
-                {{-- TODO foreach till here --}}
+                @php
+                    $count = 1;
+                @endphp
+                @foreach ($tournament->event as $event)
+                    <tr>
+                        <th scope="row">{{ $count++ }}</th>
+                        <td>EVENT NAME</td>
+                        <td>EVE001</td>
+                        <td>L</td>
+                        <td>Final</td>
+                        <td>Individual Matchup</td>
+                        <td>2/3/2023 3.45 p.m.</td>
+                        <td>
+                            <a
+                                href="{{ route('tournament.result.event', ['tournament_id' => $tourney->id, 'event_id' => $event->id]) }}">View
+                                Result</a>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

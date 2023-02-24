@@ -547,25 +547,34 @@ class TournamentController extends Controller
     }
 
     // schedule
-    public function schedule()
+    public function schedule(Request $request)
     {
-        return view('tournament.schedule.index');
+        $tourney = Tournament::find($request->tournament_id);
+
+        return view('tournament.schedule.index', compact('tourney'));
     }
 
     // result
-    public function result()
+    public function result(Request $request)
     {
-        return view('tournament.result.index');
+        $tourney = Tournament::find($request->tournament_id);
+
+        return view('tournament.result.index', compact('tourney'));
     }
 
-    public function result_event()
+    public function result_event(Request $request)
     {
-        return view('tournament.result.event');
+        $tourney = Tournament::find($request->tournament_id);
+        $event = Event::find($request->event_id);
+
+        return view('tournament.result.event', compact('tourney', 'event'));
     }
 
     // standing
-    public function standing()
+    public function standing(Request $request)
     {
-        return view('tournament.standing.index');
+        $tourney = Tournament::find($request->tournament_id);
+
+        return view('tournament.standing.index', compact('tourney'));
     }
 }
