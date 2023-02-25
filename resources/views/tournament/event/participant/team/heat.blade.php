@@ -18,22 +18,30 @@
                         </thead>
                         <tbody>
                             @php
-                                $i = 0;
-                                $count = $event->championship == true && $event->status == 'finished' ? 4 : 1;
+                                $count = 1;
                             @endphp
                             @foreach ($participants as $participant)
                                 <tr class="table-secondary align-middle">
                                     <th scope="row">
                                         @if ($event->championship == true && $event->status == 'finished')
-                                            @if ($i == 0)
+                                            @if ($count == 1)
                                                 <img style="height: 25px; width: 25px"
                                                     src="{{ asset('assets/img/medal_gold.png') }}">
-                                            @elseif ($i == 1)
+                                                @php
+                                                    $count++;
+                                                @endphp
+                                            @elseif ($count == 2)
                                                 <img style="height: 25px; width: 25px"
                                                     src="{{ asset('assets/img/medal_silver.png') }}">
-                                            @elseif ($i == 2)
+                                                @php
+                                                    $count++;
+                                                @endphp
+                                            @elseif ($count == 3)
                                                 <img style="height: 25px; width: 25px"
                                                     src="{{ asset('assets/img/medal_bronze.png') }}">
+                                                @php
+                                                    $count++;
+                                                @endphp
                                             @else
                                                 {{ $count++ }}
                                             @endif
@@ -86,9 +94,6 @@
                                         @endif
                                     </tr>
                                 @endforeach
-                                @php
-                                    $i++;
-                                @endphp
                             @endforeach
                         </tbody>
                     </table>

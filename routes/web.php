@@ -543,7 +543,7 @@ Route::group(['middleware' => ['auth', 'status']], function () {
     )->name('tournament.result');
 
     Route::get(
-        'tournament/{tournament_id}/event/{event_id}/event',
+        'tournament/{tournament_id}/event/{event_id}/result',
         [TournamentController::class, 'result_event']
     )->name('tournament.result.event');
 
