@@ -10,7 +10,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr class="table-secondary">
+        <tr class="table-secondary align-middle">
             <td>{{ $event->participant[0]->team->name ?? 'None' }}</td>
             <td>{{ $event->participant[0]->score ?? 'None' }}</td>
             <td>{{ $event->participant[0]->note ?? ' ' }}</td>
@@ -58,7 +58,7 @@
         <tr class="active" aria-disabled="true">
             <td colspan="4" class="text-center"><b>VS</b></td>
         </tr>
-        <tr class="table-secondary">
+        <tr class="table-secondary align-middle">
             <td>{{ $event->participant[1]->team->name ?? 'None' }}</td>
             <td>{{ $event->participant[1]->score ?? 'None' }}</td>
             <td>{{ $event->participant[1]->note ?? ' ' }}</td>

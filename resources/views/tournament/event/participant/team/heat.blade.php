@@ -18,11 +18,29 @@
                         </thead>
                         <tbody>
                             @php
-                                $count = 1;
+                                $i = 0;
+                                $count = $event->championship == true && $event->status == 'finished' ? 4 : 1;
                             @endphp
                             @foreach ($participants as $participant)
-                                <tr class="table-secondary">
-                                    <th scope="row">{{ $count++ }}</th>
+                                <tr class="table-secondary align-middle">
+                                    <th scope="row">
+                                        @if ($event->championship == true && $event->status == 'finished')
+                                            @if ($i == 0)
+                                                <img style="height: 25px; width: 25px"
+                                                    src="{{ asset('assets/img/medal_gold.png') }}">
+                                            @elseif ($i == 1)
+                                                <img style="height: 25px; width: 25px"
+                                                    src="{{ asset('assets/img/medal_silver.png') }}">
+                                            @elseif ($i == 2)
+                                                <img style="height: 25px; width: 25px"
+                                                    src="{{ asset('assets/img/medal_bronze.png') }}">
+                                            @else
+                                                {{ $count++ }}
+                                            @endif
+                                        @else
+                                            {{ $count++ }}
+                                        @endif
+                                    </th>
                                     <td>{{ $participant->team->name }}</td>
                                     <td>{{ $participant->score ?? 'None' }}</td>
                                     <td>{{ $participant->note ?? '' }}</td>
@@ -68,6 +86,9 @@
                                         @endif
                                     </tr>
                                 @endforeach
+                                @php
+                                    $i++;
+                                @endphp
                             @endforeach
                         </tbody>
                     </table>
