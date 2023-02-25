@@ -39,7 +39,7 @@
         </button>
         <table class="table table-striped table-hover table-responsive">
             <thead class="thead-dark">
-                <tr>
+                <tr class="align-middle">
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Action</th>
@@ -47,7 +47,7 @@
             </thead>
             <tbody>
                 @foreach ($team->athlete as $athlete)
-                    <tr>
+                    <tr class="align-middle">
                         <th scope="row">{{ $count++ }}</th>
                         <td>{{ $athlete->name }}</td>
                         <td>

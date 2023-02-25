@@ -18,6 +18,7 @@ class Participant extends Model
         'event_id',
         'athlete_id',
         'team_id',
+        'position',
     ];
 
     public function event()

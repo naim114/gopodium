@@ -40,7 +40,19 @@
                             <input value="{{ $event->category }}" name="category" type="text" class="form-control"
                                 placeholder="Enter category" required>
                         </div>
-
+                        @if ($event->event_type->name == 'Individual Heat' || $event->event_type->name == 'Team Heat')
+                            <div class="form-group mb-2">
+                                <label>Championship Event <i class="fa fa-info-circle" data-toggle="tooltip"
+                                        data-placement="right"
+                                        title="By setting this to yes, medal will be awarded to top 3 and points will count based on tournament settings"></i></label>
+                                <select id="championship" name="championship" class="form-control" required>
+                                    <option value="0" {{ $event->championship == '0' ? 'selected' : '' }}>No
+                                    </option>
+                                    <option value="1" {{ $event->championship == '1' ? 'selected' : '' }}>Yes
+                                    </option>
+                                </select>
+                            </div>
+                        @endif
                     </div>
                     <div class="col-md-6">
                         <div class="form-group mb-2">
@@ -84,6 +96,10 @@
 
 @section('scripts')
     <script>
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+
         // delete modal
         $(".deleteButton").click(function() {
             $('#deleteModal').modal('show');

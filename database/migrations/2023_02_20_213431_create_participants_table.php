@@ -17,6 +17,7 @@ class CreateParticipantsTable extends Migration
             $table->increments('id');
             $table->double('score')->nullable();
             $table->string('note')->default('')->nullable();
+            $table->integer('position')->nullable();
 
             // foreign key
             $table->integer('event_id')->unsigned();

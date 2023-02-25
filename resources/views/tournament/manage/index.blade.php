@@ -31,7 +31,7 @@
         </button>
         <table class="table table-striped table-hover table-responsive">
             <thead class="thead-dark">
-                <tr>
+                <tr class="align-middle">
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
                     @if (has_permission('tournament.all'))
@@ -48,7 +48,7 @@
             </thead>
             <tbody>
                 @foreach ($tournaments as $tourney)
-                    <tr>
+                    <tr class="align-middle">
                         <th scope="row">{{ $count++ }}</th>
                         <td>{{ $tourney->name }}</td>
                         @if (has_permission('tournament.all'))

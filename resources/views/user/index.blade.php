@@ -15,7 +15,7 @@
         </button>
         <table id="usersTable" class="table table-striped table-hover table-responsive">
             <thead class="thead-dark">
-                <tr>
+                <tr class="align-middle">
                     <th scope="col"></th>
                     <th scope="col">Username</th>
                     <th scope="col">Full Name</th>
@@ -26,7 +26,7 @@
             </thead>
             <tbody>
                 @foreach ($users as $user)
-                    <tr>
+                    <tr class="align-middle">
                         <th scope="row" class="text-center">
                             <img id="preview" class="rounded-circle img-thumbnail" style="height: 50px; width: 50px"
                                 src="{{ $user->avatar ?? asset(url('assets/img/default-profile-picture.png')) }}">

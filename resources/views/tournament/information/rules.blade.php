@@ -43,31 +43,31 @@
         </div>
 
         <div class="form-group mb-3">
-            <label>4th Place</label>
+            <label>4th Place Point</label>
             <input type="number" name="fourth_place_point" value="{{ $tourney->fourth_place_point }}"
                 class="form-control">
         </div>
 
         <div class="form-group mb-3">
-            <label>5th Place</label>
+            <label>5th Place Point</label>
             <input type="number" name="fifth_place_point" value="{{ $tourney->fifth_place_point }}"
                 class="form-control">
         </div>
 
         <div class="form-group mb-3">
-            <label>6th Place</label>
+            <label>6th Place Point</label>
             <input type="number" name="sixth_place_point" value="{{ $tourney->sixth_place_point }}"
                 class="form-control">
         </div>
 
         <div class="form-group mb-3">
-            <label>7th Place</label>
+            <label>7th Place Point</label>
             <input type="number" name="seventh_place_point" value="{{ $tourney->seventh_place_point }}"
                 class="form-control">
         </div>
 
         <div class="form-group mb-3">
-            <label>8th Place</label>
+            <label>8th Place Point</label>
             <input type="number" name="eigth_place_point" value="{{ $tourney->eigth_place_point }}"
                 class="form-control">
         </div>

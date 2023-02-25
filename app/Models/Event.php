@@ -22,11 +22,16 @@ class Event extends Model
         'start_at',
         'end_at',
         'tournament_id',
+        'championship',
     ];
 
     protected $dates = [
         'start_at',
         'end_at',
+    ];
+
+    protected $casts = [
+        'championship' => 'boolean',
     ];
 
 

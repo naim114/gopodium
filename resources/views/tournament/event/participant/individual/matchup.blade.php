@@ -1,6 +1,6 @@
 <table class="table table-striped table-hover table-responsive">
     <thead class="thead-dark">
-        <tr>
+        <tr class="align-middle">
             <th scope="col">Athlete</th>
             <th scope="col">Team</th>
             <th scope="col">Score</th>
@@ -11,7 +11,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
+        <tr class="align-middle">
             <td>{{ $event->participant[0]->athlete->name ?? 'None' }}</td>
             <td>{{ $event->participant[0]->athlete->team->name ?? 'None' }}</td>
             <td>{{ $event->participant[0]->score ?? 'None' }}</td>
@@ -44,7 +44,7 @@
             <td colspan="5" class="text-center"><b>VS</b></td>
         </tr>
 
-        <tr>
+        <tr class="align-middle">
             <td>{{ $event->participant[1]->athlete->name ?? 'None' }}</td>
             <td>{{ $event->participant[1]->athlete->team->name ?? 'None' }}</td>
             <td>{{ $event->participant[1]->score ?? 'None' }}</td>

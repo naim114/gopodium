@@ -14,7 +14,7 @@
             <div class="container">
                 <table class="table table-striped table-hover table-responsive">
                     <thead class="thead-dark">
-                        <tr>
+                        <tr class="align-middle">
                             <th scope="col">Name</th>
                             <th scope="col">Code</th>
                             <th scope="col">Registered at</th>
@@ -24,7 +24,7 @@
                     </thead>
                     <tbody>
                         {{-- TODO foreach here --}}
-                        <tr>
+                        <tr class="align-middle">
                             <td><a href="{{ route('main.tourney.event') }}">TOURNAMENT 1</a></td>
                             <td>MMSM2020</td>
                             <td>1/2/2023 10.34 a.m</td>

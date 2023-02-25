@@ -1,6 +1,6 @@
 <table class="table table-striped table-hover table-responsive">
     <thead class="thead-dark">
-        <tr>
+        <tr class="align-middle">
             <th scope="col">Athlete</th>
             <th scope="col">Team</th>
             <th scope="col">Score</th>
@@ -8,7 +8,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
+        <tr class="align-middle">
             <td>ATHLETE</td>
             <td><a href="{{ route('main.tourney.team') }}">TEAM</a></td>
             <td>1.00</td>
@@ -17,7 +17,7 @@
         <tr class="active" aria-disabled="true">
             <td colspan="4" class="text-center"><b>VS</b></td>
         </tr>
-        <tr>
+        <tr class="align-middle">
             <td>ATHLETE</td>
             <td><a href="{{ route('main.tourney.team') }}">TEAM</a></td>
             <td>1.00</td>

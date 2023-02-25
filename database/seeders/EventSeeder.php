@@ -26,6 +26,7 @@ class EventSeeder extends Seeder
 
         EventType::create([
             'name' => 'Team Matchup',
+            'type' => 'team',
             'description' => 'Two team versus each other with individuals',
         ]);
 
@@ -36,6 +37,7 @@ class EventSeeder extends Seeder
 
         EventType::create([
             'name' => 'Team Heat',
+            'type' => 'team',
             'description' => 'More than two team versus each other',
         ]);
 

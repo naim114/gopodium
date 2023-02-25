@@ -1,6 +1,6 @@
 <table class="table table-hover table-responsive">
     <thead class="thead-dark">
-        <tr>
+        <tr class="align-middle">
             <th scope="col">Team</th>
             <th scope="col">Score</th>
             <th scope="col">Notes</th>
@@ -46,7 +46,7 @@
         </tr>
         @if (isset($event->participant[0]))
             @foreach ($event->participant[0]->item as $item)
-                <tr>
+                <tr class="align-middle">
                     <td colspan="3">{{ $item->athlete->name }}</td>
                     <td colspan="1">
                         <a class="nav-link deleteItemButton" data-item="{{ $item }}" role="button"><i
@@ -94,7 +94,7 @@
         </tr>
         @if (isset($event->participant[1]))
             @foreach ($event->participant[1]->item as $item)
-                <tr>
+                <tr class="align-middle">
                     <td colspan="3">{{ $item->athlete->name }}</td>
                     <td colspan="1">
                         <a class="nav-link deleteItemButton" data-item="{{ $item }}" role="button"><i

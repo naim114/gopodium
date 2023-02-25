@@ -15,7 +15,7 @@
 
         <table class="table table-striped table-hover table-responsive">
             <thead class="thead-dark">
-                <tr>
+                <tr class="align-middle">
                     <th scope="col">Name</th>
                     <th scope="col">Code</th>
                     <th scope="col">Category</th>
@@ -28,7 +28,7 @@
             </thead>
             <tbody>
                 @foreach ($tourney->event as $event)
-                    <tr>
+                    <tr class="align-middle">
                         <td>{{ $event->name }}</td>
                         <td>{{ $event->code }}</td>
                         <td>{{ $event->category }}</td>

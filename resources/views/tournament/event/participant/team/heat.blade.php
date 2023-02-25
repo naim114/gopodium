@@ -6,7 +6,7 @@
 
                     <table class="table table-hover table-responsive">
                         <thead class="thead-dark">
-                            <tr>
+                            <tr class="align-middle">
                                 <th scope="col">#</th>
                                 <th scope="col">Team</th>
                                 <th scope="col">Score</th>
@@ -56,7 +56,7 @@
                                     @endif
                                 </tr>
                                 @foreach ($participant->item as $item)
-                                    <tr>
+                                    <tr class="align-middle">
                                         <td colspan="1">
                                         </td>
                                         <td colspan="3">{{ $item->athlete->name }}</td>

@@ -1,6 +1,6 @@
 <table class="table table-striped table-hover table-responsive">
     <thead class="thead-dark">
-        <tr>
+        <tr class="align-middle">
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Code</th>
@@ -12,7 +12,7 @@
     </thead>
     <tbody>
         {{-- TODO foreach here --}}
-        <tr>
+        <tr class="align-middle">
             {{-- <th scope="row">{{ $count++ }}</th> --}}
             <th scope="row">1</th>
             <td>EVENT NAME</td>

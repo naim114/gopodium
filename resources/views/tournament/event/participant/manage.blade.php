@@ -14,10 +14,6 @@
 @stop
 
 @section('content')
-    <div class="container">
-
-    </div>
-
     @include('tournament.event.tab')
 
     {{-- Individual --}}
@@ -32,7 +28,7 @@
     @endif
 
     {{-- Individual Modal --}}
-    @if ($event->event_type->name == 'Individual Matchup' || $event->event_type->name == 'Individual Heat')
+    @if ($event->event_type->type == 'individual')
         {{-- Add Modal --}}
         @include('tournament.event.participant.individual.add')
 
@@ -55,7 +51,7 @@
     @endif
 
     {{-- Team Modal --}}
-    @if ($event->event_type->name == 'Team Matchup' || $event->event_type->name == 'Team Heat')
+    @if ($event->event_type->type == 'team')
         {{-- Add Modal --}}
         @include('tournament.event.participant.team.add')
 

@@ -16,7 +16,7 @@
         </button>
         <table class="table table-striped table-hover table-responsive">
             <thead class="thead-dark">
-                <tr>
+                <tr class="align-middle">
                     <th scope="col">#</th>
                     <th scope="col">Plan</th>
                     <th scope="col">Price (RM)</th>
@@ -28,7 +28,7 @@
             </thead>
             <tbody>
                 @foreach ($plans as $plan)
-                    <tr>
+                    <tr class="align-middle">
                         <th scope="row">{{ $count++ }}</th>
                         <td>{{ $plan->name }}</td>
                         <td>{{ number_format($plan->price / 100, 2, '.', ' ') }}</td>
