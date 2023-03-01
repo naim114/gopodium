@@ -41,8 +41,26 @@
                         <input id="note" name="note" type="text" class="form-control"
                             placeholder="Enter note">
                     </div>
-                </div>
 
+                    @if ($event->championship == true)
+                        @if ($event->event_type->name == 'Individual Matchup' || $event->event_type->name == 'Team Matchup')
+                            <div class="form-group mb-2">
+                                <label>Position</label>
+                                <select id="position" name="position" class="mt-2 form-control" required>
+                                    <option value=" ">Place a position</option>
+                                    <option value="1">1st (Gold Medal)</option>
+                                    <option value="2">2nd (Silver Medal)</option>
+                                    <option value="3">3rd (Bronze Medal)</option>
+                                    <option value="4">4th</option>
+                                    <option value="5">5th</option>
+                                    <option value="6">6th</option>
+                                    <option value="7">7th</option>
+                                    <option value="8">8th</option>
+                                </select>
+                            </div>
+                        @endif
+                    @endif
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary closeEditIndividualModal"
                         data-dismiss="modal">Close</button>

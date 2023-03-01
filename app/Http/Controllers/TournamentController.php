@@ -13,6 +13,7 @@ use App\Models\Tournament;
 use App\Models\TournamentType;
 use Illuminate\Http\Request;
 use App\Providers\UserActivityEvent;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
@@ -434,6 +435,7 @@ class TournamentController extends Controller
                         'score' => $request->score ?? null,
                         'note' => $request->note ?? null,
                         'athlete_id' => $request->athlete_id,
+                        'position' => $request->position,
                     ]);
 
                 // user activity log
@@ -454,6 +456,7 @@ class TournamentController extends Controller
                         'score' => $request->score ?? null,
                         'note' => $request->note ?? null,
                         'team_id' => $request->team_id,
+                        'position' => $request->position,
                     ]);
 
                 // user activity log
@@ -553,16 +556,26 @@ class TournamentController extends Controller
     public function schedule(Request $request)
     {
         $tourney = Tournament::find($request->tournament_id);
+        $events = Event::where('tournament_id', $request->tournament_id)->orderBy('created_at', 'desc')->get();
 
-        return view('tournament.schedule.index', compact('tourney'));
+        return view('tournament.schedule.index', compact('tourney', 'events'));
     }
 
     // result
     public function result(Request $request)
     {
         $tourney = Tournament::find($request->tournament_id);
+        $events = Event::where('tournament_id', $request->tournament_id)->orderBy('created_at', 'asc')->get();
 
-        return view('tournament.result.index', compact('tourney'));
+        foreach ($events as $key =>  $event) {
+            $event->status = calculate_status($event);
+
+            if ($event->status != 'finished') {
+                $events->forget($key);
+            }
+        }
+
+        return view('tournament.result.index', compact('tourney', 'events'));
     }
 
     public function result_event(Request $request)

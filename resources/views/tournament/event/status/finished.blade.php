@@ -19,7 +19,12 @@
         @foreach ($finished as $event)
             <tr class="align-middle">
                 <th scope="row">{{ $count++ }}</th>
-                <td>{{ $event->name }}</td>
+                <td>
+                    @if ($event->championship == true && $event->status == 'finished')
+                        <b>[Championship]</b>
+                    @endif
+                    {{ ' ' . $event->name }}
+                </td>
                 <td>{{ $event->code }}</td>
                 <td>{{ $event->category }}</td>
                 <td>{{ $event->round }}</td>

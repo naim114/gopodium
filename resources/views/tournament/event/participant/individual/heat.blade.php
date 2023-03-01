@@ -5,7 +5,8 @@
             @endif
 
             @if ($event->championship == true && $event->status == 'finished')
-                <p style="font-weight: bold; font-style: italic;">Medal are awarded and points are counted accoding to
+                <p style="font-weight: bold; font-style: italic;">This is a championship event. Medal are awarded and
+                    points are counted accoding to
                     tournament settings.</p>
             @endif
             <table class="table table-striped

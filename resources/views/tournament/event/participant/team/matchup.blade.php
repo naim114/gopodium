@@ -1,3 +1,9 @@
+@if ($event->championship == true && $event->status == 'finished')
+    <p style="font-weight: bold; font-style: italic;">This is a championship event. Medal are awarded and points are
+        counted accoding to
+        tournament settings.</p>
+@endif
+
 <table class="table table-hover table-responsive">
     <thead class="thead-dark">
         <tr class="align-middle">
@@ -11,7 +17,24 @@
     </thead>
     <tbody>
         <tr class="table-secondary align-middle">
-            <td>{{ $event->participant[0]->team->name ?? 'None' }}</td>
+            <td>
+                <p>
+                    @if ($event->championship == true && $event->status == 'finished')
+                        @if ($event->participant[0]->position == 1 && $event->status == 'finished')
+                            <img style="height: 25px; width: 25px" src="{{ asset('assets/img/medal_gold.png') }}">
+                        @elseif ($event->participant[0]->position == 2)
+                            <img style="height: 25px; width: 25px" src="{{ asset('assets/img/medal_silver.png') }}">
+                        @elseif ($event->participant[0]->position == 3)
+                            <img style="height: 25px; width: 25px" src="{{ asset('assets/img/medal_bronze.png') }}">
+                        @elseif ($event->participant[0]->position == null)
+                            {{ '' }}
+                        @else
+                            <b>{{ '(' . $event->participant[0]->position . 'th) ' }}</b>
+                        @endif
+                    @endif
+                    {{ $event->participant[0]->team->name ?? 'None' }}
+                </p>
+            </td>
             <td>{{ $event->participant[0]->score ?? 'None' }}</td>
             <td>{{ $event->participant[0]->note ?? ' ' }}</td>
             @if (!isset($action))
@@ -59,7 +82,24 @@
             <td colspan="4" class="text-center"><b>VS</b></td>
         </tr>
         <tr class="table-secondary align-middle">
-            <td>{{ $event->participant[1]->team->name ?? 'None' }}</td>
+            <td>
+                <p>
+                    @if ($event->championship == true && $event->status == 'finished')
+                        @if ($event->participant[1]->position == 1)
+                            <img style="height: 25px; width: 25px" src="{{ asset('assets/img/medal_gold.png') }}">
+                        @elseif ($event->participant[1]->position == 2)
+                            <img style="height: 25px; width: 25px" src="{{ asset('assets/img/medal_silver.png') }}">
+                        @elseif ($event->participant[1]->position == 3)
+                            <img style="height: 25px; width: 25px" src="{{ asset('assets/img/medal_bronze.png') }}">
+                        @elseif ($event->participant[1]->position == null)
+                            {{ '' }}
+                        @else
+                            <b>{{ '(' . $event->participant[1]->position . 'th) ' }}</b>
+                        @endif
+                    @endif
+                    {{ $event->participant[1]->team->name ?? 'None' }}
+                </p>
+            </td>
             <td>{{ $event->participant[1]->score ?? 'None' }}</td>
             <td>{{ $event->participant[1]->note ?? ' ' }}</td>
             @if (!isset($action))

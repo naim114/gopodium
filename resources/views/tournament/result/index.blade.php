@@ -27,9 +27,14 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($tourney->event as $event)
+                @foreach ($events as $event)
                     <tr class="align-middle">
-                        <td>{{ $event->name }}</td>
+                        <td>
+                            @if ($event->championship == true && $event->status == 'finished')
+                                <b>[Championship]</b>
+                            @endif
+                            {{ ' ' . $event->name }}
+                        </td>
                         <td>{{ $event->code }}</td>
                         <td>{{ $event->category }}</td>
                         <td>{{ $event->round }}</td>

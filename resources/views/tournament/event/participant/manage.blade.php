@@ -80,7 +80,7 @@
 
     <script>
         // INDIVIDUAL
-        // TODO add Individual modal
+        // add Individual modal
         $(".addIndividualButton").click(function() {
             $('#addIndividualModal').modal('show');
         });
@@ -99,12 +99,14 @@
                 $("#score").val(null);
                 $("#id").val(null);
                 $("#note").val(null);
+                $("#position").val(" ").change();
             } else {
                 $(".individualAthlete select").val(participant.athlete.id).change();
                 $('.selectpicker').selectpicker('refresh');
                 $("#id").val(participant.id);
                 $("#score").val(participant.score);
                 $("#note").val(participant.note);
+                $("#position").val(participant.position ?? " ").change();
             }
             $('#editIndividualModal').modal('show');
 
@@ -131,7 +133,7 @@
         });
 
         // TEAM
-        // TODO add Team modal
+        // add Team modal
         $(".addTeamButton").click(function() {
             $('#addTeamModal').modal('show');
         });
@@ -149,11 +151,13 @@
                 $("#team").val('');
                 $("#score").val(null);
                 $("#note").val(null);
+                $("#position").val("").change();
             } else {
                 $("#id").val(participant.id);
                 $('#team').val(participant.team.id);
                 $('#score').val(participant.score);
                 $('#note').val(participant.note);
+                $("#position").val(participant.position ?? " ").change();
             }
 
             $('#editTeamModal').modal('show');
