@@ -41,13 +41,12 @@
                                 placeholder="Enter category" required>
                         </div>
                         <div class="form-group mb-2">
-                            <label>Championship Event <i class="fa fa-info-circle" data-toggle="tooltip"
-                                    data-placement="right"
-                                    title="Medal will be awarded to top 3 and points will count based on tournament settings. Matchup Events: user can placed position on manage participants."></i></label>
-                            <select id="championship" name="championship" class="form-control" required>
-                                <option value="0" {{ $event->championship == '0' ? 'selected' : '' }}>No
+                            <label>Highest To Win <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="right"
+                                    title="If yes, participant with the highest score win. If no, participant with the lowest score win."></i></label>
+                            <select id="sort_by_highest" name="sort_by_highest" class="form-control" required>
+                                <option value="0" {{ $event->sort_by_highest == '0' ? 'selected' : '' }}>No
                                 </option>
-                                <option value="1" {{ $event->championship == '1' ? 'selected' : '' }}>Yes
+                                <option value="1" {{ $event->sort_by_highest == '1' ? 'selected' : '' }}>Yes
                                 </option>
                             </select>
                         </div>
@@ -67,6 +66,17 @@
                             <label>End Date & Time</label>
                             <input value="{{ $event->end_at }}" name="end_at" type="datetime-local" class="form-control"
                                 placeholder="Enter category" required>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label>Championship Event <i class="fa fa-info-circle" data-toggle="tooltip"
+                                    data-placement="right"
+                                    title="Medal will be awarded to top 3 and points will count based on tournament settings. Matchup Events: user can placed position on manage participants."></i></label>
+                            <select id="championship" name="championship" class="form-control" required>
+                                <option value="0" {{ $event->championship == '0' ? 'selected' : '' }}>No
+                                </option>
+                                <option value="1" {{ $event->championship == '1' ? 'selected' : '' }}>Yes
+                                </option>
+                            </select>
                         </div>
                     </div>
                     <hr>

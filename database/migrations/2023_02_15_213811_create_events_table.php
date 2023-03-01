@@ -23,6 +23,7 @@ class CreateEventsTable extends Migration
             $table->dateTime('start_at');
             $table->dateTime('end_at');
             $table->boolean('championship')->default(0);
+            $table->string('sort_by_highest')->default(true);
 
             // foreign key
             $table->integer('event_type_id')->unsigned();

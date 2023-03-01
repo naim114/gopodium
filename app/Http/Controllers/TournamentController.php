@@ -389,6 +389,7 @@ class TournamentController extends Controller
                 'category' => $request->category,
                 'round' => $request->round,
                 'championship' => $request->championship,
+                'sort_by_highest' => $request->sort_by_highest,
                 'athlete_per_team_limit' => $request->athlete_per_team_limit,
                 'start_at' => $request->start_at,
                 'end_at' => $request->end_at,
@@ -404,8 +405,7 @@ class TournamentController extends Controller
     {
         $tourney = Tournament::find($request->tournament_id);
         $event = Event::find($request->event_id);
-        $participants = Participant::where('event_id', $event->id)->orderBy('score', 'desc')->orderBy('created_at', 'asc')->get();
-
+        $participants = $event->sort_by_highest ? Participant::where('event_id', $event->id)->orderBy('score', 'desc')->orderBy('created_at',  'desc')->get() : Participant::where('event_id', $event->id)->orderBy(\Illuminate\Support\Facades\DB::raw('-`score`'), 'desc')->get();
         $event->status = calculate_status($event);
 
         return view('tournament.event.participant.manage', compact('tourney', 'event', 'participants'));
@@ -591,11 +591,32 @@ class TournamentController extends Controller
     // standing
     public function standing(Request $request)
     {
+        // TODO for heat count by event (index) & matchup count by participant (position attribute)
         $tourney = Tournament::find($request->tournament_id);
 
-        // TODO for heat count by event (index) & matchup count by participant (position attribute)
-        // TODO @ heats event, add is championship event feature
-        // TODO @ matchup event, add position feature
-        return view('tournament.standing.index', compact('tourney'));
+        $positions = [];
+
+        foreach ($tourney->team as $team) {
+            foreach ($team->participant as $participant) {
+                if (calculate_status($participant) == 'finished') {
+                    if (isset($participant->position)) {
+                        $insert = array(
+                            "team_id" => $team->id,
+                            "position" => $participant->position,
+                        );
+                        array_push($positions, $insert);
+                    }
+                }
+            }
+        }
+
+        $participant = Participant::all();
+
+        return view('tournament.standing.index', compact('tourney', 'positions', 'participant'));
     }
 }
+
+// TODO
+// lane allocation
+// cross county tournament
+// front page manage

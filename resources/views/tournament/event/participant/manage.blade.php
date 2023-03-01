@@ -151,7 +151,7 @@
                 $("#team").val('');
                 $("#score").val(null);
                 $("#note").val(null);
-                $("#position").val("").change();
+                $("#position").val(" ").change();
             } else {
                 $("#id").val(participant.id);
                 $('#team').val(participant.team.id);

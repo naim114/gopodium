@@ -56,9 +56,7 @@
                                     {{ $count++ }}
                                 @endif
                             </th>
-                            <td>
-                                {{ $participant->athlete->name ?? 'None' }}
-                            </td>
+                            <td>{{ $participant->athlete->name ?? 'None' }}</td>
                             <td>{{ $participant->athlete->team->name ?? 'None' }}</td>
                             <td>{{ $participant->score ?? 'None' }}</td>
                             <td>{{ $participant->note ?? '' }}</td>

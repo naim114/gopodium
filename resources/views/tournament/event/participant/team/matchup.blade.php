@@ -20,17 +20,19 @@
             <td>
                 <p>
                     @if ($event->championship == true && $event->status == 'finished')
-                        @if ($event->participant[0]->position == 1 && $event->status == 'finished')
-                            <img style="height: 25px; width: 25px" src="{{ asset('assets/img/medal_gold.png') }}">
-                        @elseif ($event->participant[0]->position == 2)
-                            <img style="height: 25px; width: 25px" src="{{ asset('assets/img/medal_silver.png') }}">
-                        @elseif ($event->participant[0]->position == 3)
-                            <img style="height: 25px; width: 25px" src="{{ asset('assets/img/medal_bronze.png') }}">
-                        @elseif ($event->participant[0]->position == null)
-                            {{ '' }}
-                        @else
-                            <b>{{ '(' . $event->participant[0]->position . 'th) ' }}</b>
-                        @endif
+                        @isset($event->participant[0])
+                            @if ($event->participant[0]->position == 1 && $event->status == 'finished')
+                                <img style="height: 25px; width: 25px" src="{{ asset('assets/img/medal_gold.png') }}">
+                            @elseif ($event->participant[0]->position == 2)
+                                <img style="height: 25px; width: 25px" src="{{ asset('assets/img/medal_silver.png') }}">
+                            @elseif ($event->participant[0]->position == 3)
+                                <img style="height: 25px; width: 25px" src="{{ asset('assets/img/medal_bronze.png') }}">
+                            @elseif ($event->participant[0]->position == null)
+                                {{ '' }}
+                            @else
+                                <b>{{ '(' . $event->participant[0]->position . 'th) ' }}</b>
+                            @endif
+                        @endisset
                     @endif
                     {{ $event->participant[0]->team->name ?? 'None' }}
                 </p>
@@ -85,17 +87,19 @@
             <td>
                 <p>
                     @if ($event->championship == true && $event->status == 'finished')
-                        @if ($event->participant[1]->position == 1)
-                            <img style="height: 25px; width: 25px" src="{{ asset('assets/img/medal_gold.png') }}">
-                        @elseif ($event->participant[1]->position == 2)
-                            <img style="height: 25px; width: 25px" src="{{ asset('assets/img/medal_silver.png') }}">
-                        @elseif ($event->participant[1]->position == 3)
-                            <img style="height: 25px; width: 25px" src="{{ asset('assets/img/medal_bronze.png') }}">
-                        @elseif ($event->participant[1]->position == null)
-                            {{ '' }}
-                        @else
-                            <b>{{ '(' . $event->participant[1]->position . 'th) ' }}</b>
-                        @endif
+                        @isset($event->participant[1])
+                            @if ($event->participant[1]->position == 1 && $event->status == 'finished')
+                                <img style="height: 25px; width: 25px" src="{{ asset('assets/img/medal_gold.png') }}">
+                            @elseif ($event->participant[1]->position == 2)
+                                <img style="height: 25px; width: 25px" src="{{ asset('assets/img/medal_silver.png') }}">
+                            @elseif ($event->participant[1]->position == 3)
+                                <img style="height: 25px; width: 25px" src="{{ asset('assets/img/medal_bronze.png') }}">
+                            @elseif ($event->participant[1]->position == null)
+                                {{ '' }}
+                            @else
+                                <b>{{ '(' . $event->participant[1]->position . 'th) ' }}</b>
+                            @endif
+                        @endisset
                     @endif
                     {{ $event->participant[1]->team->name ?? 'None' }}
                 </p>

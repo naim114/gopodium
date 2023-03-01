@@ -21,7 +21,7 @@ class CreateTeamsTable extends Migration
 
             // foreign key
             $table->integer('tournament_id')->unsigned();
-            $table->foreign('tournament_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('tournament_id')->references('id')->on('tournaments')->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
             $table->softDeletes();

@@ -23,6 +23,7 @@ class Event extends Model
         'end_at',
         'tournament_id',
         'championship',
+        'sort_by_highest',
     ];
 
     protected $dates = [
@@ -32,6 +33,7 @@ class Event extends Model
 
     protected $casts = [
         'championship' => 'boolean',
+        'sort_by_highest' => 'boolean',
     ];
 
 
