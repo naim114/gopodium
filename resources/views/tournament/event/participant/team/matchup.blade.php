@@ -73,10 +73,12 @@
             @foreach ($event->participant[0]->item as $item)
                 <tr class="align-middle">
                     <td colspan="3">{{ $item->athlete->name }}</td>
-                    <td colspan="1">
-                        <a class="nav-link deleteItemButton" data-item="{{ $item }}" role="button"><i
-                                class="fas fa-trash fa-fw"></i></a>
-                    </td>
+                    @if (!isset($action))
+                        <td colspan="1">
+                            <a class="nav-link deleteItemButton" data-item="{{ $item }}" role="button"><i
+                                    class="fas fa-trash fa-fw"></i></a>
+                        </td>
+                    @endif
                 </tr>
             @endforeach
         @endif
@@ -140,10 +142,12 @@
             @foreach ($event->participant[1]->item as $item)
                 <tr class="align-middle">
                     <td colspan="3">{{ $item->athlete->name }}</td>
-                    <td colspan="1">
-                        <a class="nav-link deleteItemButton" data-item="{{ $item }}" role="button"><i
-                                class="fas fa-trash fa-fw"></i></a>
-                    </td>
+                    @if (!isset($action))
+                        <td colspan="1">
+                            <a class="nav-link deleteItemButton" data-item="{{ $item }}" role="button"><i
+                                    class="fas fa-trash fa-fw"></i></a>
+                        </td>
+                    @endif
                 </tr>
             @endforeach
         @endif
