@@ -21,28 +21,6 @@
     <div class="container">
         @include('tournament.partial.tab')
 
-        {{-- TEAM EVENT --}}
-        <p class="mt-4"><b>TEAM EVENT</b></p>
-        {{-- @foreach ($tourney->team as $team)
-            <p class="mt-4"><b>{{ $team->name }}</b></p>
-            @foreach ($team->participant as $participant)
-                @if (calculate_status($participant) == 'finished')
-                    @if (isset($participant->position))
-                        <p>{{ $participant->event->name . ' place: ' . $participant->position }}</p>
-                    @else
-                        <p>{{ $participant->event->name }}</p>
-                    @endif
-                @endif
-            @endforeach
-        @endforeach --}}
-        @foreach ($positions as $pos)
-            <p>{{ json_encode($pos) }}</p>
-        @endforeach
-
-        {{-- IND EVENT --}}
-        <p class="mt-4"><b>IND EVENT</b></p>
-
-
         <table class="table table-striped table-hover table-responsive">
             <thead class="thead-dark">
                 <tr class="align-middle">
@@ -55,32 +33,37 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- TODO foreach here --}}
-                <tr data-toggle="collapse" data-target="#demo1" class="align-middle accordion-toggle">
-                    {{-- <th scope="row">{{ $count++ }}</th> --}}
-                    <th scope="row">1</th>
-                    <td>TEAM 1</td>
-                    <td>2</td>
-                    <td>5</td>
-                    <td>3</td>
-                    <td>10.00</td>
-                </tr>
-                <tr>
-                    <td colspan="6" class="hiddenRow">
-                        <div class="accordian-body collapse p-3" id="demo1">
-                            <p><b>Gold Medal (1st Place):</b> 0</p>
-                            <p><b>Silver Medal (2nd Place):</b> 0</p>
-                            <p><b>Bronze Medal (3rd Place):</b> 0</p>
-                            <p><b>4th Place:</b> 0</p>
-                            <p><b>5th Place:</b> 0</p>
-                            <p><b>6th Place:</b> 0</p>
-                            <p><b>7th Place:</b> 0</p>
-                            <p><b>8th Place:</b> 0</p>
-                            <p><b>TOTAL POINTS:</b> 0</p>
-                        </div>
-                    </td>
-                </tr>
-                {{-- TODO foreach till here --}}
+                @php
+                    $count = 1;
+                @endphp
+                @foreach ($teams as $team)
+                    <tr data-toggle="collapse" data-target="{{ '#demo' . $count }}" class="align-middle accordion-toggle">
+                        <th scope="row">{{ $count }}</th>
+                        <td>{{ $team->name }}</td>
+                        <td>{{ $team->first_place ?? '0' }}</td>
+                        <td>{{ $team->second_place ?? '0' }}</td>
+                        <td>{{ $team->third_place ?? '0' }}</td>
+                        <td>0.0</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" class="hiddenRow">
+                            <div class="accordian-body collapse p-3" id="{{ 'demo' . $count }}">
+                                <p><b>Gold Medal (1st Place):</b> {{ $team->first_place ?? '0' }}</p>
+                                <p><b>Silver Medal (2nd Place):</b> {{ $team->second_place ?? '0' }}</p>
+                                <p><b>Bronze Medal (3rd Place):</b> {{ $team->third_place ?? '0' }}</p>
+                                <p><b>4th Place:</b> {{ $team->fourth_place ?? '0' }}</p>
+                                <p><b>5th Place:</b> {{ $team->fifth_place ?? '0' }}</p>
+                                <p><b>6th Place:</b> {{ $team->sixth_place ?? '0' }}</p>
+                                <p><b>7th Place:</b> {{ $team->seventh_place ?? '0' }}</p>
+                                <p><b>8th Place:</b> {{ $team->eighth_place ?? '0' }}</p>
+                                <p><b>TOTAL POINTS:</b> 0</p>
+                            </div>
+                        </td>
+                    </tr>
+                    @php
+                        $count++;
+                    @endphp
+                @endforeach
             </tbody>
         </table>
     </div>

@@ -591,32 +591,102 @@ class TournamentController extends Controller
     // standing
     public function standing(Request $request)
     {
-        // TODO for heat count by event (index) & matchup count by participant (position attribute)
         $tourney = Tournament::find($request->tournament_id);
+        $teams = Team::where('tournament_id', $tourney->id)->get();
 
-        $positions = [];
+        foreach ($tourney->event as $event) {
+            if (calculate_status($event) == 'finished' && $event->championship == true) {
+                if ($event->event_type_id == 3 || $event->event_type_id == 4) {
+                    // HEAT EVENT
+                    $participants = $event->sort_by_highest ? Participant::where('event_id', $event->id)->orderBy('score', 'desc')->orderBy('created_at',  'desc')->get() : Participant::where('event_id', $event->id)->orderBy(\Illuminate\Support\Facades\DB::raw('-`score`'), 'desc')->get();
 
-        foreach ($tourney->team as $team) {
-            foreach ($team->participant as $participant) {
-                if (calculate_status($participant) == 'finished') {
-                    if (isset($participant->position)) {
-                        $insert = array(
-                            "team_id" => $team->id,
-                            "position" => $participant->position,
-                        );
-                        array_push($positions, $insert);
+                    $i = 1;
+                    foreach ($participants as $participant) {
+                        $team_id = isset($participant->team_id) ? $participant->team->id : $participant->athlete->team->id;
+                        foreach ($teams as $team) {
+                            if ($team->id == $team_id) {
+                                switch ($i) {
+                                    case 1:
+                                        $team->first_place = $team->first_place + 1;
+                                        break;
+                                    case 2:
+                                        $team->second_place = $team->second_place + 1;
+                                        break;
+                                    case 3:
+                                        $team->third_place = $team->third_place + 1;
+                                        break;
+                                    case 4:
+                                        $team->fourth_place = $team->fourth_place + 1;
+                                        break;
+                                    case 5:
+                                        $team->fifth_place = $team->fifth_place + 1;
+                                        break;
+                                    case 6:
+                                        $team->sixth_place = $team->sixth_place + 1;
+                                        break;
+                                    case 7:
+                                        $team->seventh_place = $team->seventh_place + 1;
+                                        break;
+                                    case 8:
+                                        $team->eighth_place = $team->eighth_place + 1;
+                                        break;
+                                }
+                            }
+                        }
+
+                        if (++$i == 9) break;
+                    }
+                } else {
+                    // MATCHUP EVENT
+                    foreach ($event->participant as $participant) {
+                        if (isset($participant->position)) {
+                            $team_id = isset($participant->team_id) ? $participant->team->id : $participant->athlete->team->id;
+                            foreach ($teams as $team) {
+                                if ($team->id == $team_id) {
+                                    switch ($participant->position) {
+                                        case 1:
+                                            $team->first_place = $team->first_place + 1;
+                                            break;
+                                        case 2:
+                                            $team->second_place = $team->second_place + 1;
+                                            break;
+                                        case 3:
+                                            $team->third_place = $team->third_place + 1;
+                                            break;
+                                        case 4:
+                                            $team->fourth_place = $team->fourth_place + 1;
+                                            break;
+                                        case 5:
+                                            $team->fifth_place = $team->fifth_place + 1;
+                                            break;
+                                        case 6:
+                                            $team->sixth_place = $team->sixth_place + 1;
+                                            break;
+                                        case 7:
+                                            $team->seventh_place = $team->seventh_place + 1;
+                                            break;
+                                        case 8:
+                                            $team->eighth_place = $team->eighth_place + 1;
+                                            break;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
 
-        $participant = Participant::all();
+        // SORT STANDING
+        // COUNT POINTS
 
-        return view('tournament.standing.index', compact('tourney', 'positions', 'participant'));
+        return view('tournament.standing.index', compact('tourney', 'teams'));
     }
 }
 
 // TODO
+// option to count participant standing with no points
+// How many athletes per team allowed?
 // lane allocation
 // cross county tournament
 // front page manage
