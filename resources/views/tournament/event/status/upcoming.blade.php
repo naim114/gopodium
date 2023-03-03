@@ -1,7 +1,6 @@
 <table class="table table-striped table-hover table-responsive">
     <thead class="thead-dark">
         <tr class="align-middle">
-            <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Code</th>
             <th scope="col">Category</th>
@@ -13,12 +12,8 @@
         </tr>
     </thead>
     <tbody>
-        @php
-            $count = 1;
-        @endphp
         @foreach ($upcoming as $event)
             <tr class="align-middle">
-                <th scope="row">{{ $count++ }}</th>
                 <td>
                     @if ($event->championship == true && $event->status == 'finished')
                         <b>[Championship]</b>
