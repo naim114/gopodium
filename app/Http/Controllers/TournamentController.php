@@ -595,6 +595,7 @@ class TournamentController extends Controller
         $tourney = Tournament::find($request->tournament_id);
         $teams = Team::where('tournament_id', $tourney->id)->get();
 
+        // Count Place/Medal
         foreach ($tourney->event as $event) {
             if (calculate_status($event) == 'finished' && $event->championship == true) {
                 if ($event->event_type_id == 3 || $event->event_type_id == 4) {
@@ -678,9 +679,23 @@ class TournamentController extends Controller
             }
         }
 
-        // SORT STANDING
-        // COUNT POINTS
+        // Count Total Points
+        foreach ($teams as $team) {
+            if ($tourney->standing_type_id == 1) {
+                $team->total_point = ($team->first_place ?? '0') * $tourney->first_place_point + ($team->second_place ?? '0') * $tourney->second_place_point + ($team->third_place ?? '0') * $tourney->third_place_point + ($team->fourth_place ?? '0') * $tourney->fourth_place_point + ($team->fifth_place ?? '0') * $tourney->fifth_place_point + ($team->sixth_place ?? '0') * $tourney->sixth_place_point + ($team->seventh_place ?? '0') * $tourney->seventh_place_point + ($team->eighth_place ?? '0') * $tourney->eighth_place_point;
+            } elseif ($tourney->standing_type_id == 2) {
+                $team->total_point = ($team->first_place ?? '0') * $tourney->first_place_point + ($team->second_place ?? '0') * $tourney->second_place_point + ($team->third_place ?? '0') * $tourney->third_place_point;
+            } elseif ($tourney->standing_type_id == 3) {
+                $team->total_point = ($team->first_place ?? '0') * $tourney->first_place_point;
+            }
+        }
 
+        // TODO SORT
+
+        $teams = collect($teams);
+        $teams = $teams->sortBy('total_point', SORT_REGULAR, true);
+
+        // dd($teams);
         return view('tournament.standing.index', compact('tourney', 'teams'));
     }
 }

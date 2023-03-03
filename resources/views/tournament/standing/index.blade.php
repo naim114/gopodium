@@ -25,6 +25,7 @@
             <thead class="thead-dark">
                 <tr class="align-middle">
                     <th scope="col">#</th>
+                    <th scope="col"></th>
                     <th scope="col">Team Name</th>
                     <th scope="col">Gold</th>
                     <th scope="col">Silver</th>
@@ -37,29 +38,23 @@
                     $count = 1;
                 @endphp
                 @foreach ($teams as $team)
-                    <tr>
                     <tr data-toggle="collapse" data-target="{{ '#demo' . $count }}" class="align-middle accordion-toggle">
                         <th scope="row">
-                            <img height="30px" src="{{ asset($team->logo_path ?? 'assets/img/default-team.png') }}" />
+                            {{ $count }}
                         </th>
+                        <td>
+                            <img height="30px" src="{{ asset($team->logo_path ?? 'assets/img/default-team.png') }}" />
+                        </td>
                         <td>
                             <b> {{ $team->name }}</b>
                         </td>
                         <td>{{ $team->first_place ?? '0' }}</td>
                         <td>{{ $team->second_place ?? '0' }}</td>
                         <td>{{ $team->third_place ?? '0' }}</td>
-                        <td>
-                            @if ($tourney->standing_type_id == 1)
-                                {{ ($team->first_place ?? '0') * $tourney->first_place_point + ($team->second_place ?? '0') * $tourney->second_place_point + ($team->third_place ?? '0') * $tourney->third_place_point + ($team->fourth_place ?? '0') * $tourney->fourth_place_point + ($team->fifth_place ?? '0') * $tourney->fifth_place_point + ($team->sixth_place ?? '0') * $tourney->sixth_place_point + ($team->seventh_place ?? '0') * $tourney->seventh_place_point + ($team->eighth_place ?? '0') * $tourney->eighth_place_point }}
-                            @elseif ($tourney->standing_type_id == 2)
-                                {{ ($team->first_place ?? '0') * $tourney->first_place_point + ($team->second_place ?? '0') * $tourney->second_place_point + ($team->third_place ?? '0') * $tourney->third_place_point }}
-                            @elseif ($tourney->standing_type_id == 3)
-                                {{ ($team->first_place ?? '0') * $tourney->first_place_point }}
-                            @endif
-                        </td>
+                        <td>{{ $team->total_point ?? '0' }}</td>
                     </tr>
                     <tr>
-                        <td colspan="6" class="hiddenRow">
+                        <td colspan="7" class="hiddenRow">
                             <div class="accordian-body collapse p-3" id="{{ 'demo' . $count }}">
                                 @if ($tourney->standing_type_id == 1)
                                     <p><b>Gold Medal (1st Place):</b>
@@ -87,7 +82,7 @@
                                         {{ ($team->eighth_place ?? '0') . ' x ' . $tourney->eighth_place_point . ' points = ' . ($team->eighth_place ?? '0') * $tourney->eighth_place_point }}
                                     </p>
                                     <p><b>TOTAL POINTS:</b>
-                                        {{ ($team->first_place ?? '0') * $tourney->first_place_point + ($team->second_place ?? '0') * $tourney->second_place_point + ($team->third_place ?? '0') * $tourney->third_place_point + ($team->fourth_place ?? '0') * $tourney->fourth_place_point + ($team->fifth_place ?? '0') * $tourney->fifth_place_point + ($team->sixth_place ?? '0') * $tourney->sixth_place_point + ($team->seventh_place ?? '0') * $tourney->seventh_place_point + ($team->eighth_place ?? '0') * $tourney->eighth_place_point }}
+                                        {{ $team->total_point ?? '0' }}
                                     </p>
                                 @elseif ($tourney->standing_type_id == 2)
                                     <p><b>Gold Medal (1st Place):</b>
@@ -100,19 +95,18 @@
                                         {{ ($team->third_place ?? '0') . ' x ' . $tourney->third_place_point . ' points = ' . ($team->third_place ?? '0') * $tourney->third_place_point }}
                                     </p>
                                     <p><b>TOTAL POINTS:</b>
-                                        {{ ($team->first_place ?? '0') * $tourney->first_place_point + ($team->second_place ?? '0') * $tourney->second_place_point + ($team->third_place ?? '0') * $tourney->third_place_point }}
+                                        {{ $team->total_point ?? '0' }}
                                     </p>
                                 @elseif ($tourney->standing_type_id == 3)
                                     <p><b>Gold Medal (1st Place):</b>
                                         {{ ($team->first_place ?? '0') . ' x ' . $tourney->first_place_point . ' points = ' . ($team->first_place ?? '0') * $tourney->first_place_point }}
                                     </p>
                                     <p><b>TOTAL POINTS:</b>
-                                        {{ ($team->first_place ?? '0') * $tourney->first_place_point }}
+                                        {{ $team->total_point ?? '0' }}
                                     </p>
                                 @endif
                             </div>
                         </td>
-                    </tr>
                     </tr>
                     @php
                         $count++;
